@@ -65,6 +65,9 @@
 
   <!-- Custom Styles stylesheet -->
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Custom Event Analytics script -->
+  <script src="js/analytics.js"></script>
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen antialiased selection:bg-indigo-500 selection:text-white relative">
 
@@ -78,7 +81,11 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
       <!-- Brand Logo -->
-      <a href="#hero" class="flex items-center gap-3 group">
+      <a href="#hero" class="flex items-center gap-3 group"
+         data-analytics-event="navigation_click"
+         data-analytics-param-destination-section="hero"
+         data-analytics-param-navigation-location="header"
+         data-analytics-param-link-label="Thongchan Thananate">
         <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-sky-400 flex items-center justify-center text-white font-display font-bold text-xl shadow-md shadow-indigo-500/20 group-hover:scale-105 transition-transform">
           TT
         </div>
@@ -94,25 +101,59 @@
 
       <!-- Desktop Navigation -->
       <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600 dark:text-slate-300">
-        <a href="#experience" class="nav-link hover:text-indigo-600 dark:hover:text-sky-400 transition-colors py-1">Timeline</a>
-        <a href="#certifications" class="nav-link hover:text-indigo-600 dark:hover:text-sky-400 transition-colors py-1">Certifications</a>
-        <a href="#skills" class="nav-link hover:text-indigo-600 dark:hover:text-sky-400 transition-colors py-1">Skills & Edu</a>
-        <a href="#projects" class="nav-link hover:text-indigo-600 dark:hover:text-sky-400 transition-colors py-1">Case Studies</a>
-        <a href="#advisory" class="nav-link hover:text-indigo-600 dark:hover:text-sky-400 transition-colors py-1">Advisory</a>
-        <a href="#expertise" class="nav-link hover:text-indigo-600 dark:hover:text-sky-400 transition-colors py-1">Pillars</a>
-        <a href="#contact" class="nav-link hover:text-indigo-600 dark:hover:text-sky-400 transition-colors py-1">Contact</a>
+        <a href="#experience" class="nav-link hover:text-indigo-600 dark:hover:text-sky-400 transition-colors py-1"
+           data-analytics-event="navigation_click"
+           data-analytics-param-destination-section="experience"
+           data-analytics-param-navigation-location="header"
+           data-analytics-param-link-label="Timeline">Timeline</a>
+        <a href="#certifications" class="nav-link hover:text-indigo-600 dark:hover:text-sky-400 transition-colors py-1"
+           data-analytics-event="navigation_click"
+           data-analytics-param-destination-section="certifications"
+           data-analytics-param-navigation-location="header"
+           data-analytics-param-link-label="Certifications">Certifications</a>
+        <a href="#skills" class="nav-link hover:text-indigo-600 dark:hover:text-sky-400 transition-colors py-1"
+           data-analytics-event="navigation_click"
+           data-analytics-param-destination-section="skills"
+           data-analytics-param-navigation-location="header"
+           data-analytics-param-link-label="Skills & Edu">Skills & Edu</a>
+        <a href="#projects" class="nav-link hover:text-indigo-600 dark:hover:text-sky-400 transition-colors py-1"
+           data-analytics-event="navigation_click"
+           data-analytics-param-destination-section="projects"
+           data-analytics-param-navigation-location="header"
+           data-analytics-param-link-label="Case Studies">Case Studies</a>
+        <a href="#advisory" class="nav-link hover:text-indigo-600 dark:hover:text-sky-400 transition-colors py-1"
+           data-analytics-event="navigation_click"
+           data-analytics-param-destination-section="advisory"
+           data-analytics-param-navigation-location="header"
+           data-analytics-param-link-label="Advisory">Advisory</a>
+        <a href="#expertise" class="nav-link hover:text-indigo-600 dark:hover:text-sky-400 transition-colors py-1"
+           data-analytics-event="navigation_click"
+           data-analytics-param-destination-section="expertise"
+           data-analytics-param-navigation-location="header"
+           data-analytics-param-link-label="Pillars">Pillars</a>
+        <a href="#contact" class="nav-link hover:text-indigo-600 dark:hover:text-sky-400 transition-colors py-1"
+           data-analytics-event="navigation_click"
+           data-analytics-param-destination-section="contact"
+           data-analytics-param-navigation-location="header"
+           data-analytics-param-link-label="Contact">Contact</a>
       </nav>
 
       <!-- Right Action Items -->
       <div class="flex items-center gap-4">
         <!-- Theme Switcher Button -->
-        <button type="button" class="theme-toggle p-2.5 rounded-xl text-slate-500 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-slate-800/60 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500" aria-label="Toggle dark mode">
+        <button type="button" class="theme-toggle p-2.5 rounded-xl text-slate-500 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-slate-800/60 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500" aria-label="Toggle dark mode"
+                data-analytics-event="theme_change"
+                data-analytics-param-control-location="header">
           <i class="fas fa-sun text-lg hidden dark:block text-amber-400"></i>
           <i class="fas fa-moon text-lg block dark:hidden text-indigo-600"></i>
         </button>
 
         <!-- CTA Resume Button -->
-        <a href="mailto:thananate.t@gmail.com" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-sm transition-all shadow-md shadow-indigo-600/20 hover:shadow-lg hover:shadow-indigo-600/30">
+        <a href="mailto:thananate.t@gmail.com" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-sm transition-all shadow-md shadow-indigo-600/20 hover:shadow-lg hover:shadow-indigo-600/30"
+           data-analytics-event="primary_cta_click"
+           data-analytics-param-cta-name="initiate_collaboration"
+           data-analytics-param-cta-location="header"
+           data-analytics-param-destination-type="email">
           <i class="fas fa-paper-plane text-xs"></i>
           <span>Initiate Collaboration</span>
         </a>
@@ -126,19 +167,48 @@
 
     <!-- Mobile Navigation Drawer -->
     <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-slate-50/95 dark:bg-slate-900/95 backdrop-blur-lg px-4 pt-3 pb-6 space-y-3">
-      <a href="#experience" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800">Timeline</a>
-      <a href="#certifications" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800">Certifications</a>
-      <a href="#skills" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800">Skills & Education</a>
-      <a href="#projects" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800">Case Studies</a>
-      <a href="#advisory" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800">Advisory</a>
-      <a href="#expertise" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800">Strategic Pillars</a>
-      <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800">Contact</a>
+      <a href="#experience" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800"
+         data-analytics-event="navigation_click"
+         data-analytics-param-destination-section="experience"
+         data-analytics-param-navigation-location="mobile_menu"
+         data-analytics-param-link-label="Timeline">Timeline</a>
+      <a href="#certifications" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800"
+         data-analytics-event="navigation_click"
+         data-analytics-param-destination-section="certifications"
+         data-analytics-param-navigation-location="mobile_menu"
+         data-analytics-param-link-label="Certifications">Certifications</a>
+      <a href="#skills" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800"
+         data-analytics-event="navigation_click"
+         data-analytics-param-destination-section="skills"
+         data-analytics-param-navigation-location="mobile_menu"
+         data-analytics-param-link-label="Skills & Education">Skills & Education</a>
+      <a href="#projects" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800"
+         data-analytics-event="navigation_click"
+         data-analytics-param-destination-section="projects"
+         data-analytics-param-navigation-location="mobile_menu"
+         data-analytics-param-link-label="Case Studies">Case Studies</a>
+      <a href="#advisory" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800"
+         data-analytics-event="navigation_click"
+         data-analytics-param-destination-section="advisory"
+         data-analytics-param-navigation-location="mobile_menu"
+         data-analytics-param-link-label="Advisory">Advisory</a>
+      <a href="#expertise" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800"
+         data-analytics-event="navigation_click"
+         data-analytics-param-destination-section="expertise"
+         data-analytics-param-navigation-location="mobile_menu"
+         data-analytics-param-link-label="Strategic Pillars">Strategic Pillars</a>
+      <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800"
+         data-analytics-event="navigation_click"
+         data-analytics-param-destination-section="contact"
+         data-analytics-param-navigation-location="mobile_menu"
+         data-analytics-param-link-label="Contact">Contact</a>
     </div>
   </header>
 
 
   <!-- HERO SECTION -->
-  <section id="hero" class="relative z-10 pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden">
+  <section id="hero" class="relative z-10 pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden"
+           data-analytics-section="Hero">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-12 gap-12 items-center">
         
@@ -165,25 +235,40 @@
 
           <!-- Contact Action Bar -->
           <div class="pt-2 flex flex-wrap items-center gap-4">
-            <a href="tel:0896691313" class="px-5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm transition-all shadow-lg shadow-indigo-600/30 flex items-center gap-2.5">
+            <a href="tel:0896691313" class="px-5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm transition-all shadow-lg shadow-indigo-600/30 flex items-center gap-2.5"
+               data-analytics-event="contact_click"
+               data-analytics-param-contact-method="phone"
+               data-analytics-param-contact-location="hero">
               <i class="fas fa-phone-alt"></i>
               <span>089-669-1313</span>
             </a>
             
-            <a href="mailto:thananate.t@gmail.com" class="px-5 py-3 rounded-xl glass-card hover:bg-slate-200/60 dark:hover:bg-slate-800/80 text-slate-800 dark:text-slate-200 font-semibold text-sm transition-all flex items-center gap-2.5 border border-slate-300 dark:border-slate-700">
+            <a href="mailto:thananate.t@gmail.com" class="px-5 py-3 rounded-xl glass-card hover:bg-slate-200/60 dark:hover:bg-slate-800/80 text-slate-800 dark:text-slate-200 font-semibold text-sm transition-all flex items-center gap-2.5 border border-slate-300 dark:border-slate-700"
+               data-analytics-event="contact_click"
+               data-analytics-param-contact-method="email"
+               data-analytics-param-contact-location="hero">
               <i class="fas fa-envelope text-indigo-600 dark:text-sky-400"></i>
               <span>thananate.t@gmail.com</span>
             </a>
 
-            <a href="https://www.linkedin.com/in/thongchan-th/" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl glass-card hover:bg-slate-200/60 dark:hover:bg-slate-800/80 text-slate-700 dark:text-slate-300 transition-all border border-slate-300 dark:border-slate-700" aria-label="LinkedIn Profile">
+            <a href="https://www.linkedin.com/in/thongchan-th/" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl glass-card hover:bg-slate-200/60 dark:hover:bg-slate-800/80 text-slate-700 dark:text-slate-300 transition-all border border-slate-300 dark:border-slate-700" aria-label="LinkedIn Profile"
+               data-analytics-event="contact_click"
+               data-analytics-param-contact-method="linkedin"
+               data-analytics-param-contact-location="hero">
               <i class="fab fa-linkedin-in text-lg"></i>
             </a>
 
-            <a href="https://klaothongchan.medium.com/" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl glass-card hover:bg-slate-200/60 dark:hover:bg-slate-800/80 text-slate-700 dark:text-slate-300 transition-all border border-slate-300 dark:border-slate-700" aria-label="Medium Articles">
+            <a href="https://klaothongchan.medium.com/" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl glass-card hover:bg-slate-200/60 dark:hover:bg-slate-800/80 text-slate-700 dark:text-slate-300 transition-all border border-slate-300 dark:border-slate-700" aria-label="Medium Articles"
+               data-analytics-event="contact_click"
+               data-analytics-param-contact-method="other"
+               data-analytics-param-contact-location="hero">
               <i class="fab fa-medium-m text-lg"></i>
             </a>
 
-            <a href="https://github.com/klao-thongchan" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl glass-card hover:bg-slate-200/60 dark:hover:bg-slate-800/80 text-slate-700 dark:text-slate-300 transition-all border border-slate-300 dark:border-slate-700" aria-label="GitHub Profile">
+            <a href="https://github.com/klao-thongchan" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl glass-card hover:bg-slate-200/60 dark:hover:bg-slate-800/80 text-slate-700 dark:text-slate-300 transition-all border border-slate-300 dark:border-slate-700" aria-label="GitHub Profile"
+               data-analytics-event="contact_click"
+               data-analytics-param-contact-method="github"
+               data-analytics-param-contact-location="hero">
               <i class="fab fa-github text-lg"></i>
             </a>
           </div>
@@ -258,7 +343,8 @@
     </div>
   </section>
 
-<section id="experience" class="relative z-10 py-24 bg-slate-100/60 dark:bg-slate-900/40 border-t border-slate-200 dark:border-slate-800/80">
+<section id="experience" class="relative z-10 py-24 bg-slate-100/60 dark:bg-slate-900/40 border-t border-slate-200 dark:border-slate-800/80"
+         data-analytics-section="Timeline">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto space-y-3 mb-16">
@@ -567,7 +653,8 @@
     </div>
   </section>
 
-<section id="certifications" class="relative z-10 py-20">
+<section id="certifications" class="relative z-10 py-20"
+         data-analytics-section="Certifications">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto space-y-3 mb-14">
@@ -670,7 +757,8 @@
     </div>
   </section>
 
-<section id="skills" class="relative z-10 py-24 bg-slate-100/60 dark:bg-slate-900/40 border-t border-slate-200 dark:border-slate-800/80">
+<section id="skills" class="relative z-10 py-24 bg-slate-100/60 dark:bg-slate-900/40 border-t border-slate-200 dark:border-slate-800/80"
+         data-analytics-section="Skills & Edu">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto space-y-3 mb-16">
@@ -813,7 +901,8 @@
     </div>
   </section>
 
-<section id="projects" class="relative z-10 py-24">
+<section id="projects" class="relative z-10 py-24"
+         data-analytics-section="Case Studies">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto space-y-3 mb-12">
@@ -846,7 +935,12 @@
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 min-h-[380px]">
         
         <!-- Case Study 1: Agentic AI -->
-        <div class="project-card glass-card glass-card-hover rounded-2xl p-6 flex flex-col justify-between space-y-6" data-category="ai">
+        <div class="project-card glass-card glass-card-hover rounded-2xl p-6 flex flex-col justify-between space-y-6" data-category="ai"
+             data-analytics-event="project_click"
+             data-analytics-param-project-id="ai_autopilot_test_harness"
+             data-analytics-param-project-category="ai"
+             data-analytics-param-project-location="projects"
+             data-analytics-param-destination-type="none">
           <div class="space-y-4">
             <div class="flex items-center justify-between">
               <span class="px-2.5 py-1 rounded-md bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-300 text-xs font-bold border border-indigo-200 dark:border-indigo-800">
@@ -866,7 +960,12 @@
         </div>
 
         <!-- Case Study 2: Ash Echoes Rescue -->
-        <div class="project-card glass-card glass-card-hover rounded-2xl p-6 flex flex-col justify-between space-y-6" data-category="strategy">
+        <div class="project-card glass-card glass-card-hover rounded-2xl p-6 flex flex-col justify-between space-y-6" data-category="strategy"
+             data-analytics-event="project_click"
+             data-analytics-param-project-id="ash_echoes_thailand_turnaround"
+             data-analytics-param-project-category="strategy"
+             data-analytics-param-project-location="projects"
+             data-analytics-param-destination-type="none">
           <div class="space-y-4">
             <div class="flex items-center justify-between">
               <span class="px-2.5 py-1 rounded-md bg-purple-50 dark:bg-purple-950 text-purple-600 dark:text-purple-300 text-xs font-bold border border-purple-200 dark:border-purple-800">
@@ -886,7 +985,12 @@
         </div>
 
         <!-- Case Study 3: Global Partnerships -->
-        <div class="project-card glass-card glass-card-hover rounded-2xl p-6 flex flex-col justify-between space-y-6" data-category="strategy">
+        <div class="project-card glass-card glass-card-hover rounded-2xl p-6 flex flex-col justify-between space-y-6" data-category="strategy"
+             data-analytics-event="project_click"
+             data-analytics-param-project-id="global_tech_alliances"
+             data-analytics-param-project-category="strategy"
+             data-analytics-param-project-location="projects"
+             data-analytics-param-destination-type="none">
           <div class="space-y-4">
             <div class="flex items-center justify-between">
               <span class="px-2.5 py-1 rounded-md bg-sky-50 dark:bg-sky-950 text-sky-600 dark:text-sky-300 text-xs font-bold border border-sky-200 dark:border-sky-800">
@@ -906,7 +1010,12 @@
         </div>
 
         <!-- Case Study 4: ML User Segmentation -->
-        <div class="project-card glass-card glass-card-hover rounded-2xl p-6 flex flex-col justify-between space-y-6" data-category="analytics">
+        <div class="project-card glass-card glass-card-hover rounded-2xl p-6 flex flex-col justify-between space-y-6" data-category="analytics"
+             data-analytics-event="project_click"
+             data-analytics-param-project-id="ml_user_segmentation_cac_reduction"
+             data-analytics-param-project-category="analytics"
+             data-analytics-param-project-location="projects"
+             data-analytics-param-destination-type="none">
           <div class="space-y-4">
             <div class="flex items-center justify-between">
               <span class="px-2.5 py-1 rounded-md bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-300 text-xs font-bold border border-emerald-200 dark:border-emerald-800">
@@ -926,7 +1035,12 @@
         </div>
 
         <!-- Case Study 5: Live Ops LTV -->
-        <div class="project-card glass-card glass-card-hover rounded-2xl p-6 flex flex-col justify-between space-y-6" data-category="strategy analytics">
+        <div class="project-card glass-card glass-card-hover rounded-2xl p-6 flex flex-col justify-between space-y-6" data-category="strategy analytics"
+             data-analytics-event="project_click"
+             data-analytics-param-project-id="live_ops_ltv_optimization"
+             data-analytics-param-project-category="strategy analytics"
+             data-analytics-param-project-location="projects"
+             data-analytics-param-destination-type="none">
           <div class="space-y-4">
             <div class="flex items-center justify-between">
               <span class="px-2.5 py-1 rounded-md bg-amber-50 dark:bg-amber-950 text-amber-600 dark:text-amber-300 text-xs font-bold border border-amber-200 dark:border-amber-800">
@@ -946,7 +1060,12 @@
         </div>
 
         <!-- Case Study 6: Applied AI Consulting Workflows -->
-        <div class="project-card glass-card glass-card-hover rounded-2xl p-6 flex flex-col justify-between space-y-6" data-category="ai analytics">
+        <div class="project-card glass-card glass-card-hover rounded-2xl p-6 flex flex-col justify-between space-y-6" data-category="ai analytics"
+             data-analytics-event="project_click"
+             data-analytics-param-project-id="applied_ai_consulting_workflows"
+             data-analytics-param-project-category="ai analytics"
+             data-analytics-param-project-location="projects"
+             data-analytics-param-destination-type="none">
           <div class="space-y-4">
             <div class="flex items-center justify-between">
               <span class="px-2.5 py-1 rounded-md bg-teal-50 dark:bg-teal-950 text-teal-600 dark:text-teal-300 text-xs font-bold border border-teal-200 dark:border-teal-800">
@@ -969,7 +1088,8 @@
     </div>
   </section>
 
-<section id="advisory" class="relative z-10 py-24 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800/80">
+<section id="advisory" class="relative z-10 py-24 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800/80"
+         data-analytics-section="Advisory">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto space-y-3 mb-16">
@@ -1091,7 +1211,8 @@
     </div>
   </section>
 
-<section id="expertise" class="relative z-10 py-20 bg-slate-100/60 dark:bg-slate-900/40 border-y border-slate-200 dark:border-slate-800/80">
+<section id="expertise" class="relative z-10 py-20 bg-slate-100/60 dark:bg-slate-900/40 border-y border-slate-200 dark:border-slate-800/80"
+         data-analytics-section="Strategic Pillars">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto space-y-3 mb-16">
@@ -1164,7 +1285,8 @@
     </div>
   </section>
 
-<section id="partners" class="relative z-10 py-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800/80">
+<section id="partners" class="relative z-10 py-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800/80"
+         data-analytics-section="Partners">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto space-y-3 mb-12">
         <h2 class="text-xs font-semibold tracking-widest uppercase text-indigo-600 dark:text-sky-400">Trusted Integrations & Alliances</h2>
@@ -1287,7 +1409,8 @@
 
 
   <!-- CONTACT & FOOTER SECTION -->
-  <footer id="contact" class="relative z-10 pt-20 pb-12 bg-slate-900 text-white border-t border-slate-800">
+  <footer id="contact" class="relative z-10 pt-20 pb-12 bg-slate-900 text-white border-t border-slate-800"
+          data-analytics-section="Contact">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="grid lg:grid-cols-12 gap-12 pb-16 border-b border-slate-800">
@@ -1309,19 +1432,34 @@
           </p>
 
           <div class="flex items-center gap-4 pt-2">
-            <a href="tel:0896691313" class="w-11 h-11 rounded-xl bg-slate-800 hover:bg-indigo-600 text-slate-300 hover:text-white flex items-center justify-center text-lg transition-all" aria-label="Call Phone">
+            <a href="tel:0896691313" class="w-11 h-11 rounded-xl bg-slate-800 hover:bg-indigo-600 text-slate-300 hover:text-white flex items-center justify-center text-lg transition-all" aria-label="Call Phone"
+               data-analytics-event="contact_click"
+               data-analytics-param-contact-method="phone"
+               data-analytics-param-contact-location="footer">
               <i class="fas fa-phone-alt"></i>
             </a>
-            <a href="mailto:thananate.t@gmail.com" class="w-11 h-11 rounded-xl bg-slate-800 hover:bg-indigo-600 text-slate-300 hover:text-white flex items-center justify-center text-lg transition-all" aria-label="Send Email">
+            <a href="mailto:thananate.t@gmail.com" class="w-11 h-11 rounded-xl bg-slate-800 hover:bg-indigo-600 text-slate-300 hover:text-white flex items-center justify-center text-lg transition-all" aria-label="Send Email"
+               data-analytics-event="contact_click"
+               data-analytics-param-contact-method="email"
+               data-analytics-param-contact-location="footer">
               <i class="fas fa-envelope"></i>
             </a>
-            <a href="https://www.linkedin.com/in/thongchan-th/" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-xl bg-slate-800 hover:bg-indigo-600 text-slate-300 hover:text-white flex items-center justify-center text-lg transition-all" aria-label="LinkedIn Profile">
+            <a href="https://www.linkedin.com/in/thongchan-th/" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-xl bg-slate-800 hover:bg-indigo-600 text-slate-300 hover:text-white flex items-center justify-center text-lg transition-all" aria-label="LinkedIn Profile"
+               data-analytics-event="contact_click"
+               data-analytics-param-contact-method="linkedin"
+               data-analytics-param-contact-location="footer">
               <i class="fab fa-linkedin-in"></i>
             </a>
-            <a href="https://klaothongchan.medium.com/" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-xl bg-slate-800 hover:bg-indigo-600 text-slate-300 hover:text-white flex items-center justify-center text-lg transition-all" aria-label="Medium Profile">
+            <a href="https://klaothongchan.medium.com/" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-xl bg-slate-800 hover:bg-indigo-600 text-slate-300 hover:text-white flex items-center justify-center text-lg transition-all" aria-label="Medium Profile"
+               data-analytics-event="contact_click"
+               data-analytics-param-contact-method="other"
+               data-analytics-param-contact-location="footer">
               <i class="fab fa-medium-m"></i>
             </a>
-            <a href="https://github.com/klao-thongchan" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-xl bg-slate-800 hover:bg-indigo-600 text-slate-300 hover:text-white flex items-center justify-center text-lg transition-all" aria-label="GitHub Profile">
+            <a href="https://github.com/klao-thongchan" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-xl bg-slate-800 hover:bg-indigo-600 text-slate-300 hover:text-white flex items-center justify-center text-lg transition-all" aria-label="GitHub Profile"
+               data-analytics-event="contact_click"
+               data-analytics-param-contact-method="github"
+               data-analytics-param-contact-location="footer">
               <i class="fab fa-github"></i>
             </a>
           </div>
@@ -1337,7 +1475,10 @@
               </div>
               <div>
                 <span class="text-xs text-slate-400 font-medium uppercase tracking-wider block">Direct Phone Line</span>
-                <a href="tel:0896691313" class="text-xl font-bold text-white hover:text-sky-400 transition-colors">
+                <a href="tel:0896691313" class="text-xl font-bold text-white hover:text-sky-400 transition-colors"
+                   data-analytics-event="contact_click"
+                   data-analytics-param-contact-method="phone"
+                   data-analytics-param-contact-location="footer_contact_card">
                   089-669-1313
                 </a>
               </div>
@@ -1349,7 +1490,10 @@
               </div>
               <div>
                 <span class="text-xs text-slate-400 font-medium uppercase tracking-wider block">Primary Email</span>
-                <a href="mailto:thananate.t@gmail.com" class="text-xl font-bold text-white hover:text-sky-400 transition-colors">
+                <a href="mailto:thananate.t@gmail.com" class="text-xl font-bold text-white hover:text-sky-400 transition-colors"
+                   data-analytics-event="contact_click"
+                   data-analytics-param-contact-method="email"
+                   data-analytics-param-contact-location="footer_contact_card">
                   thananate.t@gmail.com
                 </a>
               </div>
@@ -1363,7 +1507,11 @@
       <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-medium">
         <p>© <span id="current-year">2026</span> Thongchan Thananate (Klao). All rights reserved.</p>
         <div class="flex items-center gap-6">
-          <a href="#hero" class="hover:text-slate-300 transition-colors flex items-center gap-1.5">
+          <a href="#hero" class="hover:text-slate-300 transition-colors flex items-center gap-1.5"
+             data-analytics-event="navigation_click"
+             data-analytics-param-destination-section="hero"
+             data-analytics-param-navigation-location="footer"
+             data-analytics-param-link-label="Back to top">
             <span>Back to top</span>
             <i class="fas fa-arrow-up"></i>
           </a>

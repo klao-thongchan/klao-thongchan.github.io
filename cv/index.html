@@ -24,6 +24,9 @@
   <link rel="alternate icon" href="../assets/img/favicon/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" href="../assets/img/favicon/favicon.svg" type="image/svg+xml">
   
+  <!-- Custom Event Analytics script -->
+  <script src="../js/analytics.js"></script>
+  
   <style>
     /* Design Tokens */
     :root {
@@ -417,13 +420,21 @@
       📄 <strong>Thongchan Thananate CV</strong> (3-Page A4 Printable Layout)
     </div>
     <div style="display: flex; gap: 0.75rem;">
-      <button class="print-btn" onclick="window.print()">
+      <button class="print-btn" onclick="window.print()"
+              data-analytics-event="primary_cta_click"
+              data-analytics-param-cta-name="print_cv"
+              data-analytics-param-cta-location="cv_control_bar"
+              data-analytics-param-destination-type="other">
         <svg class="icon" style="fill:white;" viewBox="0 0 24 24">
           <path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/>
         </svg>
         Print / Save as PDF
       </button>
-      <a href="../assets/Thongchan_Thananate_CV.pdf" download class="print-btn" style="background-color: var(--primary); text-decoration: none;">
+      <a href="../assets/Thongchan_Thananate_CV.pdf" download class="print-btn" style="background-color: var(--primary); text-decoration: none;"
+         data-analytics-event="cv_download"
+         data-analytics-param-cv-format="pdf"
+         data-analytics-param-file-label="Thongchan_Thananate_CV.pdf"
+         data-analytics-param-link-location="cv_control_bar">
         <svg class="icon" style="fill:white;" viewBox="0 0 24 24">
           <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/>
         </svg>
@@ -449,11 +460,17 @@
         </div>
         <div class="contact-item">
           <svg class="icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          <a href="mailto:thananate.t@gmail.com">thananate.t@gmail.com</a>
+          <a href="mailto:thananate.t@gmail.com"
+             data-analytics-event="contact_click"
+             data-analytics-param-contact-method="email"
+             data-analytics-param-contact-location="cv_header">thananate.t@gmail.com</a>
         </div>
         <div class="contact-item">
           <svg class="icon" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.34-.14 2 0 .66.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.34-.16-2 0-.66.07-1.34.16-2h4.68c.09.66.16 1.34.16 2 0 .66-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.34.14-2 0-.66-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/></svg>
-          <a href="https://medium.com/@klaothongchan" target="_blank">medium.com/@klaothongchan</a>
+          <a href="https://medium.com/@klaothongchan" target="_blank"
+             data-analytics-event="contact_click"
+             data-analytics-param-contact-method="other"
+             data-analytics-param-contact-location="cv_header">medium.com/@klaothongchan</a>
         </div>
       </div>
     </div>
@@ -781,7 +798,10 @@
           <div class="ref-title">Game Producer</div>
           <div class="ref-contact">
             <span>📞 086-545-7799</span>
-            <a href="mailto:karn.kittisompun@gmail.com">karn.kittisompun@gmail.com</a>
+            <a href="mailto:karn.kittisompun@gmail.com"
+               data-analytics-event="contact_click"
+               data-analytics-param-contact-method="email"
+               data-analytics-param-contact-location="cv_references">karn.kittisompun@gmail.com</a>
           </div>
         </div>
         <div class="ref-item">
@@ -789,7 +809,10 @@
           <div class="ref-title">Marketing Manager</div>
           <div class="ref-contact">
             <span>📞 083-902-6521</span>
-            <a href="mailto:m.surachotsintorn@gmail.com">m.surachotsintorn@gmail.com</a>
+            <a href="mailto:m.surachotsintorn@gmail.com"
+               data-analytics-event="contact_click"
+               data-analytics-param-contact-method="email"
+               data-analytics-param-contact-location="cv_references">m.surachotsintorn@gmail.com</a>
           </div>
         </div>
         <div class="ref-item">
@@ -797,7 +820,10 @@
           <div class="ref-title">Technical QA Lead</div>
           <div class="ref-contact">
             <span>📞 085-566-9090</span>
-            <a href="mailto:decwikorn@gmail.com">decwikorn@gmail.com</a>
+            <a href="mailto:decwikorn@gmail.com"
+               data-analytics-event="contact_click"
+               data-analytics-param-contact-method="email"
+               data-analytics-param-contact-location="cv_references">decwikorn@gmail.com</a>
           </div>
         </div>
       </div>
