@@ -1,0 +1,22 @@
+/* ==========================================================================
+   Thongchan Thananate Portfolio - Print-specific Overrides
+   ========================================================================== */
+
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  /* Hide interactive/ambient elements when printing landing page */
+  header,
+  footer,
+  .blob,
+  .theme-toggle,
+  .filter-btn,
+  .timeline-toggle,
+  a[href^="mailto:"],
+  a[href^="tel:"] {
+    display: none !important;
+  }
+}
