@@ -64,7 +64,9 @@
   <link rel="apple-touch-icon" href="../assets/img/favicon/favicon.svg" type="image/svg+xml">
 
   <!-- Custom Styles stylesheet -->
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/print.css" media="print">
 
   <!-- Custom Event Analytics script -->
   <script src="js/analytics.js"></script>
@@ -159,7 +161,7 @@
         </a>
 
         <!-- Mobile Hamburger Button -->
-        <button id="mobile-menu-btn" type="button" class="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 focus:outline-none" aria-label="Open navigation menu">
+        <button id="mobile-menu-btn" type="button" class="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 focus:outline-none" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
           <i class="fas fa-bars text-xl"></i>
         </button>
       </div>
@@ -384,12 +386,12 @@
               Translated deep-tech capabilities into marketable narratives driving adoption and engagement. Rescued flagship title releases and nurtured global strategic partnerships with Tencent, AMD, MIGU, and China Literature.
             </p>
 
-            <button type="button" class="timeline-toggle flex items-center gap-2 text-xs font-semibold text-indigo-600 dark:text-sky-400 hover:text-indigo-700 dark:hover:text-sky-300 transition-colors focus:outline-none" aria-expanded="false">
+            <button type="button" class="timeline-toggle flex items-center gap-2 text-xs font-semibold text-indigo-600 dark:text-sky-400 hover:text-indigo-700 dark:hover:text-sky-300 transition-colors focus:outline-none" aria-expanded="false" aria-controls="timeline-details-treg">
               <span class="toggle-text">Expand Ash Echoes Rescue & Strategic Partnerships</span>
               <i class="toggle-icon fas fa-chevron-down text-xs transition-transform duration-300"></i>
             </button>
 
-            <div class="timeline-details pt-4 border-t border-slate-200 dark:border-slate-800/80 space-y-4">
+            <div id="timeline-details-treg" class="timeline-details pt-4 border-t border-slate-200 dark:border-slate-800/80 space-y-4">
               <div>
                 <h5 class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-2">Key Achievements & Impact</h5>
                 <ul class="list-disc list-inside text-sm text-slate-600 dark:text-slate-300 space-y-1.5">
@@ -436,12 +438,12 @@
               Led development and marketing for flagship game products, heading a 20-person cross-functional team across product, design, and marketing.
             </p>
 
-            <button type="button" class="timeline-toggle flex items-center gap-2 text-xs font-semibold text-indigo-600 dark:text-sky-400 hover:text-indigo-700 dark:hover:text-sky-300 transition-colors focus:outline-none" aria-expanded="false">
+            <button type="button" class="timeline-toggle flex items-center gap-2 text-xs font-semibold text-indigo-600 dark:text-sky-400 hover:text-indigo-700 dark:hover:text-sky-300 transition-colors focus:outline-none" aria-expanded="false" aria-controls="timeline-details-giantwhale">
               <span class="toggle-text">Expand Details & Impact</span>
               <i class="toggle-icon fas fa-chevron-down text-xs transition-transform duration-300"></i>
             </button>
 
-            <div class="timeline-details pt-4 border-t border-slate-200 dark:border-slate-800/80 space-y-4">
+            <div id="timeline-details-giantwhale" class="timeline-details pt-4 border-t border-slate-200 dark:border-slate-800/80 space-y-4">
               <div>
                 <h5 class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-2">Key Achievements</h5>
                 <ul class="list-disc list-inside text-sm text-slate-600 dark:text-slate-300 space-y-1.5">
@@ -486,12 +488,12 @@
               Led product roadmap and launch delivery for HotPlay ad-tech and gaming integration products with an engineering team of 15.
             </p>
 
-            <button type="button" class="timeline-toggle flex items-center gap-2 text-xs font-semibold text-indigo-600 dark:text-sky-400 hover:text-indigo-700 dark:hover:text-sky-300 transition-colors focus:outline-none" aria-expanded="false">
+            <button type="button" class="timeline-toggle flex items-center gap-2 text-xs font-semibold text-indigo-600 dark:text-sky-400 hover:text-indigo-700 dark:hover:text-sky-300 transition-colors focus:outline-none" aria-expanded="false" aria-controls="timeline-details-hotplay">
               <span class="toggle-text">Expand Details & UAT</span>
               <i class="toggle-icon fas fa-chevron-down text-xs transition-transform duration-300"></i>
             </button>
 
-            <div class="timeline-details pt-4 border-t border-slate-200 dark:border-slate-800/80 space-y-4">
+            <div id="timeline-details-hotplay" class="timeline-details pt-4 border-t border-slate-200 dark:border-slate-800/80 space-y-4">
               <div>
                 <h5 class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-2">Key Achievements</h5>
                 <ul class="list-disc list-inside text-sm text-slate-600 dark:text-slate-300 space-y-1.5">
@@ -528,12 +530,12 @@
               Managed publishing teams of up to 40 across PC/Mobile flagship titles (Free Fire, Blade & Soul). Increased customer LTV by 151% and reduced delivery cycles from 14 to 5 days.
             </p>
 
-            <button type="button" class="timeline-toggle flex items-center gap-2 text-xs font-semibold text-indigo-600 dark:text-sky-400 hover:text-indigo-700 dark:hover:text-sky-300 transition-colors focus:outline-none" aria-expanded="false">
+            <button type="button" class="timeline-toggle flex items-center gap-2 text-xs font-semibold text-indigo-600 dark:text-sky-400 hover:text-indigo-700 dark:hover:text-sky-300 transition-colors focus:outline-none" aria-expanded="false" aria-controls="timeline-details-garena">
               <span class="toggle-text">Expand Analytics & Ops Impact</span>
               <i class="toggle-icon fas fa-chevron-down text-xs transition-transform duration-300"></i>
             </button>
 
-            <div class="timeline-details pt-4 border-t border-slate-200 dark:border-slate-800/80 space-y-4">
+            <div id="timeline-details-garena" class="timeline-details pt-4 border-t border-slate-200 dark:border-slate-800/80 space-y-4">
               <div>
                 <h5 class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-2">Analytics & Multi-Role Impact</h5>
                 <ul class="list-disc list-inside text-sm text-slate-600 dark:text-slate-300 space-y-1.5">
@@ -571,12 +573,12 @@
               Managed IT support systems, server setups, and network infrastructures for 100+ office users across three business units (duty-free retail & e-commerce).
             </p>
 
-            <button type="button" class="timeline-toggle flex items-center gap-2 text-xs font-semibold text-indigo-600 dark:text-sky-400 hover:text-indigo-700 dark:hover:text-sky-300 transition-colors focus:outline-none" aria-expanded="false">
+            <button type="button" class="timeline-toggle flex items-center gap-2 text-xs font-semibold text-indigo-600 dark:text-sky-400 hover:text-indigo-700 dark:hover:text-sky-300 transition-colors focus:outline-none" aria-expanded="false" aria-controls="timeline-details-morethanfree">
               <span class="toggle-text">Expand Details & Infrastructure Setup</span>
               <i class="toggle-icon fas fa-chevron-down text-xs transition-transform duration-300"></i>
             </button>
 
-            <div class="timeline-details pt-4 border-t border-slate-200 dark:border-slate-800/80 space-y-4">
+            <div id="timeline-details-morethanfree" class="timeline-details pt-4 border-t border-slate-200 dark:border-slate-800/80 space-y-4">
               <div>
                 <h5 class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-2">Key Achievements & Responsibilities</h5>
                 <ul class="list-disc list-inside text-sm text-slate-600 dark:text-slate-300 space-y-1.5">
@@ -632,12 +634,12 @@
               Designed and built user interfaces for websites and interactive media agencies using Flash and ActionScript 3.0. Visualized and presented 50+ UI/UX designs to align with stakeholders.
             </p>
 
-            <button type="button" class="timeline-toggle flex items-center gap-2 text-xs font-semibold text-indigo-600 dark:text-sky-400 hover:text-indigo-700 dark:hover:text-sky-300 transition-colors focus:outline-none" aria-expanded="false">
+            <button type="button" class="timeline-toggle flex items-center gap-2 text-xs font-semibold text-indigo-600 dark:text-sky-400 hover:text-indigo-700 dark:hover:text-sky-300 transition-colors focus:outline-none" aria-expanded="false" aria-controls="timeline-details-pirsquare">
               <span class="toggle-text">Expand Graphic Projects</span>
               <i class="toggle-icon fas fa-chevron-down text-xs transition-transform duration-300"></i>
             </button>
 
-            <div class="timeline-details pt-4 border-t border-slate-200 dark:border-slate-800/80 space-y-4">
+            <div id="timeline-details-pirsquare" class="timeline-details pt-4 border-t border-slate-200 dark:border-slate-800/80 space-y-4">
               <div>
                 <h5 class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-2">Key Achievements & Impact</h5>
                 <ul class="list-disc list-inside text-sm text-slate-600 dark:text-slate-300 space-y-1.5">
@@ -917,16 +919,16 @@
 
       <!-- Tag Filter Buttons Bar -->
       <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-12">
-        <button type="button" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-indigo-600 text-white" data-filter="all">
+        <button type="button" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-indigo-600 text-white" data-filter="all" aria-pressed="true">
           All Case Studies
         </button>
-        <button type="button" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-slate-200 text-slate-700 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700" data-filter="ai">
+        <button type="button" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-slate-200 text-slate-700 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700" data-filter="ai" aria-pressed="false">
           Applied AI & Autopilot
         </button>
-        <button type="button" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-slate-200 text-slate-700 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700" data-filter="strategy">
+        <button type="button" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-slate-200 text-slate-700 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700" data-filter="strategy" aria-pressed="false">
           GTM & Rescues
         </button>
-        <button type="button" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-slate-200 text-slate-700 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700" data-filter="analytics">
+        <button type="button" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-slate-200 text-slate-700 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700" data-filter="analytics" aria-pressed="false">
           Data & Analytics
         </button>
       </div>
@@ -1522,6 +1524,6 @@
   </footer>
 
   <!-- Main JavaScript File -->
-  <script src="../js/main.js"></script>
+  <script type="module" src="js/app.js"></script>
 </body>
 </html>
