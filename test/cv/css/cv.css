@@ -384,3 +384,41 @@ body {
     margin: 0;
   }
 }
+
+/* Staging Hardening - Utility Classes to replace inline styles */
+.flex-gap-3 {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.fill-white {
+  fill: white;
+}
+
+.btn-download-cv {
+  background-color: var(--primary) !important;
+  text-decoration: none;
+}
+
+.font-300 {
+  font-weight: 300;
+}
+
+.color-light {
+  color: var(--text-light);
+}
+
+.exp-company-subtext {
+  font-weight: 500;
+  font-size: 0.75rem;
+  color: var(--text-light);
+}
+
+.no-margin-bottom {
+  margin-bottom: 0 !important;
+}
+
+.color-primary {
+  color: var(--primary);
+}
+
