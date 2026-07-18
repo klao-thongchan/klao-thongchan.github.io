@@ -3,16 +3,12 @@
 <head>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-2LC6E9M4Q2"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
 
-    gtag('config', 'G-2LC6E9M4Q2');
-  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thongchan Thananate (Klao) | Applied AI, Product Strategy & Behavioral Economics Lead</title>
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.googletagmanager.com; style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://*.google-analytics.com https://www.google-analytics.com; form-action 'none'; frame-src 'none'; media-src 'none'; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests;">
   <meta name="description" content="Portfolio & Interactive CV of Thongchan Thananate (Klao). Senior Product Manager and Applied AI & Behavioral Economics Researcher specializing in agentic workflows, product strategy, and deep-tech adoption.">
   <meta name="author" content="Thongchan Thananate">
 
@@ -22,38 +18,8 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://klao-thongchan.github.io/">
 
-  <!-- Tailwind CSS via CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              50: '#eef2ff',
-              100: '#e0e7ff',
-              500: '#6366f1',
-              600: '#4f46e5',
-              700: '#4338ca',
-              900: '#312e81',
-            },
-            accent: {
-              cyan: '#06b6d4',
-              sky: '#38bdf8',
-              emerald: '#10b981',
-              purple: '#8b5cf6',
-              amber: '#f59e0b',
-            }
-          },
-          fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-            display: ['Outfit', 'system-ui', 'sans-serif'],
-          }
-        }
-      }
-    }
-  </script>
+  <!-- Tailwind CSS Static Stylesheet -->
+  <link rel="stylesheet" href="css/tailwind.css">
 
   <!-- Font Awesome Icons CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -107,7 +73,7 @@
            data-analytics-event="navigation_click"
            data-analytics-param-destination-section="experience"
            data-analytics-param-navigation-location="header"
-           data-analytics-param-link-label="Timeline">Timeline</a>
+           data-analytics-param-link-label="Experience Timeline">Experience Timeline</a>
         <a href="#certifications" class="nav-link hover:text-indigo-600 dark:hover:text-sky-400 transition-colors py-1"
            data-analytics-event="navigation_click"
            data-analytics-param-destination-section="certifications"
@@ -117,27 +83,12 @@
            data-analytics-event="navigation_click"
            data-analytics-param-destination-section="skills"
            data-analytics-param-navigation-location="header"
-           data-analytics-param-link-label="Skills & Edu">Skills & Edu</a>
+           data-analytics-param-link-label="Skills">Skills</a>
         <a href="#projects" class="nav-link hover:text-indigo-600 dark:hover:text-sky-400 transition-colors py-1"
            data-analytics-event="navigation_click"
            data-analytics-param-destination-section="projects"
            data-analytics-param-navigation-location="header"
            data-analytics-param-link-label="Case Studies">Case Studies</a>
-        <a href="#advisory" class="nav-link hover:text-indigo-600 dark:hover:text-sky-400 transition-colors py-1"
-           data-analytics-event="navigation_click"
-           data-analytics-param-destination-section="advisory"
-           data-analytics-param-navigation-location="header"
-           data-analytics-param-link-label="Advisory">Advisory</a>
-        <a href="#expertise" class="nav-link hover:text-indigo-600 dark:hover:text-sky-400 transition-colors py-1"
-           data-analytics-event="navigation_click"
-           data-analytics-param-destination-section="expertise"
-           data-analytics-param-navigation-location="header"
-           data-analytics-param-link-label="Pillars">Pillars</a>
-        <a href="#contact" class="nav-link hover:text-indigo-600 dark:hover:text-sky-400 transition-colors py-1"
-           data-analytics-event="navigation_click"
-           data-analytics-param-destination-section="contact"
-           data-analytics-param-navigation-location="header"
-           data-analytics-param-link-label="Contact">Contact</a>
       </nav>
 
       <!-- Right Action Items -->
@@ -157,7 +108,7 @@
            data-analytics-param-cta-location="header"
            data-analytics-param-destination-type="email">
           <i class="fas fa-paper-plane text-xs"></i>
-          <span>Initiate Collaboration</span>
+          <span>Start a Strategic Conversation</span>
         </a>
 
         <!-- Mobile Hamburger Button -->
@@ -173,7 +124,7 @@
          data-analytics-event="navigation_click"
          data-analytics-param-destination-section="experience"
          data-analytics-param-navigation-location="mobile_menu"
-         data-analytics-param-link-label="Timeline">Timeline</a>
+         data-analytics-param-link-label="Experience Timeline">Experience Timeline</a>
       <a href="#certifications" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800"
          data-analytics-event="navigation_click"
          data-analytics-param-destination-section="certifications"
@@ -183,27 +134,12 @@
          data-analytics-event="navigation_click"
          data-analytics-param-destination-section="skills"
          data-analytics-param-navigation-location="mobile_menu"
-         data-analytics-param-link-label="Skills & Education">Skills & Education</a>
+         data-analytics-param-link-label="Skills">Skills</a>
       <a href="#projects" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800"
          data-analytics-event="navigation_click"
          data-analytics-param-destination-section="projects"
          data-analytics-param-navigation-location="mobile_menu"
          data-analytics-param-link-label="Case Studies">Case Studies</a>
-      <a href="#advisory" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800"
-         data-analytics-event="navigation_click"
-         data-analytics-param-destination-section="advisory"
-         data-analytics-param-navigation-location="mobile_menu"
-         data-analytics-param-link-label="Advisory">Advisory</a>
-      <a href="#expertise" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800"
-         data-analytics-event="navigation_click"
-         data-analytics-param-destination-section="expertise"
-         data-analytics-param-navigation-location="mobile_menu"
-         data-analytics-param-link-label="Strategic Pillars">Strategic Pillars</a>
-      <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800"
-         data-analytics-event="navigation_click"
-         data-analytics-param-destination-section="contact"
-         data-analytics-param-navigation-location="mobile_menu"
-         data-analytics-param-link-label="Contact">Contact</a>
     </div>
   </header>
 
@@ -237,12 +173,12 @@
 
           <!-- Contact Action Bar -->
           <div class="pt-2 flex flex-wrap items-center gap-4">
-            <a href="tel:0896691313" class="px-5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm transition-all shadow-lg shadow-indigo-600/30 flex items-center gap-2.5"
+            <a href="tel:+66896691313" class="px-5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm transition-all shadow-lg shadow-indigo-600/30 flex items-center gap-2.5"
                data-analytics-event="contact_click"
                data-analytics-param-contact-method="phone"
                data-analytics-param-contact-location="hero">
               <i class="fas fa-phone-alt"></i>
-              <span>089-669-1313</span>
+              <span>+66-89-669-1313</span>
             </a>
             
             <a href="mailto:thananate.t@gmail.com" class="px-5 py-3 rounded-xl glass-card hover:bg-slate-200/60 dark:hover:bg-slate-800/80 text-slate-800 dark:text-slate-200 font-semibold text-sm transition-all flex items-center gap-2.5 border border-slate-300 dark:border-slate-700"
@@ -368,7 +304,11 @@
             <i class="fas fa-gamepad"></i>
           </div>
           <div class="sm:absolute sm:-left-40 sm:top-1 text-xs font-bold text-purple-600 dark:text-purple-400 uppercase tracking-wider mb-2 sm:mb-0 sm:text-right sm:w-32">
-            Jun 2024 - Sep 2025
+            <div class="experience-date-range">
+              <span class="experience-date-start">JUN 2024</span>
+              <span class="experience-date-separator">to</span>
+              <span class="experience-date-end">SEP 2025</span>
+            </div>
           </div>
 
           <div class="glass-card rounded-2xl p-6 sm:p-7 space-y-4 shadow-sm">
@@ -420,7 +360,11 @@
             <i class="fas fa-bullhorn"></i>
           </div>
           <div class="sm:absolute sm:-left-40 sm:top-1 text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider mb-2 sm:mb-0 sm:text-right sm:w-32">
-            May 2023 - Feb 2024
+            <div class="experience-date-range">
+              <span class="experience-date-start">MAY 2023</span>
+              <span class="experience-date-separator">to</span>
+              <span class="experience-date-end">FEB 2024</span>
+            </div>
           </div>
 
           <div class="glass-card rounded-2xl p-6 sm:p-7 space-y-4 shadow-sm">
@@ -470,7 +414,11 @@
             <i class="fas fa-laptop-code"></i>
           </div>
           <div class="sm:absolute sm:-left-40 sm:top-1 text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-2 sm:mb-0 sm:text-right sm:w-32">
-            Aug 2022 - Nov 2022
+            <div class="experience-date-range">
+              <span class="experience-date-start">AUG 2022</span>
+              <span class="experience-date-separator">to</span>
+              <span class="experience-date-end">NOV 2022</span>
+            </div>
           </div>
 
           <div class="glass-card rounded-2xl p-6 sm:p-7 space-y-4 shadow-sm">
@@ -512,7 +460,11 @@
             <i class="fas fa-cubes"></i>
           </div>
           <div class="sm:absolute sm:-left-40 sm:top-1 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 sm:mb-0 sm:text-right sm:w-32">
-            Oct 2015 - Dec 2021
+            <div class="experience-date-range">
+              <span class="experience-date-start">OCT 2015</span>
+              <span class="experience-date-separator">to</span>
+              <span class="experience-date-end">DEC 2021</span>
+            </div>
           </div>
 
           <div class="glass-card rounded-2xl p-6 sm:p-7 space-y-4 shadow-sm">
@@ -555,7 +507,11 @@
             <i class="fas fa-network-wired"></i>
           </div>
           <div class="sm:absolute sm:-left-40 sm:top-1 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 sm:mb-0 sm:text-right sm:w-32">
-            Jan 2012 - Dec 2015
+            <div class="experience-date-range">
+              <span class="experience-date-start">JAN 2012</span>
+              <span class="experience-date-separator">to</span>
+              <span class="experience-date-end">DEC 2015</span>
+            </div>
           </div>
 
           <div class="glass-card rounded-2xl p-6 sm:p-7 space-y-4 shadow-sm">
@@ -596,7 +552,11 @@
             <i class="fas fa-tools"></i>
           </div>
           <div class="sm:absolute sm:-left-40 sm:top-1 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 sm:mb-0 sm:text-right sm:w-32">
-            Jan 2012 - Dec 2014
+            <div class="experience-date-range">
+              <span class="experience-date-start">JAN 2012</span>
+              <span class="experience-date-separator">to</span>
+              <span class="experience-date-end">DEC 2014</span>
+            </div>
           </div>
 
           <div class="glass-card rounded-2xl p-6 sm:p-7 space-y-4 shadow-sm">
@@ -619,7 +579,11 @@
             <i class="fas fa-code"></i>
           </div>
           <div class="sm:absolute sm:-left-40 sm:top-1 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 sm:mb-0 sm:text-right sm:w-32">
-            Jun 2008 - Dec 2011
+            <div class="experience-date-range">
+              <span class="experience-date-start">JUN 2008</span>
+              <span class="experience-date-separator">to</span>
+              <span class="experience-date-end">DEC 2011</span>
+            </div>
           </div>
 
           <div class="glass-card rounded-2xl p-6 sm:p-7 space-y-4 shadow-sm">
@@ -1434,7 +1398,7 @@
           </p>
 
           <div class="flex items-center gap-4 pt-2">
-            <a href="tel:0896691313" class="w-11 h-11 rounded-xl bg-slate-800 hover:bg-indigo-600 text-slate-300 hover:text-white flex items-center justify-center text-lg transition-all" aria-label="Call Phone"
+            <a href="tel:+66896691313" class="w-11 h-11 rounded-xl bg-slate-800 hover:bg-indigo-600 text-slate-300 hover:text-white flex items-center justify-center text-lg transition-all" aria-label="Call Phone"
                data-analytics-event="contact_click"
                data-analytics-param-contact-method="phone"
                data-analytics-param-contact-location="footer">
@@ -1477,11 +1441,11 @@
               </div>
               <div>
                 <span class="text-xs text-slate-400 font-medium uppercase tracking-wider block">Direct Phone Line</span>
-                <a href="tel:0896691313" class="text-xl font-bold text-white hover:text-sky-400 transition-colors"
+                <a href="tel:+66896691313" class="text-xl font-bold text-white hover:text-sky-400 transition-colors"
                    data-analytics-event="contact_click"
                    data-analytics-param-contact-method="phone"
                    data-analytics-param-contact-location="footer_contact_card">
-                  089-669-1313
+                  +66-89-669-1313
                 </a>
               </div>
             </div>
