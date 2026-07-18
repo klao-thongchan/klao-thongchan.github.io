@@ -11,6 +11,7 @@ const path = require('path');
 const BASE_DIR = path.resolve(__dirname);
 const INDEX_HTML = path.join(BASE_DIR, 'index.html');
 const CV_INDEX_HTML = path.join(BASE_DIR, 'cv/index.html');
+const NOT_FOUND_HTML = path.join(BASE_DIR, '404.html');
 
 console.log('[Verification] Starting production environment check...');
 let errors = 0;
@@ -29,6 +30,9 @@ function assertFileExists(filePath, description) {
 const expectedFiles = [
   INDEX_HTML,
   CV_INDEX_HTML,
+  NOT_FOUND_HTML,
+  path.join(BASE_DIR, 'robots.txt'),
+  path.join(BASE_DIR, 'sitemap.xml'),
   path.join(BASE_DIR, 'css/site.css'),
   path.join(BASE_DIR, 'css/components.css'),
   path.join(BASE_DIR, 'css/print.css'),
@@ -75,9 +79,36 @@ function verifyHtmlReferences(htmlPath, forbiddenStrings, requiredStrings) {
 }
 
 verifyHtmlReferences(INDEX_HTML, ['../css/style.css', '../js/main.js', '../assets/img/favicon/'], ['css/site.css', 'js/app.js', 'assets/img/favicon/']);
-verifyHtmlReferences(CV_INDEX_HTML, ['style.css', 'main.js', 'onclick="window.print()"', '../../assets/img/favicon/', '../../assets/Thongchan_Thananate_CV.pdf'], ['css/cv.css', 'js/cv.js', '../assets/img/favicon/', '../assets/Thongchan_Thananate_CV.pdf']);
+verifyHtmlReferences(CV_INDEX_HTML, ['style.css', 'main.js', 'onclick="window.print()"', '../../assets/img/favicon/', 'Thongchan_Thananate_CV.pdf'], ['css/cv.css', 'js/cv.js', '../assets/img/favicon/']);
 
-// 3. Simple JS Import syntax check
+// 3. Verify that every local HTML resource resolves to an existing file.
+function verifyLocalHtmlReferences(htmlPath) {
+  const content = fs.readFileSync(htmlPath, 'utf8');
+  const referenceRegex = /(?:href|src|srcset)=["']([^"']+)["']/g;
+  let match;
+
+  while ((match = referenceRegex.exec(content)) !== null) {
+    const reference = match[1];
+    if (/^(?:[a-z]+:|#|\/\/)/i.test(reference)) continue;
+
+    const cleanReference = reference.split(/[?#]/, 1)[0];
+    if (!cleanReference) continue;
+
+    let resolvedPath = cleanReference.startsWith('/')
+      ? path.join(BASE_DIR, cleanReference.replace(/^\/+/, ''))
+      : path.resolve(path.dirname(htmlPath), cleanReference);
+    if (cleanReference.endsWith('/')) resolvedPath = path.join(resolvedPath, 'index.html');
+
+    if (!fs.existsSync(resolvedPath)) {
+      console.error(`[Error] Broken local reference "${reference}" in ${htmlPath}`);
+      errors++;
+    }
+  }
+}
+
+[INDEX_HTML, CV_INDEX_HTML, NOT_FOUND_HTML].forEach(verifyLocalHtmlReferences);
+
+// 4. Simple JS Import syntax check
 function verifyJsSyntax(jsPath) {
   try {
     const content = fs.readFileSync(jsPath, 'utf8');
