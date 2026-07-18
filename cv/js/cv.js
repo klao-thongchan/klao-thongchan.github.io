@@ -8,6 +8,8 @@
 
 'use strict';
 
+import { BUILD_META } from '../../js/version-meta.js';
+
 /**
  * Initializes CV-specific interactive controls (such as the print actions).
  *
@@ -49,5 +51,38 @@ function initializeCvPage() {
   }
 }
 
+/**
+ * Dynamically injects the website version indicator at the absolute bottom of the document body.
+ *
+ * Purpose:
+ * Renders the single-source-of-truth website version dynamically to avoid HTML duplication.
+ *
+ * DOM dependencies:
+ * - Appends a new child element to `document.body`.
+ *
+ * @returns {void}
+ */
+function injectVersionIndicator() {
+  try {
+    const versionEl = document.createElement('div');
+    versionEl.className = 'site-version';
+    versionEl.setAttribute('aria-label', 'Website version');
+    
+    let versionText = `v${BUILD_META.version}`;
+    if (BUILD_META.environment === 'Test') {
+      versionText += ` · Test`;
+    }
+    versionText += ` · Build ${BUILD_META.date}-${BUILD_META.commit}`;
+    
+    versionEl.textContent = versionText;
+    document.body.appendChild(versionEl);
+  } catch (error) {
+    console.error('[CV] Failed to inject website version:', error);
+  }
+}
+
 // Bootstrap initialization on content ready
-document.addEventListener('DOMContentLoaded', initializeCvPage);
+document.addEventListener('DOMContentLoaded', () => {
+  initializeCvPage();
+  injectVersionIndicator();
+});

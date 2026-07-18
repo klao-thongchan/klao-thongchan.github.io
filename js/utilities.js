@@ -8,6 +8,8 @@
 
 'use strict';
 
+import { BUILD_META } from './version-meta.js';
+
 /**
  * Dynamically computes and displays the current year in footer copyright elements.
  *
@@ -33,4 +35,30 @@ export function initCurrentYear() {
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
   }
+}
+
+/**
+ * Dynamically injects the website version indicator at the absolute bottom of the document body.
+ *
+ * Purpose:
+ * Renders the single-source-of-truth website version dynamically to avoid HTML duplication.
+ *
+ * DOM dependencies:
+ * - Appends a new child element to `document.body`.
+ *
+ * @returns {void}
+ */
+export function initVersionIndicator() {
+  const versionEl = document.createElement('div');
+  versionEl.className = 'site-version';
+  versionEl.setAttribute('aria-label', 'Website version');
+  
+  let versionText = `v${BUILD_META.version}`;
+  if (BUILD_META.environment === 'Test') {
+    versionText += ` · Test`;
+  }
+  versionText += ` · Build ${BUILD_META.date}-${BUILD_META.commit}`;
+  
+  versionEl.textContent = versionText;
+  document.body.appendChild(versionEl);
 }

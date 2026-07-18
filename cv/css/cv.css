@@ -384,3 +384,21 @@ body {
     margin: 0;
   }
 }
+
+/* Website Version Indicator */
+.site-version {
+  width: 100%;
+  padding: 1.5rem 1rem 2rem;
+  text-align: center;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: var(--text-light); /* Slate-500 equivalent */
+  box-sizing: border-box;
+}
+
+@media print {
+  .site-version {
+    display: none !important;
+  }
+}
