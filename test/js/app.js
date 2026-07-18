@@ -13,7 +13,7 @@ import { initTheme, initThemeToggle } from './theme.js';
 import { initMobileMenu, initScrollSpy } from './navigation.js';
 import { initTimelineAccordion } from './timeline.js';
 import { initProjectFiltering } from './project-filter.js';
-import { initCurrentYear } from './utilities.js';
+import { initCurrentYear, initVersionIndicator } from './utilities.js';
 
 /**
  * Initializes all staging website interactive behaviors.
@@ -74,6 +74,12 @@ function initializeApplication() {
     initCurrentYear();
   } catch (error) {
     console.error('[App] Current year initialization failed:', error);
+  }
+
+  try {
+    initVersionIndicator();
+  } catch (error) {
+    console.error('[App] Version indicator initialization failed:', error);
   }
 
   console.log('[Staging Website] Initialization completed successfully.');

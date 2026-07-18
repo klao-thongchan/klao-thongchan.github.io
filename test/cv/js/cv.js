@@ -8,6 +8,8 @@
 
 'use strict';
 
+import { SITE_VERSION } from '../../js/version.js';
+
 /**
  * Initializes CV-specific interactive controls (such as the print actions).
  *
@@ -49,5 +51,31 @@ function initializeCvPage() {
   }
 }
 
+/**
+ * Dynamically injects the website version indicator at the absolute bottom of the document body.
+ *
+ * Purpose:
+ * Renders the single-source-of-truth website version dynamically to avoid HTML duplication.
+ *
+ * DOM dependencies:
+ * - Appends a new child element to `document.body`.
+ *
+ * @returns {void}
+ */
+function injectVersionIndicator() {
+  try {
+    const versionEl = document.createElement('div');
+    versionEl.className = 'site-version';
+    versionEl.setAttribute('aria-label', 'Website version');
+    versionEl.textContent = `Version ${SITE_VERSION}`;
+    document.body.appendChild(versionEl);
+  } catch (error) {
+    console.error('[CV] Failed to inject website version:', error);
+  }
+}
+
 // Bootstrap initialization on content ready
-document.addEventListener('DOMContentLoaded', initializeCvPage);
+document.addEventListener('DOMContentLoaded', () => {
+  initializeCvPage();
+  injectVersionIndicator();
+});

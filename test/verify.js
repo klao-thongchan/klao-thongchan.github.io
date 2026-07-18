@@ -43,6 +43,7 @@ const expectedFiles = [
   path.join(BASE_DIR, 'js/timeline.js'),
   path.join(BASE_DIR, 'js/project-filter.js'),
   path.join(BASE_DIR, 'js/utilities.js'),
+  path.join(BASE_DIR, 'js/version.js'),
   path.join(BASE_DIR, 'cv/css/cv.css'),
   path.join(BASE_DIR, 'cv/js/cv.js'),
 ];
@@ -176,6 +177,7 @@ const jsFiles = [
   path.join(BASE_DIR, 'js/timeline.js'),
   path.join(BASE_DIR, 'js/project-filter.js'),
   path.join(BASE_DIR, 'js/utilities.js'),
+  path.join(BASE_DIR, 'js/version.js'),
   path.join(BASE_DIR, 'cv/js/cv.js'),
 ];
 
