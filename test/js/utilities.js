@@ -8,7 +8,7 @@
 
 'use strict';
 
-import { SITE_VERSION } from './version.js';
+import { BUILD_META } from './version-meta.js';
 
 /**
  * Dynamically computes and displays the current year in footer copyright elements.
@@ -52,6 +52,13 @@ export function initVersionIndicator() {
   const versionEl = document.createElement('div');
   versionEl.className = 'site-version';
   versionEl.setAttribute('aria-label', 'Website version');
-  versionEl.textContent = `Version ${SITE_VERSION}`;
+  
+  let versionText = `v${BUILD_META.version}`;
+  if (BUILD_META.environment === 'Test') {
+    versionText += ` · Test`;
+  }
+  versionText += ` · Build ${BUILD_META.date}-${BUILD_META.commit}`;
+  
+  versionEl.textContent = versionText;
   document.body.appendChild(versionEl);
 }
