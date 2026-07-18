@@ -12,7 +12,7 @@ An interactive, high-performance, single-page professional portfolio and curricu
 * **Live Production Website:** [https://klao-thongchan.github.io/](https://klao-thongchan.github.io/)
 * **Staging / Test Environment:** [https://klao-thongchan.github.io/test/](https://klao-thongchan.github.io/test/)
 * **GitHub Repository:** [https://github.com/klao-thongchan/klao-thongchan.github.io](https://github.com/klao-thongchan/klao-thongchan.github.io)
-* **Release Version:** `v1.0.3` (Documentation Release)
+* **Release Version:** `v1.0.4` (CV Update Release)
 * **Deployment Target:** GitHub Pages
 
 ---
@@ -378,6 +378,17 @@ Before pushing changes to production, execute the following manual and programma
 ---
 
 ## Version History
+
+### v1.0.4 — CV Update Release
+**Release Date:** 18 July 2026
+
+#### Changed
+- Redesigned printable CV layout from 3 pages to 2 pages to align with updated physical resume.
+- Updated all professional experience history, roles, taglines, and bullet points.
+- Refactored contact grid layout to support 5 responsive items, adding LinkedIn and Website links, and removing Medium link.
+- Incremented release version across production and test environments to `1.0.4`.
+
+---
 
 ### v1.0.3 — Technical Documentation Release
 **Release Date:** 18 July 2026
