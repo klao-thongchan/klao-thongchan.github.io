@@ -117,3 +117,21 @@
     transform: translate(30px, 50px) scale(1.1);
   }
 }
+
+/* Experience Date Range Layout */
+.experience-date-range {
+  display: block;
+}
+.experience-date-start,
+.experience-date-separator,
+.experience-date-end {
+  display: block;
+  white-space: nowrap;
+}
+.experience-date-separator {
+  text-transform: lowercase !important;
+  font-size: 0.85em;
+  opacity: 0.8;
+  margin: 0.125rem 0;
+}
+
