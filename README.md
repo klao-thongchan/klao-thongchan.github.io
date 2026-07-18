@@ -7,7 +7,7 @@ An interactive, high-performance, single-page professional portfolio and curricu
 [![CSS: Tailwind](https://img.shields.io/badge/CSS-Tailwind-38bdf8.svg)](https://tailwindcss.com/)
 [![JS: ES Modules](https://img.shields.io/badge/JS-ES_Modules-f7df1e.svg)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
 [![Analytics: GA4](https://img.shields.io/badge/Analytics-GA4-green.svg)](https://analytics.google.com/)
-[![License: GPL v3](https://img.shields.io/badge/License-GPL_v3-blue.svg)](file:///Users/klao-pro/Documents/GitHub/klao-thongchan.github.io/LICENSE)
+[![License: GPL v3](https://img.shields.io/badge/License-GPL_v3-blue.svg)](LICENSE)
 
 * **Live Production Website:** [https://klao-thongchan.github.io/](https://klao-thongchan.github.io/)
 * **Staging / Test Environment:** [https://klao-thongchan.github.io/test/](https://klao-thongchan.github.io/test/)
@@ -99,8 +99,9 @@ flowchart TD
 | **Orchestrator** | JavaScript ES Modules | Dynamic module loading, orchestration, and bootstrap lifecycle. | `js/app.js`, `test/js/app.js` |
 | **Analytics** | Google Analytics 4 | Event tracking, visibility tracking, and user telemetry. | `js/analytics.js`, `test/js/analytics.js` |
 | **Icons** | Font Awesome CDN | Scalable vector graphic iconography. | Remote CDN reference in `<head>` |
-| **Build & CI** | GitHub Actions | Automatically triggers metadata updates and builds static assets. | `.github/workflows/pages.yml` |
-| **Legacy Tooling** | Jekyll / Gulp / Sass | Maintained solely as legacy assets. Deployed site runs as raw HTML/JS. | `_config.yml`, `Gemfile`, `gulpfile.js`, `package.json` |
+| **Validation** | Node.js scripts | Checks production/staging resources, security requirements, and ES-module imports. | `verify_prod.js`, `test/verify.js` |
+| **Deployment** | GitHub Pages | Publishes committed static assets; `.nojekyll` prevents template processing. | `.nojekyll` |
+| **Legacy Content** | Jekyll source | Preserves historical posts and layouts but is not required by the modern portfolio. | `_config.yml`, `Gemfile`, `_includes/`, `_layouts/`, `_posts/` |
 
 ### Verified Browser API Dependencies
 * **`IntersectionObserver`:** Powers the Scroll Spy active navigation highlights and the delayed Google Analytics section-view telemetry.
@@ -126,13 +127,13 @@ The client-side JavaScript follows a strictly modular design. The entrypoint `js
 
 | Module | Responsibility | Important DOM / API Dependencies |
 | --- | --- | --- |
-| [app.js](file:///Users/klao-pro/Documents/GitHub/klao-thongchan.github.io/js/app.js) | Application entrypoint. Safe execution wrappers prevent one module's crash from blocking others. | `document.addEventListener('DOMContentLoaded')` |
-| [theme.js](file:///Users/klao-pro/Documents/GitHub/klao-thongchan.github.io/js/theme.js) | Light/dark mode execution. Toggles `.dark` on `<html>`. | `localStorage`, `window.matchMedia` |
-| [navigation.js](file:///Users/klao-pro/Documents/GitHub/klao-thongchan.github.io/js/navigation.js) | Hamburger menu toggle drawer & scroll tracking. | `#mobile-menu`, `.nav-link`, `IntersectionObserver` |
-| [timeline.js](file:///Users/klao-pro/Documents/GitHub/klao-thongchan.github.io/js/timeline.js) | Timeline card accordion. Switches attributes and button text. | `.timeline-toggle`, `.timeline-details`, `aria-expanded` |
-| [project-filter.js](file:///Users/klao-pro/Documents/GitHub/klao-thongchan.github.io/js/project-filter.js) | Multi-category card search. Shows/hides project containers. | `.filter-btn`, `.project-card`, `data-category`, `aria-pressed` |
-| [utilities.js](file:///Users/klao-pro/Documents/GitHub/klao-thongchan.github.io/js/utilities.js) | Renders copyright year and outputs build-metadata footer text. | `#current-year`, `document.body.appendChild` |
-| [version-meta.js](file:///Users/klao-pro/Documents/GitHub/klao-thongchan.github.io/js/version-meta.js) | *Auto-generated* build metadata (Version, Date, Git SHA, Environment). | Loaded by `utilities.js` |
+| [app.js](js/app.js) | Application entrypoint. Safe execution wrappers prevent one module's crash from blocking others. | `document.addEventListener('DOMContentLoaded')` |
+| [theme.js](js/theme.js) | Light/dark mode execution. Toggles `.dark` on `<html>`. | `localStorage`, `window.matchMedia` |
+| [navigation.js](js/navigation.js) | Hamburger menu toggle drawer & scroll tracking. | `#mobile-menu`, `.nav-link`, `IntersectionObserver` |
+| [timeline.js](js/timeline.js) | Timeline card accordion. Switches attributes and button text. | `.timeline-toggle`, `.timeline-details`, `aria-expanded` |
+| [project-filter.js](js/project-filter.js) | Multi-category card search. Shows/hides project containers. | `.filter-btn`, `.project-card`, `data-category`, `aria-pressed` |
+| [utilities.js](js/utilities.js) | Renders copyright year and outputs build-metadata footer text. | `#current-year`, `document.body.appendChild` |
+| [version-meta.js](js/version-meta.js) | *Auto-generated* build metadata (Version, Date, Git SHA, Environment). | Loaded by `utilities.js` |
 
 ---
 
@@ -233,7 +234,7 @@ Search Engine Optimization is configured to guarantee indexing visibility and ri
 * **Metadata Tags:** Features a descriptive, keyword-optimized page title, author attributes, and custom descriptions in the document head.
 * **Open Graph Protocol:** Fully populated social metadata (including `og:title`, `og:description`, `og:type`, and `og:url`) to format presentation cards when shared on Slack, LinkedIn, or Twitter.
 * **Canonical URL Rules:** Points to `https://klao-thongchan.github.io/` to prevent duplicate index results across staging environments.
-* **Sitemap Generation:** Automatically outputs a `sitemap.xml` file mapping active resources.
+* **Static Sitemap:** `sitemap.xml` lists the production homepage and CV route; staging is intentionally excluded.
 
 ---
 
@@ -242,6 +243,9 @@ Search Engine Optimization is configured to guarantee indexing visibility and ri
 ```text
 .
 ├── index.html                      # Primary landing page document (Production)
+├── 404.html                        # Static GitHub Pages error document
+├── sitemap.xml                     # Static production sitemap
+├── robots.txt                      # Crawler rules; excludes staging
 ├── version.json                    # Single-source-of-truth version config
 ├── verify_prod.js                  # Production environment audit script
 ├── css/                            # Active Stylesheets (Production)
@@ -282,13 +286,10 @@ Search Engine Optimization is configured to guarantee indexing visibility and ri
 │       └── version-meta.js
 ├── scripts/                        # Automation & Build Scripts (Tooling)
 │   └── generate-version.js         # Build script compiling version-meta.js
-├── assets/                         # Static Assets (Images & Fonts)
-│   ├── img/
-│   └── fonts/
+├── assets/                         # Shared favicon and historical blog assets
+│   └── img/
 ├── _config.yml                     # Jekyll configuration (Legacy/Theme)
 ├── Gemfile                         # Jekyll dependency list (Legacy/Theme)
-├── gulpfile.js                     # Gulp configuration (Legacy/Theme)
-├── package.json                    # Npm configuration (Legacy/Theme)
 └── README.md                       # Repository documentation (This file)
 ```
 
@@ -316,7 +317,7 @@ To ensure ES Modules load correctly without triggering CORS errors, the website 
 3. **Open in browser:**
    Go to [http://localhost:8000](http://localhost:8000) for production or [http://localhost:8000/test/](http://localhost:8000/test/) for staging.
 
-### Build and Version Compilation
+### Version Compilation
 When modifying the release version, update the string inside `version.json` and generate the updated modules:
 ```bash
 node scripts/generate-version.js
@@ -327,15 +328,16 @@ This updates the build date, Git commit hash, and version parameters in `js/vers
 
 ## N. Deployment
 
-The website relies on GitHub Actions to deploy changes to GitHub Pages automatically.
+The live site currently publishes the committed static files from `main`. The `.nojekyll` marker prevents GitHub Pages from interpreting historical Liquid/Jekyll sources.
 
-1. **Trigger:** Committing changes to the `main` branch triggers the deploy workflow.
-2. **Workflow Lifecycle (`.github/workflows/pages.yml`):**
-   * Checks out code.
-   * Configures Ruby and runs `bundle install` (cached).
-   * Automatically executes `node scripts/generate-version.js` to compile build details.
-   * Compiles the static page output directory via Jekyll: `bundle exec jekyll build --baseurl "/"`.
-   * Deploys the built `_site` directory directly to GitHub Pages hosting nodes.
+Before pushing a release:
+
+1. Run `node scripts/generate-version.js` when the release version changes.
+2. Run `node verify_prod.js` and `node test/verify.js`.
+3. Review the diff and push to `main` through the normal repository workflow.
+4. Confirm the GitHub Pages deployment succeeds and check `/`, `/cv/`, `/test/`, `/404.html`, and `/sitemap.xml`.
+
+The repository still contains `.github/workflows/pages.yml`, a legacy Jekyll deployment workflow. Its current status and the repository's Pages source setting should be confirmed before the workflow is repaired or removed.
 
 ---
 
@@ -425,5 +427,5 @@ Before pushing changes to production, execute the following manual and programma
 
 ## R. Attribution and Licensing
 
-* **License:** The portfolio content and custom source code are licensed under the [GNU General Public License v3.0](file:///Users/klao-pro/Documents/GitHub/klao-thongchan.github.io/LICENSE).
+* **License:** The portfolio content and custom source code are licensed under the [GNU General Public License v3.0](LICENSE).
 * **Attribution:** This codebase was historically derived from the [Adam Blog 2.0 Jekyll Theme](https://github.com/the-mvm/the-mvm.github.io) by Armando Maynez, based on [Adam Blog 1.0](https://github.com/artemsheludko/adam-blog) by Artem Sheludko. Legacy layout components are preserved in compliance with original theme licensing terms.

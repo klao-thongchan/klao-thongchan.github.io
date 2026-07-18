@@ -395,11 +395,6 @@ body {
   fill: white;
 }
 
-.btn-download-cv {
-  background-color: var(--primary) !important;
-  text-decoration: none;
-}
-
 .font-300 {
   font-weight: 300;
 }
@@ -439,4 +434,3 @@ body {
     display: none !important;
   }
 }
-

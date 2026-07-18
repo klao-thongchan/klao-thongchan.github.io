@@ -31,7 +31,6 @@
   // 2. Telemetry Schema Allowlists
   const ALLOWED_EVENTS = new Set([
     'primary_cta_click',
-    'cv_download',
     'contact_click',
     'navigation_click',
     'theme_change',
@@ -53,7 +52,6 @@
     'cta_location',
     'destination_type',
     'cv_format',
-    'file_label',
     'link_location',
     'contact_method',
     'contact_location',

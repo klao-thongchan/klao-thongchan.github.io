@@ -146,7 +146,34 @@ auditHtmlSecurity(INDEX_HTML);
 auditHtmlSecurity(CV_INDEX_HTML);
 verifyCvNoInlineStyles();
 
-// 4. Simple JS Import syntax check
+// 4. Verify that every local HTML resource resolves to an existing file.
+function verifyLocalHtmlReferences(htmlPath) {
+  const content = fs.readFileSync(htmlPath, 'utf8');
+  const referenceRegex = /(?:href|src|srcset)=["']([^"']+)["']/g;
+  let match;
+
+  while ((match = referenceRegex.exec(content)) !== null) {
+    const reference = match[1];
+    if (/^(?:[a-z]+:|#|\/\/)/i.test(reference)) continue;
+
+    const cleanReference = reference.split(/[?#]/, 1)[0];
+    if (!cleanReference) continue;
+
+    let resolvedPath = cleanReference.startsWith('/')
+      ? path.join(BASE_DIR, '..', cleanReference.replace(/^\/+/, ''))
+      : path.resolve(path.dirname(htmlPath), cleanReference);
+    if (cleanReference.endsWith('/')) resolvedPath = path.join(resolvedPath, 'index.html');
+
+    if (!fs.existsSync(resolvedPath)) {
+      console.error(`[Error] Broken local reference "${reference}" in ${htmlPath}`);
+      errors++;
+    }
+  }
+}
+
+[INDEX_HTML, CV_INDEX_HTML].forEach(verifyLocalHtmlReferences);
+
+// 5. Simple JS Import syntax check
 function verifyJsSyntax(jsPath) {
   try {
     const content = fs.readFileSync(jsPath, 'utf8');
