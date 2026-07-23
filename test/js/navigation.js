@@ -20,7 +20,7 @@ export const PAGE_SECTIONS = [
   },
   {
     id: "experience",
-    navLabel: "Experience Timeline",
+    navLabel: "Experiences",
     showInNavigation: true,
   },
   {
@@ -35,12 +35,12 @@ export const PAGE_SECTIONS = [
   },
   {
     id: "projects",
-    navLabel: "Case Studies",
+    navLabel: "Projects",
     showInNavigation: true,
   },
   {
     id: "advisory",
-    navLabel: "Consulting & R&D",
+    navLabel: "Consulting",
     showInNavigation: true,
   },
 ];
@@ -65,7 +65,7 @@ export function initNavigation() {
       const a = document.createElement("a");
       a.href = `#${section.id}`;
       a.className =
-        "nav-link hover:text-indigo-600 dark:hover:text-sky-400 transition-colors py-1";
+        "nav-link hover:text-indigo-600 dark:hover:text-sky-400 transition-colors py-1 w-28 text-center justify-center flex";
       a.setAttribute("data-analytics-event", "navigation_click");
       a.setAttribute("data-analytics-param-destination-section", section.id);
       a.setAttribute("data-analytics-param-navigation-location", "header");
