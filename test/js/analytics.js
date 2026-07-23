@@ -36,7 +36,8 @@
     'theme_change',
     'project_click',
     'section_view',
-    'cv_open'
+    'cv_open',
+    'recruiter_role_selected'
   ]);
 
   const ALLOWED_PARAMETERS = new Set([
@@ -60,7 +61,8 @@
     'section_id',
     'section_name',
     'selected_theme',
-    'cta_label'
+    'cta_label',
+    'role'
   ]);
 
   // 3. Core Verification & Sanitization Helpers

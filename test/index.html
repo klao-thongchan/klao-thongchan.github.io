@@ -166,13 +166,13 @@
 
 
   <!-- HERO SECTION -->
-  <section id="hero" class="relative z-10 pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden"
+  <section id="hero" class="relative z-10 pt-12 pb-20 md:pt-16 md:pb-24 overflow-hidden"
            data-analytics-section="Hero">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-12 gap-12 items-center">
+      <div class="grid lg:grid-cols-12 gap-10 items-start">
         
         <!-- Left Hero Content -->
-        <div class="lg:col-span-8 space-y-6">
+        <div class="lg:col-span-8 space-y-5">
           
           <!-- Badge -->
           <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950 border border-emerald-500 dark:border-emerald-400 text-emerald-600 dark:text-emerald-300 text-xs font-bold tracking-wide uppercase shadow-sm">
@@ -180,25 +180,102 @@
             Open to Full-Time Corporate Roles & Executive Advisory
           </div>
 
-          <!-- Headline -->
-          <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+          <!-- Name Headline -->
+          <h1 class="font-display text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
             Thongchan Thananate (Klao)<br>
-            <span class="text-2xl sm:text-3xl lg:text-4xl font-semibold text-slate-500 dark:text-slate-400 block mt-1">ธงฉาน ธนเนตร (เกล้า)</span>
-            <span class="gradient-text block mt-2">Senior Product Manager & Applied AI Lead</span>
+            <span class="text-xl sm:text-2xl font-semibold text-slate-500 dark:text-slate-400 block mt-1">ธงฉาน ธนเนตร (เกล้า)</span>
           </h1>
 
-          <div class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-indigo-600 dark:text-sky-400 bg-indigo-50/80 dark:bg-indigo-950/60 px-3.5 py-1.5 rounded-xl border border-indigo-200/60 dark:border-indigo-800/60">
-            <i class="fas fa-bullseye text-indigo-500"></i>
-            <span>Target Roles: Head of Product | Principal AI PM | Director of Product Strategy | AI Transformation Lead</span>
+          <!-- Recruiter View Selector -->
+          <div class="recruiter-selector-container pt-1 pb-2 space-y-2.5">
+            <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-sky-400">
+              <i class="fas fa-user-check text-indigo-500"></i>
+              <span>Recruiter view — I’m hiring for:</span>
+            </div>
+            
+            <div role="tablist" aria-label="Recruiter View Role Selector" class="flex flex-wrap gap-2 sm:gap-2.5">
+              <button type="button" role="tab" id="tab-technical-product" data-role="technical-product" aria-selected="true" aria-controls="overview-dynamic-content" class="recruiter-role-btn px-3.5 py-2 rounded-xl text-xs font-bold transition-all duration-200 border bg-indigo-600 text-white dark:bg-indigo-600 border-indigo-600 shadow-md shadow-indigo-600/20 flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900">
+                <i class="fas fa-tasks text-sm shrink-0"></i>
+                <span>Senior Technical Product Manager</span>
+              </button>
+              <button type="button" role="tab" id="tab-ai-data-solutions" data-role="ai-data-solutions" aria-selected="false" aria-controls="overview-dynamic-content" class="recruiter-role-btn px-3.5 py-2 rounded-xl text-xs font-semibold transition-all duration-200 border glass-card hover:bg-slate-200/70 dark:hover:bg-slate-800/80 text-slate-700 dark:text-slate-300 border-slate-300/80 dark:border-slate-700 flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900">
+                <i class="fas fa-robot text-sm shrink-0"></i>
+                <span>Applied AI & Data Solutions Lead</span>
+              </button>
+              <button type="button" role="tab" id="tab-it-infrastructure" data-role="it-infrastructure" aria-selected="false" aria-controls="overview-dynamic-content" class="recruiter-role-btn px-3.5 py-2 rounded-xl text-xs font-semibold transition-all duration-200 border glass-card hover:bg-slate-200/70 dark:hover:bg-slate-800/80 text-slate-700 dark:text-slate-300 border-slate-300/80 dark:border-slate-700 flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900">
+                <i class="fas fa-server text-sm shrink-0"></i>
+                <span>IT Infrastructure & Systems Manager</span>
+              </button>
+              <button type="button" role="tab" id="tab-product-marketing" data-role="product-marketing" aria-selected="false" aria-controls="overview-dynamic-content" class="recruiter-role-btn px-3.5 py-2 rounded-xl text-xs font-semibold transition-all duration-200 border glass-card hover:bg-slate-200/70 dark:hover:bg-slate-800/80 text-slate-700 dark:text-slate-300 border-slate-300/80 dark:border-slate-700 flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900">
+                <i class="fas fa-chart-line text-sm shrink-0"></i>
+                <span>Product Marketing & GTM Director</span>
+              </button>
+            </div>
           </div>
 
-          <!-- Summary Paragraph -->
-          <p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl">
-            Translating deep-tech AI capabilities into marketable narratives and automated agentic workflows that drive adoption, monetization, and long-term engagement. Bridging the psychological <strong class="text-slate-900 dark:text-white">"why"</strong> of user behavior with the technical <strong class="text-slate-900 dark:text-white">"how"</strong> of complex product systems.
-          </p>
+          <!-- Dynamic Role Overview Content Area -->
+          <div id="overview-dynamic-content" class="space-y-5 transition-all">
+            <!-- Selected Role Headline & Descriptor -->
+            <div>
+              <h2 id="overview-role-headline" class="font-display text-2xl sm:text-3xl font-extrabold tracking-tight gradient-text">
+                Senior Technical Product Manager
+              </h2>
+              <p id="overview-role-descriptor" class="text-xs sm:text-sm font-semibold text-indigo-600 dark:text-sky-400 mt-1">
+                Platform Delivery, Product Operations & Cross-Functional Execution
+              </p>
+            </div>
 
-          <!-- Contact Action Bar -->
-          <div class="pt-2 flex flex-wrap items-center gap-3.5">
+            <!-- Positioning Statement -->
+            <p id="overview-positioning-statement" class="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl">
+              Translates commercial objectives and complex stakeholder requirements into product roadmaps, engineering specifications, UAT plans, and reliable platform launches. Experienced leading technical delivery across engineering, product design, QA, payment integrations, analytics, and external partners.
+            </p>
+
+            <!-- 3 Quantified Metric Cards Grid -->
+            <div id="overview-metrics-grid" class="pt-4 grid grid-cols-1 sm:grid-cols-3 gap-3.5 border-t border-slate-200 dark:border-slate-800/80">
+              <div class="p-3.5 rounded-xl bg-white/60 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+                <div class="font-display font-extrabold text-xl sm:text-2xl text-indigo-600 dark:text-sky-400">82%</div>
+                <div class="text-xs text-slate-600 dark:text-slate-400 font-medium mt-0.5">Open-beta product adoption</div>
+              </div>
+              <div class="p-3.5 rounded-xl bg-white/60 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+                <div class="font-display font-extrabold text-xl sm:text-2xl text-emerald-600 dark:text-emerald-400">6 months</div>
+                <div class="text-xs text-slate-600 dark:text-slate-400 font-medium mt-0.5">Delivery time eliminated through roadmap alignment</div>
+              </div>
+              <div class="p-3.5 rounded-xl bg-white/60 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+                <div class="font-display font-extrabold text-xl sm:text-2xl text-purple-600 dark:text-purple-400">15 engineers</div>
+                <div class="text-xs text-slate-600 dark:text-slate-400 font-medium mt-0.5">Technical product delivery team</div>
+              </div>
+            </div>
+
+            <!-- Skills Chips & Experience Highlights -->
+            <div class="pt-4 space-y-4 border-t border-slate-200/80 dark:border-slate-800/80">
+              <div>
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Relevant Role Capabilities & Technical Skills</h4>
+                <div id="overview-skills-chips" class="flex flex-wrap gap-2">
+                  <span class="px-2.5 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-950/70 border border-indigo-200/70 dark:border-indigo-800/70 text-indigo-700 dark:text-sky-300 text-xs font-semibold">Product Roadmaps</span>
+                  <span class="px-2.5 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-950/70 border border-indigo-200/70 dark:border-indigo-800/70 text-indigo-700 dark:text-sky-300 text-xs font-semibold">Technical Requirements</span>
+                  <span class="px-2.5 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-950/70 border border-indigo-200/70 dark:border-indigo-800/70 text-indigo-700 dark:text-sky-300 text-xs font-semibold">Agile Delivery</span>
+                  <span class="px-2.5 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-950/70 border border-indigo-200/70 dark:border-indigo-800/70 text-indigo-700 dark:text-sky-300 text-xs font-semibold">Jira</span>
+                  <span class="px-2.5 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-950/70 border border-indigo-200/70 dark:border-indigo-800/70 text-indigo-700 dark:text-sky-300 text-xs font-semibold">QA & UAT</span>
+                  <span class="px-2.5 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-950/70 border border-indigo-200/70 dark:border-indigo-800/70 text-indigo-700 dark:text-sky-300 text-xs font-semibold">REST APIs</span>
+                  <span class="px-2.5 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-950/70 border border-indigo-200/70 dark:border-indigo-800/70 text-indigo-700 dark:text-sky-300 text-xs font-semibold">Payment Integration</span>
+                  <span class="px-2.5 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-950/70 border border-indigo-200/70 dark:border-indigo-800/70 text-indigo-700 dark:text-sky-300 text-xs font-semibold">Stakeholder Alignment</span>
+                </div>
+              </div>
+
+              <div>
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Key Experience Highlights</h4>
+                <ul id="overview-experience-highlights" class="space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+                  <li class="flex items-start gap-2.5"><i class="fas fa-check-circle text-indigo-500 dark:text-sky-400 mt-1 text-xs shrink-0"></i><span>Led product roadmap and launch delivery for HotPlay ad-tech and gaming-integration products.</span></li>
+                  <li class="flex items-start gap-2.5"><i class="fas fa-check-circle text-indigo-500 dark:text-sky-400 mt-1 text-xs shrink-0"></i><span>Converted business objectives into engineering specifications and UAT plans.</span></li>
+                  <li class="flex items-start gap-2.5"><i class="fas fa-check-circle text-indigo-500 dark:text-sky-400 mt-1 text-xs shrink-0"></i><span>Coordinated engineering, product design, and QA to deliver roadmap milestones.</span></li>
+                  <li class="flex items-start gap-2.5"><i class="fas fa-check-circle text-indigo-500 dark:text-sky-400 mt-1 text-xs shrink-0"></i><span>Finalized the bondbond community and commerce application across internal teams, outsourced developers, and multiple business stakeholders.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Static Contact Action Bar -->
+          <div class="pt-3 flex flex-wrap items-center gap-3.5">
             <a href="cv/index.html" target="_blank" rel="noopener noreferrer" class="px-5 py-3 rounded-xl bg-slate-900 dark:bg-slate-800 hover:bg-slate-800 text-white font-semibold text-sm transition-all shadow-lg shadow-slate-900/20 flex items-center gap-2.5"
                data-analytics-event="primary_cta_click"
                data-analytics-param-cta-name="download_cv_pdf"
@@ -246,30 +323,10 @@
             </a>
           </div>
 
-          <!-- Key Metrics Grid -->
-          <div class="pt-6 grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-slate-200 dark:border-slate-800/80">
-            <div class="p-3 rounded-xl bg-white/50 dark:bg-slate-900/50 border border-slate-200/60 dark:border-slate-800">
-              <div class="font-display font-extrabold text-2xl text-indigo-600 dark:text-sky-400">5 AI Focus</div>
-              <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Agentic & RAG Research</div>
-            </div>
-            <div class="p-3 rounded-xl bg-white/50 dark:bg-slate-900/50 border border-slate-200/60 dark:border-slate-800">
-              <div class="font-display font-extrabold text-2xl text-emerald-600 dark:text-emerald-400">GTM Rescue</div>
-              <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Ash Echoes & ChinaJoy IPs</div>
-            </div>
-            <div class="p-3 rounded-xl bg-white/50 dark:bg-slate-900/50 border border-slate-200/60 dark:border-slate-800">
-              <div class="font-display font-extrabold text-2xl text-purple-600 dark:text-purple-400">+151% LTV</div>
-              <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Publishing Optimization</div>
-            </div>
-            <div class="p-3 rounded-xl bg-white/50 dark:bg-slate-900/50 border border-slate-200/60 dark:border-slate-800">
-              <div class="font-display font-extrabold text-2xl text-amber-600 dark:text-amber-400">-85% CAC</div>
-              <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">User ML Segmentation</div>
-            </div>
-          </div>
-
         </div>
 
         <!-- Right Hero Visual Card -->
-        <div class="lg:col-span-4 flex justify-center">
+        <div class="lg:col-span-4 flex justify-center sticky top-24">
           <div class="w-full max-w-md glass-card rounded-3xl p-7 shadow-2xl relative overflow-hidden border border-slate-200/80 dark:border-slate-800 space-y-6">
             <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-indigo-500/10 rounded-full blur-2xl"></div>
             
@@ -281,27 +338,27 @@
               </div>
               <div>
                 <h3 class="font-display text-xl font-bold text-slate-900 dark:text-white">Thongchan Thananate</h3>
-                <p class="text-xs font-semibold text-indigo-600 dark:text-sky-400">Senior Product Manager</p>
-                <p class="text-[11px] text-slate-500 dark:text-slate-400">Applied AI & Behavioral Research</p>
+                <p id="profile-card-role-title" class="text-xs font-semibold text-indigo-600 dark:text-sky-400">Senior Technical Product Manager</p>
+                <p id="profile-card-role-subtitle" class="text-[11px] text-slate-500 dark:text-slate-400">Platform Delivery & Product Operations</p>
               </div>
             </div>
 
-            <div class="space-y-3 text-xs text-slate-600 dark:text-slate-300 pt-2 border-t border-slate-200 dark:border-slate-800">
+            <div id="profile-card-bullets" class="space-y-3 text-xs text-slate-600 dark:text-slate-300 pt-2 border-t border-slate-200 dark:border-slate-800">
               <div class="flex items-center gap-3">
-                <i class="fas fa-robot text-indigo-500 w-4 text-center"></i>
-                <span>Agentic Workflows & AI Autopilot</span>
+                <i class="fas fa-map-signs text-indigo-500 w-4 text-center shrink-0"></i>
+                <span>Product Roadmaps & Technical Specs</span>
               </div>
               <div class="flex items-center gap-3">
-                <i class="fas fa-brain text-sky-500 w-4 text-center"></i>
-                <span>Behavioral Economics & AI Adoption</span>
+                <i class="fas fa-tasks text-indigo-500 w-4 text-center shrink-0"></i>
+                <span>Agile Delivery & UAT Governance</span>
               </div>
               <div class="flex items-center gap-3">
-                <i class="fas fa-handshake text-purple-500 w-4 text-center"></i>
-                <span>Global Strategic Partnerships (Tencent, AMD)</span>
+                <i class="fas fa-code-branch text-indigo-500 w-4 text-center shrink-0"></i>
+                <span>REST APIs & Payment Integrations</span>
               </div>
               <div class="flex items-center gap-3">
-                <i class="fas fa-certificate text-emerald-500 w-4 text-center"></i>
-                <span>PMI-ACP®, FMVA®, OpenAI API Master</span>
+                <i class="fas fa-certificate text-indigo-500 w-4 text-center shrink-0"></i>
+                <span>PMI-ACP®, FMVA®, Agile Product Owner</span>
               </div>
             </div>
 
