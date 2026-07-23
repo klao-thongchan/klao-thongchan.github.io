@@ -216,9 +216,6 @@ export function initScrollSpy() {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         let activeId = entry.target.getAttribute("id");
-        if (activeId === "hero") {
-          activeId = "overview";
-        }
         navLinks.forEach((link) => {
           if (link.getAttribute("href") === `#${activeId}`) {
             link.classList.add("active");
