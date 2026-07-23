@@ -10,8 +10,8 @@
 'use strict';
 
 import { initTheme, initThemeToggle } from './theme.js';
-import { initMobileMenu, initScrollSpy } from './navigation.js';
-import { initTimelineAccordion } from './timeline.js';
+import { initNavigation, initMobileMenu, initScrollSpy } from './navigation.js';
+import { initTimelineRendering, initTimelineAccordion } from './timeline.js';
 import { initProjectFiltering } from './project-filter.js';
 import { initRecruiterView } from './recruiter-view.js';
 import { initCurrentYear, initVersionIndicator } from './utilities.js';
@@ -47,6 +47,7 @@ function initializeApplication() {
 
   // 2. Interactive UI Components
   try {
+    initNavigation();
     initMobileMenu();
   } catch (error) {
     console.error('[App] Mobile menu initialization failed:', error);
@@ -59,10 +60,12 @@ function initializeApplication() {
   }
 
   try {
+    initTimelineRendering();
     initTimelineAccordion();
   } catch (error) {
-    console.error('[App] Timeline accordion initialization failed:', error);
+    console.error('[App] Timeline initialization failed:', error);
   }
+
 
   try {
     initProjectFiltering();

@@ -7,7 +7,90 @@
  * @module navigation
  */
 
-'use strict';
+"use strict";
+
+/**
+ * Centralized source of truth configuration for navigable sections.
+ */
+export const PAGE_SECTIONS = [
+  {
+    id: "overview",
+    navLabel: "Overview",
+    showInNavigation: true,
+  },
+  {
+    id: "experience",
+    navLabel: "Experience Timeline",
+    showInNavigation: true,
+  },
+  {
+    id: "certifications",
+    navLabel: "Certifications",
+    showInNavigation: true,
+  },
+  {
+    id: "skills",
+    navLabel: "Skills",
+    showInNavigation: true,
+  },
+  {
+    id: "projects",
+    navLabel: "Case Studies",
+    showInNavigation: true,
+  },
+  {
+    id: "advisory",
+    navLabel: "Consulting & R&D",
+    showInNavigation: true,
+  },
+];
+
+/**
+ * Dynamically constructs header (desktop) and drawer (mobile) navigation links
+ * from the centralized PAGE_SECTIONS source of truth.
+ *
+ * DOM dependencies:
+ * - Reads and modifies header nav container (header nav.hidden.md\:flex)
+ * - Reads and modifies mobile menu drawer (#mobile-menu)
+ *
+ * @returns {void}
+ */
+export function initNavigation() {
+  const desktopNav = document.querySelector("header nav.hidden.md\\:flex");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  if (desktopNav) {
+    desktopNav.replaceChildren();
+    PAGE_SECTIONS.filter((s) => s.showInNavigation).forEach((section) => {
+      const a = document.createElement("a");
+      a.href = `#${section.id}`;
+      a.className =
+        "nav-link hover:text-indigo-600 dark:hover:text-sky-400 transition-colors py-1";
+      a.setAttribute("data-analytics-event", "navigation_click");
+      a.setAttribute("data-analytics-param-destination-section", section.id);
+      a.setAttribute("data-analytics-param-navigation-location", "header");
+      a.setAttribute("data-analytics-param-link-label", section.navLabel);
+      a.textContent = section.navLabel;
+      desktopNav.appendChild(a);
+    });
+  }
+
+  if (mobileMenu) {
+    mobileMenu.replaceChildren();
+    PAGE_SECTIONS.filter((s) => s.showInNavigation).forEach((section) => {
+      const a = document.createElement("a");
+      a.href = `#${section.id}`;
+      a.className =
+        "mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800";
+      a.setAttribute("data-analytics-event", "navigation_click");
+      a.setAttribute("data-analytics-param-destination-section", section.id);
+      a.setAttribute("data-analytics-param-navigation-location", "mobile_menu");
+      a.setAttribute("data-analytics-param-link-label", section.navLabel);
+      a.textContent = section.navLabel;
+      mobileMenu.appendChild(a);
+    });
+  }
+}
 
 /**
  * Initializes the mobile navigation menu drawer, attaching event listeners.
@@ -39,42 +122,42 @@
  * @returns {void}
  */
 export function initMobileMenu() {
-  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+  const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
 
   if (!mobileMenuBtn || !mobileMenu) return;
 
   // Ensure initial accessibility setup
-  mobileMenuBtn.setAttribute('aria-controls', 'mobile-menu');
-  mobileMenuBtn.setAttribute('aria-expanded', 'false');
+  mobileMenuBtn.setAttribute("aria-controls", "mobile-menu");
+  mobileMenuBtn.setAttribute("aria-expanded", "false");
 
   /**
    * Toggles the open/closed state of the mobile menu.
    */
   const toggleMenu = () => {
-    const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
-    mobileMenu.classList.toggle('hidden');
-    mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
+    const isExpanded = mobileMenuBtn.getAttribute("aria-expanded") === "true";
+    mobileMenu.classList.toggle("hidden");
+    mobileMenuBtn.setAttribute("aria-expanded", !isExpanded);
   };
 
   /**
    * Closes the mobile menu unconditionally.
    */
   const closeMenu = () => {
-    mobileMenu.classList.add('hidden');
-    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    mobileMenu.classList.add("hidden");
+    mobileMenuBtn.setAttribute("aria-expanded", "false");
   };
 
-  mobileMenuBtn.addEventListener('click', toggleMenu);
+  mobileMenuBtn.addEventListener("click", toggleMenu);
 
-  mobileNavLinks.forEach(link => {
-    link.addEventListener('click', closeMenu);
+  mobileNavLinks.forEach((link) => {
+    link.addEventListener("click", closeMenu);
   });
 
   // Support Escape-key closing for accessibility
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !mobileMenu.classList.contains("hidden")) {
       closeMenu();
       mobileMenuBtn.focus();
     }
@@ -92,7 +175,7 @@ export function initMobileMenu() {
  * Called once by initializeApplication() in app.js on DOMContentLoaded.
  *
  * DOM dependencies:
- * - Reads all `section[id]` elements.
+ * - Reads all section[id] elements.
  * - Reads all `.nav-link` elements in the header navigation.
  * - Modifies the class list of `.nav-link` elements (adds or removes 'active').
  *
@@ -111,41 +194,43 @@ export function initMobileMenu() {
  * @returns {void}
  */
 export function initScrollSpy() {
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll(".nav-link");
 
   if (!sections.length || !navLinks.length) return;
 
-  if (typeof IntersectionObserver !== 'function') {
-    console.warn('[Navigation] IntersectionObserver is not supported by this browser. Scroll Spy disabled.');
+  if (typeof IntersectionObserver !== "function") {
+    console.warn(
+      "[Navigation] IntersectionObserver is not supported by this browser. Scroll Spy disabled.",
+    );
     return;
   }
 
   const observerOptions = {
     root: null,
-    rootMargin: '-20% 0px -60% 0px',
-    threshold: 0
+    rootMargin: "-20% 0px -60% 0px",
+    threshold: 0,
   };
 
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        let activeId = entry.target.getAttribute('id');
-        if (activeId === 'hero') {
-          activeId = 'overview';
+        let activeId = entry.target.getAttribute("id");
+        if (activeId === "hero") {
+          activeId = "overview";
         }
-        navLinks.forEach(link => {
-          if (link.getAttribute('href') === `#${activeId}`) {
-            link.classList.add('active');
-            link.setAttribute('aria-current', 'page');
+        navLinks.forEach((link) => {
+          if (link.getAttribute("href") === `#${activeId}`) {
+            link.classList.add("active");
+            link.setAttribute("aria-current", "page");
           } else {
-            link.classList.remove('active');
-            link.removeAttribute('aria-current');
+            link.classList.remove("active");
+            link.removeAttribute("aria-current");
           }
         });
       }
     });
   }, observerOptions);
 
-  sections.forEach(section => observer.observe(section));
+  sections.forEach((section) => observer.observe(section));
 }
