@@ -96,7 +96,7 @@ function auditHtmlSecurity(htmlPath) {
     while ((match = scriptRegex.exec(content)) !== null) {
       const attributes = match[1];
       const inlineCode = match[2].trim();
-      if (!attributes.includes('src=') && inlineCode.length > 0) {
+      if (!attributes.includes('src=') && !attributes.includes('type="application/ld+json"') && inlineCode.length > 0) {
         console.error(`[Error] Dangerous inline script found in ${relativeName}: "${inlineCode.substring(0, 60)}..."`);
         errors++;
       }

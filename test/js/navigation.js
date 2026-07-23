@@ -130,7 +130,10 @@ export function initScrollSpy() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        const activeId = entry.target.getAttribute('id');
+        let activeId = entry.target.getAttribute('id');
+        if (activeId === 'hero') {
+          activeId = 'overview';
+        }
         navLinks.forEach(link => {
           if (link.getAttribute('href') === `#${activeId}`) {
             link.classList.add('active');

@@ -311,6 +311,27 @@ function renderRoleProfile(profile) {
       profileBulletsEl.appendChild(row);
     });
   }
+
+  // 7. Dynamic email Inquiry subjects
+  const subjectText = "Portfolio Inquiry — " + profile.title;
+  const encodedSubject = encodeURIComponent(subjectText);
+  const emailUrl = `mailto:thananate.t@gmail.com?subject=${encodedSubject}`;
+
+  const inquiryBtn = document.getElementById('hero-inquiry-btn');
+  if (inquiryBtn) {
+    inquiryBtn.setAttribute('href', emailUrl);
+    inquiryBtn.setAttribute('data-analytics-param-selected-role', profile.id);
+  }
+
+  const emailTextLink = document.getElementById('hero-email-text-link');
+  if (emailTextLink) {
+    emailTextLink.setAttribute('href', emailUrl);
+  }
+
+  const cardEmailLink = document.getElementById('card-email-link');
+  if (cardEmailLink) {
+    cardEmailLink.setAttribute('href', emailUrl);
+  }
 }
 
 /**
