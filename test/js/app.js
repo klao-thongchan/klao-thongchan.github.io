@@ -13,7 +13,6 @@ import { initTheme, initThemeToggle } from './theme.js';
 import { initNavigation, initMobileMenu, initScrollSpy } from './navigation.js';
 import { initTimelineRendering, initTimelineAccordion } from './timeline.js';
 import { initProjectFiltering } from './project-filter.js';
-import { initRecruiterView } from './recruiter-view.js';
 import { initCurrentYear, initVersionIndicator } from './utilities.js';
 
 /**
@@ -21,7 +20,7 @@ import { initCurrentYear, initVersionIndicator } from './utilities.js';
  *
  * Purpose:
  * Entry point to bootstrap the theme toggles, mobile drawer, timeline disclosures,
- * project filters, recruiter view selector, and scroll tracking in a safe and structured manner.
+ * project filters, and scroll tracking in a safe and structured manner.
  *
  * Invocation:
  * Listens to DOMContentLoaded event on document.
@@ -51,12 +50,6 @@ function initializeApplication() {
     initMobileMenu();
   } catch (error) {
     console.error('[App] Mobile menu initialization failed:', error);
-  }
-
-  try {
-    initRecruiterView();
-  } catch (error) {
-    console.error('[App] Recruiter View initialization failed:', error);
   }
 
   try {
