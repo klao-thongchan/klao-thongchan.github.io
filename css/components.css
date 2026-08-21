@@ -179,3 +179,16 @@
   min-width: 0;
   box-sizing: border-box;
 }
+
+/* Overview Dynamic Content Transition */
+#overview-dynamic-content {
+  transition: opacity 0.15s ease-in-out, transform 0.15s ease-in-out;
+}
+.overview-fade-out {
+  opacity: 0;
+  transform: translateY(3px);
+}
+.overview-fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}

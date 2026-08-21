@@ -12,7 +12,7 @@ An interactive, high-performance, single-page professional portfolio and curricu
 * **Live Production Website:** [https://klao-thongchan.github.io/](https://klao-thongchan.github.io/)
 * **Staging / Test Environment:** [https://klao-thongchan.github.io/test/](https://klao-thongchan.github.io/test/)
 * **GitHub Repository:** [https://github.com/klao-thongchan/klao-thongchan.github.io](https://github.com/klao-thongchan/klao-thongchan.github.io)
-* **Release Version:** `v1.0.4` (CV Update Release)
+* **Release Version:** `v1.1.0` (Portfolio Promotion Release)
 * **Deployment Target:** GitHub Pages
 
 ---
@@ -378,6 +378,18 @@ Before pushing changes to production, execute the following manual and programma
 ---
 
 ## Version History
+
+### v1.1.0 — Portfolio Promotion Release
+**Release Date:** 22 August 2026
+
+#### Changed
+- Promoted the validated Test portfolio implementation to Production.
+- Simplified the Overview into a concise positioning statement, two primary actions, three quantified proof points, and a recruiter-focused career snapshot.
+- Updated Production navigation, timeline rendering, analytics, responsive styling, and CV assets to match Test.
+- Standardized Overview metric cards on the shared glass-card treatment with supported internal padding.
+- Incremented release metadata across Production and Test to `1.1.0`.
+
+---
 
 ### v1.0.4 — CV Update Release
 **Release Date:** 18 July 2026

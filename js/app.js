@@ -10,13 +10,13 @@
 'use strict';
 
 import { initTheme, initThemeToggle } from './theme.js';
-import { initMobileMenu, initScrollSpy } from './navigation.js';
-import { initTimelineAccordion } from './timeline.js';
+import { initNavigation, initMobileMenu, initScrollSpy } from './navigation.js';
+import { initTimelineRendering, initTimelineAccordion } from './timeline.js';
 import { initProjectFiltering } from './project-filter.js';
 import { initCurrentYear, initVersionIndicator } from './utilities.js';
 
 /**
- * Initializes all staging website interactive behaviors.
+ * Initializes all production website interactive behaviors.
  *
  * Purpose:
  * Entry point to bootstrap the theme toggles, mobile drawer, timeline disclosures,
@@ -46,16 +46,19 @@ function initializeApplication() {
 
   // 2. Interactive UI Components
   try {
+    initNavigation();
     initMobileMenu();
   } catch (error) {
     console.error('[App] Mobile menu initialization failed:', error);
   }
 
   try {
+    initTimelineRendering();
     initTimelineAccordion();
   } catch (error) {
-    console.error('[App] Timeline accordion initialization failed:', error);
+    console.error('[App] Timeline initialization failed:', error);
   }
+
 
   try {
     initProjectFiltering();
@@ -82,7 +85,7 @@ function initializeApplication() {
     console.error('[App] Version indicator initialization failed:', error);
   }
 
-  console.log('[Staging Website] Initialization completed successfully.');
+  console.log('[Production Website] Initialization completed successfully.');
 }
 
 // Attach bootstrap sequence to DOMContentLoaded hook

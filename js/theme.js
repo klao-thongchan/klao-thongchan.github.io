@@ -34,12 +34,13 @@
  *
  * Privacy implications:
  * Reads local storage state; does not transmit any details externally.
+ * Uses isolated namespace `klao:test:theme` to prevent contamination.
  *
  * @returns {void}
  */
 export function initTheme() {
   try {
-    const rawTheme = localStorage.getItem('theme');
+    const rawTheme = localStorage.getItem('klao:test:theme');
     
     // Strict input validation for theme value
     let savedTheme = null;
@@ -47,7 +48,7 @@ export function initTheme() {
       savedTheme = rawTheme;
     } else if (rawTheme !== null) {
       console.warn(`[Theme] Corrupted theme storage value discarded: "${rawTheme}"`);
-      localStorage.removeItem('theme');
+      localStorage.removeItem('klao:test:theme');
     }
 
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -99,10 +100,10 @@ export function initThemeToggle() {
         const isDark = htmlEl.classList.contains('dark');
         if (isDark) {
           htmlEl.classList.remove('dark');
-          localStorage.setItem('theme', 'light');
+          localStorage.setItem('klao:test:theme', 'light');
         } else {
           htmlEl.classList.add('dark');
-          localStorage.setItem('theme', 'dark');
+          localStorage.setItem('klao:test:theme', 'dark');
         }
       } catch (error) {
         console.error('[Theme] Failed to write theme preference to local storage.', error);
