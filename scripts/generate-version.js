@@ -14,6 +14,13 @@ try {
   console.warn('[Version Gen] Could not read version.json, defaulting to 1.0.0');
 }
 
+// The test environment can preview a release independently of production.
+const testVersionPath = path.join(rootDir, 'test/version.json');
+const testVersion = fs.existsSync(testVersionPath)
+  ? JSON.parse(fs.readFileSync(testVersionPath, 'utf8')).version
+  : version;
+const testOnly = process.argv.includes('--test-only');
+
 // 2. Get git commit SHA
 let commitSha = 'unknown';
 try {
@@ -39,7 +46,7 @@ const testMetaContent = `/**
  * Do not manually edit.
  */
 export const BUILD_META = {
-  version: "${version}",
+  version: "${testVersion}",
   environment: "Test",
   date: "${dateString}",
   commit: "${commitSha}"
@@ -69,5 +76,7 @@ fs.mkdirSync(path.dirname(prodDest), { recursive: true });
 fs.writeFileSync(testDest, testMetaContent, 'utf8');
 console.log(`[Version Gen] Generated Test build metadata at ${testDest}`);
 
-fs.writeFileSync(prodDest, prodMetaContent, 'utf8');
-console.log(`[Version Gen] Generated Production build metadata at ${prodDest}`);
+if (!testOnly) {
+  fs.writeFileSync(prodDest, prodMetaContent, 'utf8');
+  console.log(`[Version Gen] Generated Production build metadata at ${prodDest}`);
+}

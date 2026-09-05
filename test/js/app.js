@@ -1,92 +1,54 @@
-/**
- * Application Entrypoint and Orchestrator.
- *
- * Imports sub-modules and initializes the landing page features on DOMContentLoaded.
- * Uses ES Module syntax for modular static architecture.
- *
- * @module app
- */
-
-'use strict';
-
-import { initTheme, initThemeToggle } from './theme.js';
-import { initNavigation, initMobileMenu, initScrollSpy } from './navigation.js';
-import { initTimelineRendering, initTimelineAccordion } from './timeline.js';
-import { initProjectFiltering } from './project-filter.js';
+/** Test portfolio: native disclosures, hiring perspectives, and isolated preferences. */
+import { BUILD_META } from './version-meta.js';
+import { initTheme } from './theme.js';
 import { initCurrentYear, initVersionIndicator } from './utilities.js';
 
-/**
- * Initializes all staging website interactive behaviors.
- *
- * Purpose:
- * Entry point to bootstrap the theme toggles, mobile drawer, timeline disclosures,
- * project filters, and scroll tracking in a safe and structured manner.
- *
- * Invocation:
- * Listens to DOMContentLoaded event on document.
- *
- * Side effects:
- * Triggers initialization functions across all isolated JS modules.
- * Logs bootstrap completion message to browser console.
- *
- * Failure behavior:
- * Wraps individual sub-initializers in defensive checks so that a failure in one
- * feature does not halt the bootstrap sequence of other features.
- *
- * @returns {void}
- */
-function initializeApplication() {
-  // 1. Theme Management (run first to avoid flash of incorrect styling)
-  try {
-    initTheme();
-    initThemeToggle();
-  } catch (error) {
-    console.error('[App] Theme initialization failed:', error);
-  }
+const perspectives = {
+  all: { description: 'A connected view of technical implementation, product delivery, and commercial thinking.', order: ['launch', 'analytics', 'ai'] },
+  engineering: { description: 'For Forward Deployed Engineer and Solutions Engineer roles: explore AI research, data workflows, and integration delivery.', order: ['ai', 'analytics', 'launch'] },
+  product: { description: 'For Product Manager and Technical Product Manager roles: explore launch ownership, commercial analytics, and AI product thinking.', order: ['launch', 'analytics', 'ai'] },
+};
 
-  // 2. Interactive UI Components
-  try {
-    initNavigation();
-    initMobileMenu();
-  } catch (error) {
-    console.error('[App] Mobile menu initialization failed:', error);
-  }
-
-  try {
-    initTimelineRendering();
-    initTimelineAccordion();
-  } catch (error) {
-    console.error('[App] Timeline initialization failed:', error);
-  }
-
-
-  try {
-    initProjectFiltering();
-  } catch (error) {
-    console.error('[App] Project filtering initialization failed:', error);
-  }
-
-  // 3. Page Telemetry & Utilities
-  try {
-    initScrollSpy();
-  } catch (error) {
-    console.error('[App] Scroll Spy initialization failed:', error);
-  }
-
-  try {
-    initCurrentYear();
-  } catch (error) {
-    console.error('[App] Current year initialization failed:', error);
-  }
-
-  try {
-    initVersionIndicator();
-  } catch (error) {
-    console.error('[App] Version indicator initialization failed:', error);
-  }
-
-  console.log('[Staging Website] Initialization completed successfully.');
+initTheme();
+initCurrentYear();
+initVersionIndicator();
+document.getElementById('preview-version').textContent = `Portfolio / ${BUILD_META.version}`;
+const themeButton = document.querySelector('.theme-toggle');
+function syncThemeLabel() {
+  themeButton.setAttribute('aria-label', document.documentElement.classList.contains('dark') ? 'Switch to light theme' : 'Switch to dark theme');
 }
+syncThemeLabel();
+themeButton.addEventListener('click', () => {
+  const dark = document.documentElement.classList.toggle('dark');
+  try { localStorage.setItem('klao:test:theme', dark ? 'dark' : 'light'); } catch { /* The visual choice still works without persistent storage. */ }
+  syncThemeLabel();
+});
 
-// Attach bootstrap sequence to DOMContentLoaded hook
-document.addEventListener('DOMContentLoaded', initializeApplication);
+const roleButtons = document.querySelectorAll('[data-role]');
+const caseList = document.querySelector('.case-list');
+const cards = new Map([...caseList.children].map(card => [card.dataset.case, card]));
+function applyPerspective(role) {
+  const selected = Object.hasOwn(perspectives, role) ? role : 'all';
+  roleButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.role === selected)));
+  document.getElementById('role-description').textContent = perspectives[selected].description;
+  perspectives[selected].order.forEach(id => caseList.append(cards.get(id)));
+}
+function readPerspective() { applyPerspective(new URL(location.href).searchParams.get('role')); }
+roleButtons.forEach(button => button.addEventListener('click', () => {
+  const url = new URL(location.href);
+  if (button.dataset.role === 'all') url.searchParams.delete('role');
+  else url.searchParams.set('role', button.dataset.role);
+  history.pushState(null, '', url);
+  applyPerspective(button.dataset.role);
+}));
+window.addEventListener('popstate', readPerspective);
+readPerspective();
+
+// A shared project anchor opens its walkthrough, including when reached from another section.
+function openLinkedProject() {
+  const id = location.hash.slice(1);
+  const target = document.getElementById(id);
+  if (target?.matches('.case-card')) target.querySelector('details').open = true;
+}
+window.addEventListener('hashchange', openLinkedProject);
+openLinkedProject();

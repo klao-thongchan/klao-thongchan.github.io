@@ -31,6 +31,8 @@ const expectedFiles = [
   INDEX_HTML,
   CV_INDEX_HTML,
   path.join(BASE_DIR, 'css/site.css'),
+  path.join(BASE_DIR, 'css/portfolio.css'),
+  path.join(BASE_DIR, 'version.json'),
   path.join(BASE_DIR, 'css/components.css'),
   path.join(BASE_DIR, 'css/print.css'),
   path.join(BASE_DIR, 'css/tailwind.css'),
