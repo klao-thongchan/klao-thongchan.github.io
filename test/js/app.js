@@ -52,3 +52,6 @@ function openLinkedProject() {
 }
 window.addEventListener('hashchange', openLinkedProject);
 openLinkedProject();
+
+// Optional decoration loads independently of the portfolio controls.
+import('./cursor-field.js').then(({ initCursorField }) => initCursorField()).catch(() => {});
