@@ -1,7 +1,7 @@
 /**
  * Google Analytics 4 Custom Event Tracking Module.
  *
- * Implements privacy-compliant event tracking shared by Production and Test.
+ * Implements isolated, privacy-compliant event tracking for the staging environment.
  * Incorporates event parameter sanitization, PII redaction, query string cleaning,
  * dynamic section-view telemetry, and click-event delegation tracking.
  *

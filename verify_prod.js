@@ -33,6 +33,9 @@ const expectedFiles = [
   NOT_FOUND_HTML,
   path.join(BASE_DIR, 'robots.txt'),
   path.join(BASE_DIR, 'sitemap.xml'),
+  path.join(BASE_DIR, 'css/portfolio.css'),
+  path.join(BASE_DIR, 'js/cursor-field.js'),
+  path.join(BASE_DIR, 'js/vendor/three-field.min.js'),
   path.join(BASE_DIR, 'css/site.css'),
   path.join(BASE_DIR, 'css/components.css'),
   path.join(BASE_DIR, 'css/print.css'),
@@ -78,8 +81,16 @@ function verifyHtmlReferences(htmlPath, forbiddenStrings, requiredStrings) {
   }
 }
 
-verifyHtmlReferences(INDEX_HTML, ['../css/style.css', '../js/main.js', '../assets/img/favicon/'], ['css/site.css', 'js/app.js', 'assets/img/favicon/']);
+verifyHtmlReferences(INDEX_HTML, ['../css/style.css', '../js/main.js', '../assets/img/favicon/'], ['css/portfolio.css', 'js/app.js', 'assets/img/favicon/']);
 verifyHtmlReferences(CV_INDEX_HTML, ['style.css', 'main.js', 'onclick="window.print()"', '../../assets/img/favicon/', 'Thongchan_Thananate_CV.pdf'], ['css/cv.css', 'js/cv.js', '../assets/img/favicon/']);
+
+// Release isolation: production must be indexable and use production preferences.
+for (const htmlPath of [INDEX_HTML, CV_INDEX_HTML]) {
+  verifyHtmlReferences(htmlPath, ['noindex', 'TEST PREVIEW', '/test/'], ['name="robots" content="index, follow"', 'rel="canonical"']);
+}
+for (const jsFile of ['js/app.js', 'js/theme.js']) {
+  verifyHtmlReferences(path.join(BASE_DIR, jsFile), ['klao:test:theme', 'preview-version'], ['klao:prod:theme']);
+}
 
 // 3. Verify that every local HTML resource resolves to an existing file.
 function verifyLocalHtmlReferences(htmlPath) {
