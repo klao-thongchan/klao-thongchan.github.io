@@ -13,3 +13,23 @@ html.dark .cursor-field canvas{opacity:.45}
 @media(max-width:760px){.cursor-field{inset:0 -20px}}
 @media(prefers-reduced-motion:reduce){.cursor-field canvas{display:none}}
 @media print{.cursor-field{display:none}}
+
+/* Test-only FDE / Solutions Engineer narrative components. */
+.solution-path{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:22px;padding-top:46px}
+.solution-path>div{min-height:132px;padding:22px 24px;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+.solution-path span,.approach-grid span{display:block;font:11px ui-monospace,monospace;color:var(--accent);margin-bottom:10px}
+.solution-path strong{display:block;font-size:17px;letter-spacing:-.025em}
+.solution-path p{font-size:12px;margin-top:7px}
+.solution-path>i{font-style:normal;color:var(--accent)}
+.approach-section{background:var(--aside);color:var(--on-aside)}
+.approach-section .eyebrow,.approach-section p{color:var(--on-aside)}
+.approach-grid{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);margin:0;padding:0;border:1px solid currentColor;border-radius:7px;overflow:hidden}
+.approach-grid li{min-height:190px;padding:27px;border-left:1px solid currentColor;border-top:1px solid currentColor}
+.approach-grid li:nth-child(-n+3){border-top:0}
+.approach-grid li:nth-child(3n+1){border-left:0}
+.approach-grid span{color:inherit;opacity:.7}
+.approach-grid h3{font-size:21px;margin-bottom:12px;letter-spacing:-.02em}
+.approach-grid p{font-size:12px;opacity:.82}
+@media(max-width:760px){.cursor-field{inset:0 calc((100vw - 100%)/-2)}.solution-path{grid-template-columns:1fr;padding-top:30px;gap:10px}.solution-path>div{min-height:0}.solution-path>i{transform:rotate(90deg);justify-self:center}.approach-grid{grid-template-columns:1fr 1fr}.approach-grid li{min-height:175px;border-top:1px solid currentColor}.approach-grid li:nth-child(-n+2){border-top:0}.approach-grid li:nth-child(3){border-top:1px solid currentColor}.approach-grid li:nth-child(3n+1){border-left:1px solid currentColor}.approach-grid li:nth-child(2n+1){border-left:0}}
+@media(max-width:480px){.approach-grid{grid-template-columns:1fr}.approach-grid li{min-height:0;border-left:0!important;border-top:1px solid currentColor!important}.approach-grid li:first-child{border-top:0!important}}
+@media print{.solution-path{padding-top:20px}.approach-section{background:#eee;color:#000}.approach-section .eyebrow,.approach-section p{color:#000}.approach-grid li{min-height:0}}
