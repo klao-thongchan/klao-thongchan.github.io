@@ -3,8 +3,8 @@
  * Do not manually edit.
  */
 export const BUILD_META = {
-  version: "1.2.0",
+  version: "1.2.1",
   environment: "Test",
-  date: "2026.09.14",
-  commit: "3493ddc"
+  date: "2026.10.21",
+  commit: "3b9432c"
 };

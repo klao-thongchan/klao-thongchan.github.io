@@ -2,7 +2,7 @@
 
 The professional portfolio and printable CV of **Thongchan Thananate (Klao)**, covering technical product delivery, applied AI, analytics, integrations, and digital product launches.
 
-**Production release: v1.2.0 · 14 September 2026**
+**Production release: v1.2.1 · 22 October 2026**
 
 - [Live portfolio](https://klao-thongchan.github.io/)
 - [Curriculum vitae](https://klao-thongchan.github.io/cv/)
@@ -80,6 +80,13 @@ GitHub Pages currently publishes the repository root from the `main` branch (bra
 A historical Jekyll Actions workflow remains under `.github/workflows/pages.yml`; it is not the currently configured Pages publishing mode. For branch-based releases, generate and commit version metadata before pushing. The displayed commit identifies the source revision used when generating metadata.
 
 ## Version History
+
+### v1.2.1 — Security audit and test environment synchronization
+**Release date:** 22 October 2026
+
+- **Security review & hardening:** Assessed production and test environments against recent PHP engine exploits (PHP2Shell CVE-2026-109618 / CVE-2026-109619 and CGI Argument Injection CVE-2024-4577). Confirmed environment immunity as a purely static site with zero PHP runtimes, interpreters, SAPIs, or scripts. Verified Content Security Policy headers (`form-action 'none'`, `object-src 'none'`, `script-src 'self'`) and hardened static 404 routing against automated bot scans.
+- **Test environment synchronization:** Reverted test preview portfolio files (`test/index.html`, `test/css/portfolio.css`, `test/js/app.js`) to match production structure and hiring perspectives, while preserving test-specific isolation (preview banner, `noindex, nofollow, noarchive` robots directives, and isolated `klao:test:theme` preferences).
+- **Metadata and version bump:** Updated release versions across production (`version.json`) and test (`test/version.json`) to `v1.2.1`, and regenerated build metadata.
 
 ### v1.2.0 — Portfolio and interactive background release
 **Release date:** 14 September 2026
