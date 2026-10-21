@@ -37,6 +37,7 @@
     'project_click',
     'section_view',
     'cv_open',
+    'cv_download',
     'recruiter_role_selected'
   ]);
 
@@ -53,16 +54,20 @@
     'cta_location',
     'destination_type',
     'cv_format',
+    'file_label',
     'link_location',
     'contact_method',
     'contact_location',
     'project_id',
     'project_name',
+    'project_category',
+    'project_location',
     'section_id',
     'section_name',
     'selected_theme',
     'cta_label',
-    'role'
+    'role',
+    'selected_role'
   ]);
 
   // 3. Core Verification & Sanitization Helpers
