@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "phase": 3,
+  "name": "Data Layer Modernization & Read-Write Cutover",
+  "environment": "Production",
+  "status": "IMPLEMENTED_IN_TEST",
+  "date": "2026-10-22",
+  "version": "1.3.0",
+  "sql_injection_remediation": {
+    "legacy_php_vulnerabilities": [
+      "SQL Injection via dynamic string interpolation (mysql_query, PDO string concatenation)",
+      "Second-order SQL injection",
+      "Lack of transaction rollback on unhandled PHP runtime exceptions"
+    ],
+    "lts_data_layer_defenses": [
+      "Strict prepared statements with parameterized positional or named bindings",
+      "Compile-time / runtime input validation preceding SQL generation",
+      "Foreign key constraint enforcement and WAL mode persistence",
+      "Zero dynamic string execution / zero eval"
+    ]
+  },
+  "cutover_protocol": {
+    "strategy": "Dual-Read Shadow Verification",
+    "verification_helper": "verifyShadowDataConsistency",
+    "cutover_milestones": [
+      "1. Deploy modern LTS database schema alongside legacy schema",
+      "2. Enable shadow dual-writes: writes execute to both backends asynchronously",
+      "3. Enable shadow dual-reads: compare responses for 0% data drift",
+      "4. Promote LTS data layer to primary and sever legacy PHP database connection"
+    ]
+  },
+  "artifacts": [
+    { "path": "test/services/data/db.js", "role": "Type-safe database service with prepared statements" },
+    { "path": "test/services/data/db.test.js", "role": "SQL Injection resistance and shadow consistency test suite" }
+  ]
+}

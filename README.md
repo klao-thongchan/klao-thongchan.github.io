@@ -2,7 +2,7 @@
 
 The professional portfolio and printable CV of **Thongchan Thananate (Klao)**, covering technical product delivery, applied AI, analytics, integrations, and digital product launches.
 
-**Production release: v1.2.1 · 22 October 2026**
+**Production release: v1.3.0 · 22 October 2026**
 
 - [Live portfolio](https://klao-thongchan.github.io/)
 - [Curriculum vitae](https://klao-thongchan.github.io/cv/)
@@ -37,7 +37,10 @@ The pinned dependency is Three.js 0.180.0, built with esbuild 0.25.9: approximat
 | `js/vendor/` | Local Three.js bundle, license, and build instructions |
 | `js/theme.js`, `js/utilities.js` | Preferences, copyright year, and release footer |
 | `cv/` | Printable CV, styles, and print controls |
-| `test/` | Isolated preview of the portfolio and CV |
+| `test/` | Isolated preview of the portfolio, CV, and staging architecture |
+| `edge/` | Reverse-proxy ingress (NGINX) and Cloudflare Worker edge inspection |
+| `services/` | Node.js 22 LTS microservices, stateless HMAC auth, schema validation, and database engine |
+| `specs/` | Architectural specifications for Phases 0 through 4 (LTS migration, threat models, runbooks) |
 | `version.json`, `test/version.json` | Independent release versions |
 | `scripts/generate-version.js` | Build date, commit, and environment metadata |
 | `verify_prod.js`, `test/verify.js` | Asset, reference, and environment checks |
@@ -80,6 +83,16 @@ GitHub Pages currently publishes the repository root from the `main` branch (bra
 A historical Jekyll Actions workflow remains under `.github/workflows/pages.yml`; it is not the currently configured Pages publishing mode. For branch-based releases, generate and commit version metadata before pushing. The displayed commit identifies the source revision used when generating metadata.
 
 ## Version History
+
+### v1.3.0 — Architecture modernization: PHP replacement, Edge Ingress & LTS transition
+**Release date:** 22 October 2026
+
+- **Phase 0 (Threat Modeling & Inventory):** Audited environment and certified zero-PHP runtime immunity against CGI Argument Injection (CVE-2024-4577) and PHP2Shell (CVE-2026-109618 / CVE-2026-109619). Cataloged active runtime modules and identified legacy structures for scheduled retirement (`specs/phase0-inventory.json`).
+- **Phase 1 (Edge Façade & Zero-Trust Ingress):** Configured edge reverse-proxy (`edge/nginx-ingress.conf`) and Cloudflare Worker script (`edge/cloudflare-worker.js`) to intercept CGI argument injection signatures (`-d+allow_url_include`) and drop legacy automated scans (`.php`, `/wp-admin`, `/xmlrpc.php`) before origin processing. Added zero-script isolated 404 handler (`test/404.html`) and enforced strict headers.
+- **Phase 2 (Core Services & Container Hardening):** Replaced legacy PHP session handling and unvalidated mailers with modern Node.js 22 LTS microservices (`services/server.js`). Implemented stateless HMAC-SHA256 tokens (`signToken`/`verifyToken`), strict schema validation with prototype pollution guards, and cryptographic webhook verification. Added non-root, read-only multi-stage Docker configurations (`services/Dockerfile`, `services/docker-compose.yml`).
+- **Phase 3 (Data Layer Modernization & Cutover):** Transitioned from legacy raw SQL concatenation to strictly parameterized prepared statements using Node.js 22 LTS SQLite (`services/data/db.js`), guaranteeing SQL injection immunity. Added automated shadow data consistency verification helper (`verifyShadowDataConsistency`) to support zero-drift cutovers.
+- **Phase 4 (Legacy Decommissioning & LTS Governance):** Documented full PHP runtime host power-down procedures and quarterly/annual LTS upgrade policies (`specs/phase4-decommission-spec.json`). Cleanly archived unreferenced legacy assets (`tailwind.config.js`, legacy Tailwind CSS, and older navigation scripts) into `test/legacy_archive/` with full historical manifests.
+- **Verification & Metadata:** Integrated in-process unit, security, and schema test suites across `verify_prod.js` and `test/verify.js`. Bumped production release to `v1.3.0` and test preview to `v1.3.1`.
 
 ### v1.2.1 — Security audit and test environment synchronization
 **Release date:** 22 October 2026

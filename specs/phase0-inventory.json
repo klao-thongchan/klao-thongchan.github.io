@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "audit": {
+    "phase": 0,
+    "name": "Discovery, Threat Modeling & Boundary Definition",
+    "environment": "Production",
+    "date": "2026-10-22",
+    "status": "COMPLETED",
+    "version": "1.3.0"
+  },
+  "threat_model_summary": {
+    "php_runtime_status": "NONE_DETECTED",
+    "php_vector_vulnerability": "IMMUNE",
+    "cve_coverage": [
+      {
+        "id": "CVE-2024-4577",
+        "description": "PHP CGI Argument Injection",
+        "status": "NOT_APPLICABLE",
+        "reason": "Zero PHP interpreters, SAPIs, or FastCGI runtimes installed or invoked"
+      },
+      {
+        "id": "CVE-2026-109618",
+        "description": "PHP2Shell RCE engine vulnerability",
+        "status": "NOT_APPLICABLE",
+        "reason": "Static hosting environment; no dynamic server-side scripting runtime"
+      },
+      {
+        "id": "CVE-2026-109619",
+        "description": "PHP2Shell memory corruption in handler layer",
+        "status": "NOT_APPLICABLE",
+        "reason": "Static hosting environment; zero PHP execution modules"
+      }
+    ],
+    "code_injection_surface": {
+      "eval_usage": 0,
+      "new_function_usage": 0,
+      "document_write_usage": 0,
+      "unsafe_inline_scripts": 0,
+      "unsafe_inline_styles_cv": 0
+    }
+  },
+  "boundary_isolation": {
+    "theme_namespace": "klao:test:theme",
+    "robots_directive": "noindex, nofollow, noarchive",
+    "content_security_policy": {
+      "default-src": "'self'",
+      "base-uri": "'self'",
+      "object-src": "'none'",
+      "form-action": "'none'",
+      "frame-src": "'none'",
+      "upgrade-insecure-requests": true
+    },
+    "referrer_policy": "strict-origin-when-cross-origin"
+  },
+  "asset_inventory": {
+    "active_runtime_assets": [
+      { "path": "test/index.html", "role": "Main portfolio test view", "status": "ACTIVE_LTS" },
+      { "path": "test/css/portfolio.css", "role": "Layout, design tokens, responsive styles", "status": "ACTIVE_LTS" },
+      { "path": "test/js/app.js", "role": "ES Module application bootstrap & hiring perspectives", "status": "ACTIVE_LTS" },
+      { "path": "test/js/theme.js", "role": "Isolated test theme preferences", "status": "ACTIVE_LTS" },
+      { "path": "test/js/utilities.js", "role": "Dynamic year and version injection", "status": "ACTIVE_LTS" },
+      { "path": "test/js/version-meta.js", "role": "Generated build date, version, commit metadata", "status": "ACTIVE_LTS" },
+      { "path": "test/js/cursor-field.js", "role": "Three.js contour canvas lifecycle controller", "status": "ACTIVE_LTS" },
+      { "path": "test/js/vendor/three-field.min.js", "role": "Pinned Three.js bundle (esbuild)", "status": "ACTIVE_LTS" },
+      { "path": "test/cv/index.html", "role": "Isolated printable CV view", "status": "ACTIVE_LTS" },
+      { "path": "test/cv/css/cv.css", "role": "Print stylesheet & screen preview layout", "status": "ACTIVE_LTS" },
+      { "path": "test/cv/js/cv.js", "role": "Print handler & CV telemetry", "status": "ACTIVE_LTS" }
+    ],
+    "legacy_structures_scheduled_for_retirement": [
+      {
+        "category": "Legacy Tailwind CSS Configs",
+        "paths": [
+          "test/tailwind.config.js",
+          "test/css/tailwind.css",
+          "test/css/tailwind-input.css",
+          "test/css/site.css",
+          "test/css/components.css",
+          "test/css/print.css"
+        ],
+        "rationale": "Active portfolio uses native bespoke CSS tokens in portfolio.css. Tailwind build files are legacy remnants."
+      },
+      {
+        "category": "Unreferenced Legacy JS Modules",
+        "paths": [
+          "test/js/navigation.js",
+          "test/js/timeline.js",
+          "test/js/project-filter.js",
+          "test/js/recruiter-view.js"
+        ],
+        "rationale": "Superseded by modern native disclosures, URL search parameters, and modular ES app.js."
+      }
+    ]
+  },
+  "target_lts_recommendations": {
+    "build_verification": "Node.js 22 LTS (Active) / Node.js 20 LTS",
+    "frontend_architecture": "Pure modern static ES modules with native CSS variables (Zero runtime server CVE surface)",
+    "api_and_backend_plan": "Go 1.23+ or Node.js 22 LTS microservices for future dynamic workloads"
+  }
+}
