@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "phase": 1,
+  "name": "Edge Façade & Zero-Trust Ingress",
+  "environment": "Test / Staging",
+  "status": "IMPLEMENTED_IN_TEST",
+  "date": "2026-10-22",
+  "version": "1.3.0",
+  "ingress_rules": {
+    "protocol_enforcement": "HTTPS_REQUIRED_TLS_1_3",
+    "blocked_extensions": [
+      ".php", ".php3", ".php4", ".php5", ".php7", ".php8",
+      ".phtml", ".phar", ".cgi", ".pl", ".asp", ".aspx", ".jsp"
+    ],
+    "blocked_probing_paths": [
+      "/wp-admin", "/wp-content", "/wp-includes",
+      "/xmlrpc.php", "/phpmyadmin", "/pma", "/adminer",
+      "/.env", "/.git"
+    ],
+    "query_string_injection_defense": {
+      "cve_targeted": ["CVE-2024-4577", "CVE-2026-109618", "CVE-2026-109619"],
+      "blocked_signatures": [
+        "-d+allow_url_include",
+        "-d+auto_prepend_file",
+        "allow_url_include",
+        "auto_prepend_file",
+        "php://input",
+        "php://filter"
+      ],
+      "action": "HTTP_403_FORBIDDEN"
+    }
+  },
+  "edge_artifacts": [
+    {
+      "type": "STATIC_FALLBACK",
+      "file": "test/404.html",
+      "purpose": "Isolated, zero-script 404 response page with strict CSP and noindex"
+    },
+    {
+      "type": "NGINX_INGRESS",
+      "file": "test/edge/nginx-ingress.conf",
+      "purpose": "Reverse-proxy edge config with anti-PHP filtering and security headers"
+    },
+    {
+      "type": "EDGE_WORKER",
+      "file": "test/edge/cloudflare-worker.js",
+      "purpose": "Global edge worker for automated threat dropping and header injection"
+    }
+  ],
+  "security_headers": {
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Permissions-Policy": "camera=(), microphone=(), geolocation=(), payment=()",
+    "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+    "X-Robots-Tag": "noindex, nofollow, noarchive"
+  }
+}

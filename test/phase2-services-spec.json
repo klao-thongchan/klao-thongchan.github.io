@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "phase": 2,
+  "name": "High-Risk & Core Business Service Replacement",
+  "environment": "Test / Staging",
+  "status": "IMPLEMENTED_IN_TEST",
+  "date": "2026-10-22",
+  "version": "1.3.0",
+  "legacy_php_replacements": [
+    {
+      "legacy_mechanism": "PHP session_start() & PHPSESSID",
+      "vulnerabilities": ["Session fixation", "File-based session tampering", "unserialize() RCE"],
+      "lts_replacement": "Stateless HMAC-SHA256 Token Engine (signToken / verifyToken)",
+      "security_guarantees": ["Constant-time signature verification", "Zero server-side session files", "Configurable expiration"]
+    },
+    {
+      "legacy_mechanism": "Unchecked PHP $_POST / $_REQUEST mailers",
+      "vulnerabilities": ["Parameter injection", "Prototype/variable overwriting", "Header injection"],
+      "lts_replacement": "Strict Schema Validation (validateContactSubmission)",
+      "security_guarantees": ["Prototype pollution defense", "Length and character limits", "Unexpected parameter rejection"]
+    },
+    {
+      "legacy_mechanism": "Unsigned IPN/Webhook endpoints",
+      "vulnerabilities": ["Replay attacks", "Forged transaction confirmations"],
+      "lts_replacement": "HMAC-SHA256 Cryptographic Signature Verification",
+      "security_guarantees": ["Constant-time crypto.timingSafeEqual comparison"]
+    }
+  ],
+  "containerization_hardening": {
+    "base_image": "node:22-alpine",
+    "user": "node:node (UID 1000)",
+    "filesystem": "read_only",
+    "privilege_escalation": "no-new-privileges",
+    "capabilities": "cap_drop: ALL"
+  },
+  "lts_support_matrix": {
+    "active_lts": "Node.js 22 LTS",
+    "maintenance_lts": "Node.js 20 LTS",
+    "alternative_compiled_target": "Go 1.23+"
+  }
+}

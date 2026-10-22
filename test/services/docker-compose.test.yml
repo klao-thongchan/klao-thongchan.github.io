@@ -1,0 +1,22 @@
+# Phase 2: Test Staging Orchestration (Zero-Trust LTS Microservice + Ingress)
+services:
+  lts-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: klao-test-lts-core
+    environment:
+      - PORT=8080
+      - NODE_ENV=production
+      - JWT_SECRET=test-local-lts-hmac-secret-at-least-32-chars-long
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=16m
+    cap_drop:
+      - ALL
+    user: "1000:1000"
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8080:8080"
