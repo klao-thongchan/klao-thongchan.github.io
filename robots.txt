@@ -1,4 +1,9 @@
 User-agent: *
 Disallow: /test/
 
+# Shared preference: do not use production content for generative AI training.
+# This does not block crawling or traditional search indexing.
+User-agent: __usage_ai-training
+Disallow: /
+
 Sitemap: https://klao-thongchan.github.io/sitemap.xml

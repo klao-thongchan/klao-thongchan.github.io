@@ -2,7 +2,7 @@
 
 The professional portfolio and printable CV of **Thongchan Thananate (Klao)**, covering technical product delivery, applied AI, analytics, integrations, and digital product launches.
 
-**Production release: v1.3.0 · 22 October 2026**
+**Production release: v1.3.1 · 3 November 2026**
 
 - [Live portfolio](https://klao-thongchan.github.io/)
 - [Curriculum vitae](https://klao-thongchan.github.io/cv/)
@@ -74,6 +74,8 @@ Open `/scripts/verify-cursor-field.html` on the local server in an active deskto
 
 Production uses `klao:prod:theme`; test uses `klao:test:theme`. Test pages retain their preview label and `noindex, nofollow, noarchive` metadata. `robots.txt` excludes `/test/`. Production pages have canonical URLs and allow indexing.
 
+The production `robots.txt` also publishes the shared `__usage_ai-training` preference token. Its `Disallow: /` signals that production content should not be used to train generative AI models while leaving normal crawling and search indexing controls separate. Provider support is being rolled out independently, so existing provider-specific crawler rules should be retained where applicable.
+
 To promote a future test release, copy its portfolio and CV assets to their production paths, adjust favicon paths, remove the preview label and its JavaScript dependency, apply production theme keys and indexing metadata, and update `version.json`, `sitemap.xml`, and this README. Generate version metadata and run both verification scripts before pushing. Keep `test/version.json` independent for the next preview.
 
 ## Deployment
@@ -83,6 +85,12 @@ GitHub Pages currently publishes the repository root from the `main` branch (bra
 A historical Jekyll Actions workflow remains under `.github/workflows/pages.yml`; it is not the currently configured Pages publishing mode. For branch-based releases, generate and commit version metadata before pushing. The displayed commit identifies the source revision used when generating metadata.
 
 ## Version History
+
+### v1.3.1 — Shared AI training preference
+**Release date:** 3 November 2026
+
+- Added the shared `__usage_ai-training` robots.txt preference for production content.
+- Documented that the preference is voluntary, controls training use rather than crawling or traditional search indexing, and is being adopted by providers on different timelines.
 
 ### v1.3.0 — Architecture modernization: PHP replacement, Edge Ingress & LTS transition
 **Release date:** 22 October 2026
