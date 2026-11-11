@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" width="800" height="460" role="img" aria-labelledby="zt-img-title zt-img-desc">
+  <title id="zt-img-title">Zero-Trust Edge Ingress and LTS Service Architecture</title>
+  <desc id="zt-img-desc">Architecture visual showing Cloudflare Worker and NGINX edge filtering, Node.js 22 LTS stateless HMAC services, and parameterized SQLite data persistence.</desc>
+  <defs>
+    <linearGradient id="ztBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#132623"/>
+      <stop offset="100%" stop-color="#19332e"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="460" rx="12" fill="url(#ztBg)"/>
+  <rect x="1" y="1" width="798" height="458" rx="11" fill="none" stroke="#36584f" stroke-width="2"/>
+
+  <!-- Top Bar -->
+  <rect x="20" y="18" width="760" height="38" rx="6" fill="#0f1f1c" stroke="#2b4740"/>
+  <text x="36" y="41" fill="#b1c4ba" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" font-weight="600">ZERO-TRUST EDGE INGRESS, CLOUD INFRASTRUCTURE &amp; NODE.JS 22 LTS</text>
+  <text x="764" y="41" text-anchor="end" fill="#a5dc9d" font-family="ui-monospace, monospace" font-size="11" font-weight="700">CVE-IMMUNE POSTURE</text>
+
+  <!-- Layer 1: Edge Ingress -->
+  <rect x="20" y="72" width="236" height="368" rx="8" fill="#152a26" stroke="#2e4c44"/>
+  <text x="36" y="98" fill="#a5dc9d" font-family="Inter, -apple-system, sans-serif" font-size="10" font-weight="700" letter-spacing="1.2">01 / EDGE INGRESS FAÇADE</text>
+
+  <rect x="36" y="116" width="204" height="90" rx="6" fill="#19332e" stroke="#528978"/>
+  <text x="50" y="140" fill="#eef3e9" font-family="Inter, -apple-system, sans-serif" font-size="12" font-weight="600">Cloudflare Worker + NGINX</text>
+  <text x="50" y="160" fill="#b1c4ba" font-family="ui-monospace, monospace" font-size="10">Drops .php / CGI probes</text>
+  <text x="50" y="176" fill="#b1c4ba" font-family="ui-monospace, monospace" font-size="10">Blocks -d+allow_url_include</text>
+  <text x="50" y="192" fill="#a5dc9d" font-family="ui-monospace, monospace" font-size="10">HTTP 404 zero-script isolation</text>
+
+  <rect x="36" y="220" width="204" height="96" rx="6" fill="#0f1f1c" stroke="#29443d"/>
+  <text x="50" y="242" fill="#eef3e9" font-family="Inter, -apple-system, sans-serif" font-size="12" font-weight="600">Strict Security Headers</text>
+  <text x="50" y="262" fill="#8fa89e" font-family="ui-monospace, monospace" font-size="10">script-src 'self'</text>
+  <text x="50" y="278" fill="#8fa89e" font-family="ui-monospace, monospace" font-size="10">object-src 'none'</text>
+  <text x="50" y="294" fill="#8fa89e" font-family="ui-monospace, monospace" font-size="10">form-action 'none'</text>
+
+  <rect x="36" y="330" width="204" height="92" rx="6" fill="#0f1f1c" stroke="#29443d"/>
+  <text x="50" y="352" fill="#a5dc9d" font-family="Inter, -apple-system, sans-serif" font-size="18" font-weight="700">$10M+ / yr</text>
+  <text x="50" y="374" fill="#eef3e9" font-family="Inter, -apple-system, sans-serif" font-size="11">Annual cost avoidance</text>
+  <text x="50" y="392" fill="#8fa89e" font-family="Inter, -apple-system, sans-serif" font-size="10">In-house Linux, NGINX, Redis,</text>
+  <text x="50" y="406" fill="#8fa89e" font-family="Inter, -apple-system, sans-serif" font-size="10">MySQL &amp; DR ops at Garena</text>
+
+  <!-- Layer 2: Stateless LTS Services -->
+  <rect x="276" y="72" width="248" height="368" rx="8" fill="#152a26" stroke="#2e4c44"/>
+  <text x="292" y="98" fill="#a5dc9d" font-family="Inter, -apple-system, sans-serif" font-size="10" font-weight="700" letter-spacing="1.2">02 / NODE.JS 22 LTS SERVICES</text>
+
+  <rect x="292" y="116" width="216" height="90" rx="6" fill="#1c3832" stroke="#7fd1ae" stroke-width="1.5"/>
+  <text x="306" y="140" fill="#eef3e9" font-family="Inter, -apple-system, sans-serif" font-size="12" font-weight="600">Stateless HMAC-SHA256 Auth</text>
+  <text x="306" y="160" fill="#b1c4ba" font-family="ui-monospace, monospace" font-size="10">signToken() / verifyToken()</text>
+  <text x="306" y="176" fill="#b1c4ba" font-family="ui-monospace, monospace" font-size="10">Timing-safe signature check</text>
+  <text x="306" y="192" fill="#a5dc9d" font-family="ui-monospace, monospace" font-size="10">Zero server session files</text>
+
+  <rect x="292" y="220" width="216" height="96" rx="6" fill="#19332e" stroke="#3b6358"/>
+  <text x="306" y="242" fill="#eef3e9" font-family="Inter, -apple-system, sans-serif" font-size="12" font-weight="600">Strict Schema Validation</text>
+  <text x="306" y="262" fill="#b1c4ba" font-family="ui-monospace, monospace" font-size="10">Allowlisted payload keys</text>
+  <text x="306" y="278" fill="#b1c4ba" font-family="ui-monospace, monospace" font-size="10">Blocks __proto__ pollution</text>
+  <text x="306" y="294" fill="#a5dc9d" font-family="ui-monospace, monospace" font-size="10">Webhook HMAC verification</text>
+
+  <rect x="292" y="330" width="216" height="92" rx="6" fill="#0f1f1c" stroke="#29443d"/>
+  <text x="306" y="352" fill="#eef3e9" font-family="Inter, -apple-system, sans-serif" font-size="12" font-weight="600">Hardened Containers</text>
+  <text x="306" y="372" fill="#8fa89e" font-family="ui-monospace, monospace" font-size="10">node:22-alpine (non-root)</text>
+  <text x="306" y="388" fill="#8fa89e" font-family="ui-monospace, monospace" font-size="10">read_only: true rootfs</text>
+  <text x="306" y="404" fill="#a5dc9d" font-family="ui-monospace, monospace" font-size="10">no-new-privileges: true</text>
+
+  <!-- Layer 3: Parameterized Data & Verification -->
+  <rect x="544" y="72" width="236" height="368" rx="8" fill="#152a26" stroke="#2e4c44"/>
+  <text x="560" y="98" fill="#a5dc9d" font-family="Inter, -apple-system, sans-serif" font-size="10" font-weight="700" letter-spacing="1.2">03 / DATA &amp; VERIFICATION</text>
+
+  <rect x="560" y="116" width="204" height="104" rx="6" fill="#19332e" stroke="#528978"/>
+  <text x="574" y="140" fill="#eef3e9" font-family="Inter, -apple-system, sans-serif" font-size="12" font-weight="600">Prepared Statements Only</text>
+  <text x="574" y="160" fill="#b1c4ba" font-family="ui-monospace, monospace" font-size="10">db.prepare('VALUES (?,?,?)')</text>
+  <text x="574" y="178" fill="#b1c4ba" font-family="Inter, -apple-system, sans-serif" font-size="10">Strict separation of query</text>
+  <text x="574" y="192" fill="#b1c4ba" font-family="Inter, -apple-system, sans-serif" font-size="10">structure and user parameters</text>
+  <text x="574" y="208" fill="#a5dc9d" font-family="ui-monospace, monospace" font-size="10">SQLi payload neutralized</text>
+
+  <rect x="560" y="234" width="204" height="88" rx="6" fill="#0f1f1c" stroke="#29443d"/>
+  <text x="574" y="256" fill="#eef3e9" font-family="Inter, -apple-system, sans-serif" font-size="12" font-weight="600">Shadow Cutover Checks</text>
+  <text x="574" y="276" fill="#8fa89e" font-family="ui-monospace, monospace" font-size="10">verifyShadowDataConsistency</text>
+  <text x="574" y="294" fill="#8fa89e" font-family="Inter, -apple-system, sans-serif" font-size="10">Zero-drift validation before</text>
+  <text x="574" y="308" fill="#8fa89e" font-family="Inter, -apple-system, sans-serif" font-size="10">decommissioning legacy hosts</text>
+
+  <rect x="560" y="336" width="204" height="86" rx="6" fill="#19332e" stroke="#7fd1ae"/>
+  <text x="574" y="358" fill="#a5dc9d" font-family="ui-monospace, monospace" font-size="10" font-weight="700">AUTOMATED CI HARNESS</text>
+  <text x="574" y="378" fill="#eef3e9" font-family="Inter, -apple-system, sans-serif" font-size="11">verify.js audits CSP, links,</text>
+  <text x="574" y="394" fill="#eef3e9" font-family="Inter, -apple-system, sans-serif" font-size="11">HMAC tokens, and SQLi tests</text>
+  <text x="574" y="410" fill="#a5dc9d" font-family="ui-monospace, monospace" font-size="10">on every staging build.</text>
+</svg>

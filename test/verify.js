@@ -12,6 +12,7 @@ const cp = require('child_process');
 
 const BASE_DIR = path.resolve(__dirname);
 const INDEX_HTML = path.join(BASE_DIR, 'index.html');
+const CAPABILITIES_INDEX_HTML = path.join(BASE_DIR, 'capabilities/index.html');
 const CV_INDEX_HTML = path.join(BASE_DIR, 'cv/index.html');
 const NOT_FOUND_HTML = path.join(BASE_DIR, '404.html');
 
@@ -31,9 +32,14 @@ function assertFileExists(filePath, description) {
 // 1. Check all expected files exist (Active LTS & Phase 0-4 assets)
 const expectedFiles = [
   INDEX_HTML,
+  CAPABILITIES_INDEX_HTML,
   CV_INDEX_HTML,
   NOT_FOUND_HTML,
   path.join(BASE_DIR, 'css/portfolio.css'),
+  path.join(BASE_DIR, 'assets/capabilities/ai-agentic-pipeline.svg'),
+  path.join(BASE_DIR, 'assets/capabilities/ml-segmentation-analytics.svg'),
+  path.join(BASE_DIR, 'assets/capabilities/product-launch-ecosystem.svg'),
+  path.join(BASE_DIR, 'assets/capabilities/zero-trust-architecture.svg'),
   path.join(BASE_DIR, 'version.json'),
   path.join(BASE_DIR, 'phase0-inventory.json'),
   path.join(BASE_DIR, 'phase1-ingress-spec.json'),
@@ -50,6 +56,7 @@ const expectedFiles = [
   path.join(BASE_DIR, 'services/data/db.js'),
   path.join(BASE_DIR, 'services/data/db.test.js'),
   path.join(BASE_DIR, 'js/app.js'),
+  path.join(BASE_DIR, 'js/capabilities.js'),
   path.join(BASE_DIR, 'js/cursor-field.js'),
   path.join(BASE_DIR, 'js/vendor/three-field.min.js'),
   path.join(BASE_DIR, 'js/analytics.js'),
@@ -155,6 +162,7 @@ function verifyCvNoInlineStyles() {
 }
 
 auditHtmlSecurity(INDEX_HTML);
+auditHtmlSecurity(CAPABILITIES_INDEX_HTML);
 auditHtmlSecurity(CV_INDEX_HTML);
 auditHtmlSecurity(NOT_FOUND_HTML);
 verifyCvNoInlineStyles();
@@ -184,7 +192,7 @@ function verifyLocalHtmlReferences(htmlPath) {
   }
 }
 
-[INDEX_HTML, CV_INDEX_HTML, NOT_FOUND_HTML].forEach(verifyLocalHtmlReferences);
+[INDEX_HTML, CAPABILITIES_INDEX_HTML, CV_INDEX_HTML, NOT_FOUND_HTML].forEach(verifyLocalHtmlReferences);
 
 // 5. Simple JS Import syntax check
 function verifyJsSyntax(jsPath) {
@@ -211,6 +219,7 @@ function verifyJsSyntax(jsPath) {
 
 const jsFiles = [
   path.join(BASE_DIR, 'js/app.js'),
+  path.join(BASE_DIR, 'js/capabilities.js'),
   path.join(BASE_DIR, 'js/cursor-field.js'),
   path.join(BASE_DIR, 'js/analytics.js'),
   path.join(BASE_DIR, 'js/theme.js'),
