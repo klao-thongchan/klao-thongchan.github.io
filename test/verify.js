@@ -37,9 +37,13 @@ const expectedFiles = [
   NOT_FOUND_HTML,
   path.join(BASE_DIR, 'css/portfolio.css'),
   path.join(BASE_DIR, 'assets/capabilities/ai-agentic-pipeline.svg'),
+  path.join(BASE_DIR, 'assets/capabilities/ai-agentic-pipeline-th.svg'),
   path.join(BASE_DIR, 'assets/capabilities/ml-segmentation-analytics.svg'),
+  path.join(BASE_DIR, 'assets/capabilities/ml-segmentation-analytics-th.svg'),
   path.join(BASE_DIR, 'assets/capabilities/product-launch-ecosystem.svg'),
+  path.join(BASE_DIR, 'assets/capabilities/product-launch-ecosystem-th.svg'),
   path.join(BASE_DIR, 'assets/capabilities/zero-trust-architecture.svg'),
+  path.join(BASE_DIR, 'assets/capabilities/zero-trust-architecture-th.svg'),
   path.join(BASE_DIR, 'version.json'),
   path.join(BASE_DIR, 'phase0-inventory.json'),
   path.join(BASE_DIR, 'phase1-ingress-spec.json'),
@@ -57,6 +61,8 @@ const expectedFiles = [
   path.join(BASE_DIR, 'services/data/db.test.js'),
   path.join(BASE_DIR, 'js/app.js'),
   path.join(BASE_DIR, 'js/capabilities.js'),
+  path.join(BASE_DIR, 'js/i18n.js'),
+  path.join(BASE_DIR, 'js/i18n-data.js'),
   path.join(BASE_DIR, 'js/cursor-field.js'),
   path.join(BASE_DIR, 'js/vendor/three-field.min.js'),
   path.join(BASE_DIR, 'js/analytics.js'),
@@ -220,6 +226,8 @@ function verifyJsSyntax(jsPath) {
 const jsFiles = [
   path.join(BASE_DIR, 'js/app.js'),
   path.join(BASE_DIR, 'js/capabilities.js'),
+  path.join(BASE_DIR, 'js/i18n.js'),
+  path.join(BASE_DIR, 'js/i18n-data.js'),
   path.join(BASE_DIR, 'js/cursor-field.js'),
   path.join(BASE_DIR, 'js/analytics.js'),
   path.join(BASE_DIR, 'js/theme.js'),
@@ -281,7 +289,7 @@ function auditPhase0SecurityHarness() {
   });
   console.log('[OK] Verified: zero dynamic code execution patterns across test JS assets.');
 
-  // C. Verify test environment theme isolation
+  // C. Verify test environment theme & language storage isolation
   const themeJsPath = path.join(BASE_DIR, 'js/theme.js');
   try {
     const themeContent = fs.readFileSync(themeJsPath, 'utf8');
@@ -293,6 +301,23 @@ function auditPhase0SecurityHarness() {
     }
   } catch (err) {
     console.error(`[Phase 0 Error] Failed to verify theme isolation in ${themeJsPath}`, err);
+    errors++;
+  }
+
+  const i18nJsPath = path.join(BASE_DIR, 'js/i18n.js');
+  try {
+    const i18nContent = fs.readFileSync(i18nJsPath, 'utf8');
+    if (i18nContent.includes('klao:prod:lang')) {
+      console.error('[Phase 0 Error] Production language key found in test/js/i18n.js. Must use isolated "klao:test:lang".');
+      errors++;
+    } else if (i18nContent.includes('klao:test:lang')) {
+      console.log('[OK] Verified: test language isolation key "klao:test:lang" enforced.');
+    } else {
+      console.error('[Phase 0 Error] Missing isolated language storage key "klao:test:lang" in test/js/i18n.js.');
+      errors++;
+    }
+  } catch (err) {
+    console.error(`[Phase 0 Error] Failed to verify language isolation in ${i18nJsPath}`, err);
     errors++;
   }
 
@@ -618,6 +643,46 @@ async function auditPhase4Decommissioning() {
   await auditPhase2CoreServices();
   await auditPhase3DataLayer();
   await auditPhase4Decommissioning();
+
+  // 11. Bilingual i18n Key & SVG Completeness Audit
+  try {
+    console.log('[i18n Audit] Verifying Thai/English localization key coverage across test HTML files...');
+    const { TRANSLATIONS } = await import('./js/i18n-data.js');
+    const assert = require('assert');
+
+    const pagesToCheck = [
+      { file: INDEX_HTML, ns: 'portfolio' },
+      { file: CAPABILITIES_INDEX_HTML, ns: 'capabilities' },
+      { file: CV_INDEX_HTML, ns: 'cv' }
+    ];
+
+    const keyAttrRegex = /data-i18n(?:-(?:html|aria-label|alt))?=["']([^"']+)["']/g;
+    let totalKeysChecked = 0;
+
+    for (const { file, ns } of pagesToCheck) {
+      const html = fs.readFileSync(file, 'utf8');
+      let m;
+      while ((m = keyAttrRegex.exec(html)) !== null) {
+        const key = m[1];
+        totalKeysChecked++;
+        const val = TRANSLATIONS.th[ns]?.[key] ?? TRANSLATIONS.th.common?.[key];
+        if (typeof val !== 'string' || val.trim().length === 0) {
+          console.error(`[i18n Error] Missing Thai translation for key "${key}" (namespace "${ns}") in ${path.relative(BASE_DIR, file)}`);
+          errors++;
+        }
+      }
+      if (!html.includes('class="lang-toggle"')) {
+        console.error(`[i18n Error] Missing .lang-toggle control in ${path.relative(BASE_DIR, file)}`);
+        errors++;
+      }
+    }
+
+    assert.ok(totalKeysChecked > 150, `Expected >150 localized DOM keys, found ${totalKeysChecked}`);
+    console.log(`[OK] Verified: ${totalKeysChecked} localization attributes across Portfolio, Capabilities, and CV resolve to Thai translations.`);
+  } catch (err) {
+    console.error('[i18n Error] Failed i18n localization completeness check:', err);
+    errors++;
+  }
 
   // Summary
   if (errors > 0) {

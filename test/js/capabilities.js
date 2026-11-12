@@ -1,19 +1,15 @@
-/** Test capabilities showcase: domain filtering, deep-link awareness, and isolated preferences. */
+/** Test capabilities showcase: domain filtering, deep-link awareness, bilingual i18n, and isolated preferences. */
 import { BUILD_META } from './version-meta.js';
 import { initTheme } from './theme.js';
 import { initCurrentYear, initVersionIndicator } from './utilities.js';
+import { initI18n, getDomainDescription, syncLocalizedThemeLabel } from './i18n.js';
 
-const domainDescriptions = {
-  all: 'Showing all 4 capability pillars with visual previews, deliverables, and system workflow diagrams.',
-  ai: 'Applied AI & Agentic Systems: retrieval-augmented generation (RAG), OpenAI/n8n orchestration, evaluation harnesses, and human-in-the-loop guardrails.',
-  analytics: 'Data & ML Analytics: behavioral user segmentation (9 clusters / 100M+ users), BigQuery/SQL/Python ETL pipelines, and acquisition cost optimization.',
-  launch: 'Product Launch & Integrations: end-to-end market readiness, multi-language localization workflows, cross-team UAT, and third-party payment gateways.',
-  architecture: 'Cloud Infrastructure & Zero-Trust Architecture: NGINX/Cloudflare edge filtering, Node.js 22 LTS stateless HMAC services, and parameterized data layers.'
-};
+const validDomains = new Set(['all', 'ai', 'analytics', 'launch', 'architecture']);
 
 initTheme();
 initCurrentYear();
 initVersionIndicator();
+initI18n('capabilities');
 
 const previewVer = document.getElementById('preview-version');
 if (previewVer) {
@@ -21,14 +17,7 @@ if (previewVer) {
 }
 
 const themeButton = document.querySelector('.theme-toggle');
-function syncThemeLabel() {
-  if (!themeButton) return;
-  themeButton.setAttribute(
-    'aria-label',
-    document.documentElement.classList.contains('dark') ? 'Switch to light theme' : 'Switch to dark theme'
-  );
-}
-syncThemeLabel();
+syncLocalizedThemeLabel();
 
 if (themeButton) {
   themeButton.addEventListener('click', () => {
@@ -38,21 +27,23 @@ if (themeButton) {
     } catch {
       /* The visual choice still works without persistent storage. */
     }
-    syncThemeLabel();
+    syncLocalizedThemeLabel();
   });
 }
 
 const domainButtons = document.querySelectorAll('[data-domain]');
 const showcaseCards = document.querySelectorAll('.showcase-card[data-capability-domain]');
 const domainDescEl = document.getElementById('domain-description');
+let activeDomain = 'all';
 
 function applyDomainFilter(domain) {
-  const selected = Object.hasOwn(domainDescriptions, domain) ? domain : 'all';
+  const selected = validDomains.has(domain) ? domain : 'all';
+  activeDomain = selected;
   domainButtons.forEach(btn => {
     btn.setAttribute('aria-pressed', String(btn.dataset.domain === selected));
   });
   if (domainDescEl) {
-    domainDescEl.textContent = domainDescriptions[selected];
+    domainDescEl.textContent = getDomainDescription(selected);
   }
   showcaseCards.forEach(card => {
     const matches = selected === 'all' || card.dataset.capabilityDomain === selected;
@@ -89,6 +80,11 @@ function revealHashTarget() {
 
 window.addEventListener('popstate', readDomainFromUrl);
 window.addEventListener('hashchange', revealHashTarget);
+window.addEventListener('klao:langchange', () => {
+  if (domainDescEl) {
+    domainDescEl.textContent = getDomainDescription(activeDomain);
+  }
+});
 readDomainFromUrl();
 revealHashTarget();
 

@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" width="800" height="460" role="img" aria-labelledby="ml-img-title ml-img-desc">
+  <title id="ml-img-title">แดชบอร์ดการแบ่งกลุ่มพฤติกรรมผู้เล่นด้วย ML และการวิเคราะห์ User Acquisition</title>
+  <desc id="ml-img-desc">ภาพรวมการวิเคราะห์ข้อมูลผู้เล่นกว่า 100M+ บัญชี แบ่งออกเป็น 9 Behavioral Clusters ช่วยลดต้นทุนการหาผู้ใช้ใหม่ (CAC) ลง 85% และเพิ่ม LTV 151%</desc>
+  <defs>
+    <linearGradient id="mlBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#132623"/>
+      <stop offset="100%" stop-color="#19332e"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="460" rx="12" fill="url(#mlBg)"/>
+  <rect x="1" y="1" width="798" height="458" rx="11" fill="none" stroke="#36584f" stroke-width="2"/>
+
+  <!-- Header bar -->
+  <rect x="20" y="18" width="760" height="38" rx="6" fill="#0f1f1c" stroke="#2b4740"/>
+  <text x="36" y="41" fill="#b1c4ba" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" font-weight="600">BEHAVIORAL SEGMENTATION &amp; GROWTH ANALYTICS · PYTHON · SQL · BIGQUERY</text>
+  <text x="764" y="41" text-anchor="end" fill="#a5dc9d" font-family="ui-monospace, monospace" font-size="11" font-weight="700">100M+ บัญชีผู้ใช้</text>
+
+  <!-- Top KPI Cards -->
+  <rect x="20" y="70" width="242" height="86" rx="8" fill="#152a26" stroke="#2e4c44"/>
+  <text x="38" y="94" fill="#b1c4ba" font-family="Inter, -apple-system, sans-serif" font-size="11">ต้นทุนการหาผู้ใช้ใหม่ (CAC)</text>
+  <text x="38" y="130" fill="#a5dc9d" font-family="Inter, -apple-system, sans-serif" font-size="30" font-weight="700">-85%</text>
+  <text x="132" y="128" fill="#8fa89e" font-family="Inter, -apple-system, sans-serif" font-size="11">ด้วย Cluster Targeting</text>
+  <text x="38" y="146" fill="#7fd1ae" font-family="ui-monospace, monospace" font-size="10">แคมเปญการตลาดที่ Garena</text>
+
+  <rect x="279" y="70" width="242" height="86" rx="8" fill="#152a26" stroke="#2e4c44"/>
+  <text x="297" y="94" fill="#b1c4ba" font-family="Inter, -apple-system, sans-serif" font-size="11">มูลค่าตลอดอายุลูกค้า (LTV)</text>
+  <text x="297" y="130" fill="#a5dc9d" font-family="Inter, -apple-system, sans-serif" font-size="30" font-weight="700">+151%</text>
+  <text x="405" y="128" fill="#8fa89e" font-family="Inter, -apple-system, sans-serif" font-size="11">Retention &amp; Monetization</text>
+  <text x="297" y="146" fill="#7fd1ae" font-family="ui-monospace, monospace" font-size="10">ออกแบบ Live Ops ตาม Cohort</text>
+
+  <rect x="538" y="70" width="242" height="86" rx="8" fill="#152a26" stroke="#2e4c44"/>
+  <text x="556" y="94" fill="#b1c4ba" font-family="Inter, -apple-system, sans-serif" font-size="11">กลุ่มพฤติกรรมผู้เล่น</text>
+  <text x="556" y="130" fill="#eef3e9" font-family="Inter, -apple-system, sans-serif" font-size="30" font-weight="700">9 Clusters</text>
+  <text x="556" y="146" fill="#7fd1ae" font-family="ui-monospace, monospace" font-size="10">Unsupervised ML Classification</text>
+
+  <!-- Left Main Panel: 9 Behavioral Cluster Map -->
+  <rect x="20" y="172" width="460" height="268" rx="8" fill="#152a26" stroke="#2e4c44"/>
+  <text x="38" y="198" fill="#a5dc9d" font-family="Inter, -apple-system, sans-serif" font-size="10" font-weight="700" letter-spacing="0.8">แผนผังพฤติกรรม 9 CLUSTERS (ENGAGEMENT × MONETIZATION)</text>
+
+  <!-- Grid axes -->
+  <line x1="60" y1="405" x2="455" y2="405" stroke="#2e4c44" stroke-width="1.5"/>
+  <line x1="60" y1="215" x2="60" y2="405" stroke="#2e4c44" stroke-width="1.5"/>
+  <line x1="60" y1="340" x2="455" y2="340" stroke="#1f3731" stroke-dasharray="4 4"/>
+  <line x1="60" y1="275" x2="455" y2="275" stroke="#1f3731" stroke-dasharray="4 4"/>
+  <line x1="190" y1="215" x2="190" y2="405" stroke="#1f3731" stroke-dasharray="4 4"/>
+  <line x1="325" y1="215" x2="325" y2="405" stroke="#1f3731" stroke-dasharray="4 4"/>
+
+  <text x="258" y="426" text-anchor="middle" fill="#8fa89e" font-family="ui-monospace, monospace" font-size="10">ความถี่ในการเล่น &amp; ความหนาแน่นของ SOCIAL GRAPH →</text>
+  <text x="38" y="310" text-anchor="middle" fill="#8fa89e" font-family="ui-monospace, monospace" font-size="10" transform="rotate(-90 38 310)">ARPU &amp; LTV VELOCITY →</text>
+
+  <!-- 9 Cluster bubbles -->
+  <circle cx="115" cy="372" r="18" fill="#23423b" stroke="#528978" stroke-width="1.5"/>
+  <text x="115" y="376" text-anchor="middle" fill="#eef3e9" font-family="ui-monospace, monospace" font-size="10" font-weight="700">C1</text>
+
+  <circle cx="165" cy="348" r="22" fill="#23423b" stroke="#528978" stroke-width="1.5"/>
+  <text x="165" y="352" text-anchor="middle" fill="#eef3e9" font-family="ui-monospace, monospace" font-size="10" font-weight="700">C2</text>
+
+  <circle cx="130" cy="295" r="16" fill="#23423b" stroke="#528978" stroke-width="1.5"/>
+  <text x="130" y="299" text-anchor="middle" fill="#eef3e9" font-family="ui-monospace, monospace" font-size="10" font-weight="700">C3</text>
+
+  <circle cx="235" cy="355" r="24" fill="#1c473c" stroke="#7fd1ae" stroke-width="1.5"/>
+  <text x="235" y="359" text-anchor="middle" fill="#eef3e9" font-family="ui-monospace, monospace" font-size="10" font-weight="700">C4</text>
+
+  <circle cx="255" cy="295" r="26" fill="#1c473c" stroke="#7fd1ae" stroke-width="1.5"/>
+  <text x="255" y="299" text-anchor="middle" fill="#eef3e9" font-family="ui-monospace, monospace" font-size="10" font-weight="700">C5</text>
+
+  <circle cx="215" cy="245" r="19" fill="#1c473c" stroke="#7fd1ae" stroke-width="1.5"/>
+  <text x="215" y="249" text-anchor="middle" fill="#eef3e9" font-family="ui-monospace, monospace" font-size="10" font-weight="700">C6</text>
+
+  <circle cx="345" cy="330" r="21" fill="#116b58" stroke="#a5dc9d" stroke-width="2"/>
+  <text x="345" y="334" text-anchor="middle" fill="#eef3e9" font-family="ui-monospace, monospace" font-size="10" font-weight="700">C7</text>
+
+  <circle cx="360" cy="268" r="28" fill="#116b58" stroke="#a5dc9d" stroke-width="2"/>
+  <text x="360" y="272" text-anchor="middle" fill="#eef3e9" font-family="ui-monospace, monospace" font-size="10" font-weight="700">C8</text>
+
+  <circle cx="415" cy="238" r="23" fill="#a5dc9d" stroke="#eef3e9" stroke-width="2"/>
+  <text x="415" y="242" text-anchor="middle" fill="#111e1c" font-family="ui-monospace, monospace" font-size="10" font-weight="700">C9</text>
+
+  <!-- Right Panel: Segment Activation & Funnel Output -->
+  <rect x="496" y="172" width="284" height="268" rx="8" fill="#152a26" stroke="#2e4c44"/>
+  <text x="514" y="198" fill="#a5dc9d" font-family="Inter, -apple-system, sans-serif" font-size="10" font-weight="700" letter-spacing="0.8">การนำไปใช้ตัดสินใจ &amp; CAMPAIGN ACTIVATION</text>
+
+  <rect x="514" y="214" width="248" height="62" rx="6" fill="#0f1f1c" stroke="#29443d"/>
+  <text x="528" y="234" fill="#a5dc9d" font-family="ui-monospace, monospace" font-size="10" font-weight="700">CLUSTERS C7–C9 · กลุ่มผู้เล่นมูลค่าสูง</text>
+  <text x="528" y="252" fill="#eef3e9" font-family="Inter, -apple-system, sans-serif" font-size="11">สร้างฐาน Lookalike Seed Audience และ</text>
+  <text x="528" y="266" fill="#eef3e9" font-family="Inter, -apple-system, sans-serif" font-size="11">แพ็กเกจกิจกรรมสำหรับกลุ่ม Retention สูง</text>
+
+  <rect x="514" y="286" width="248" height="62" rx="6" fill="#0f1f1c" stroke="#29443d"/>
+  <text x="528" y="306" fill="#7fd1ae" font-family="ui-monospace, monospace" font-size="10" font-weight="700">CLUSTERS C4–C6 · กลุ่มเติบโต &amp; CONVERSION</text>
+  <text x="528" y="324" fill="#eef3e9" font-family="Inter, -apple-system, sans-serif" font-size="11">เสนอ Starter Pack สำหรับการเติมครั้งแรก</text>
+  <text x="528" y="338" fill="#eef3e9" font-family="Inter, -apple-system, sans-serif" font-size="11">และกิจกรรมเล่นกับเพื่อนช่วง D3 / D7</text>
+
+  <rect x="514" y="358" width="248" height="64" rx="6" fill="#0f1f1c" stroke="#29443d"/>
+  <text x="528" y="378" fill="#b1c4ba" font-family="ui-monospace, monospace" font-size="10" font-weight="700">CLUSTERS C1–C3 · ป้องกันการเลิกเล่น (CHURN)</text>
+  <text x="528" y="396" fill="#eef3e9" font-family="Inter, -apple-system, sans-serif" font-size="11">ลดงบโฆษณาอัตโนมัติในช่องทางที่ LTV ต่ำ</text>
+  <text x="528" y="410" fill="#eef3e9" font-family="Inter, -apple-system, sans-serif" font-size="11">พร้อมแคมเปญดึงผู้เล่นกลับแบบใช้งบคุ้มค่า</text>
+</svg>

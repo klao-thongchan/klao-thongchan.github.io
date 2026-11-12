@@ -1,7 +1,8 @@
 /**
- * CV Interactivity and Printing Helper Module.
+ * CV Interactivity, Printing, and Bilingual Localization Helper Module.
  *
- * Excludes inline scripts and provides standard W3C event handling for printing behaviors.
+ * Excludes inline scripts and provides standard W3C event handling for printing
+ * and Thai/English language switching behaviors.
  *
  * @module cv
  */
@@ -9,32 +10,10 @@
 'use strict';
 
 import { BUILD_META } from '../../js/version-meta.js';
+import { initI18n, getUiString } from '../../js/i18n.js';
 
 /**
  * Initializes CV-specific interactive controls (such as the print actions).
- *
- * Purpose:
- * Connects the "Print / Save as PDF" button control to standard print features
- * without utilizing inline JS attributes.
- *
- * Invocation:
- * Called once on DOMContentLoaded within cv/index.html context.
- *
- * DOM dependencies:
- * - Reads '#cv-print-btn'.
- *
- * Side effects:
- * Attaches a click event listener on the print button.
- * Triggers window.print() on activation.
- *
- * Browser APIs:
- * Uses `window.print()`.
- *
- * Failure behavior:
- * Fails silently if '#cv-print-btn' is missing from the DOM.
- *
- * Accessibility:
- * Leverages native accessibility focus tree behaviors for button clicks.
  *
  * @returns {void}
  */
@@ -54,19 +33,13 @@ function initializeCvPage() {
 /**
  * Dynamically injects the website version indicator at the absolute bottom of the document body.
  *
- * Purpose:
- * Renders the single-source-of-truth website version dynamically to avoid HTML duplication.
- *
- * DOM dependencies:
- * - Appends a new child element to `document.body`.
- *
  * @returns {void}
  */
 function injectVersionIndicator() {
   try {
     const versionEl = document.createElement('div');
     versionEl.className = 'site-version';
-    versionEl.setAttribute('aria-label', 'Website version');
+    versionEl.setAttribute('aria-label', getUiString('version_aria'));
     
     let versionText = `v${BUILD_META.version}`;
     if (BUILD_META.environment === 'Test') {
@@ -85,4 +58,5 @@ function injectVersionIndicator() {
 document.addEventListener('DOMContentLoaded', () => {
   initializeCvPage();
   injectVersionIndicator();
+  initI18n('cv');
 });

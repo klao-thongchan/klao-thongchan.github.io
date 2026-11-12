@@ -1,36 +1,39 @@
-/** Test portfolio: native disclosures, hiring perspectives, and isolated preferences. */
+/** Test portfolio: native disclosures, hiring perspectives, bilingual i18n, and isolated preferences. */
 import { BUILD_META } from './version-meta.js';
 import { initTheme } from './theme.js';
 import { initCurrentYear, initVersionIndicator } from './utilities.js';
+import { initI18n, getPerspectiveDescription, syncLocalizedThemeLabel } from './i18n.js';
 
 const perspectives = {
-  all: { description: 'A connected view of technical implementation, product delivery, and commercial thinking.', order: ['launch', 'analytics', 'ai'] },
-  engineering: { description: 'For Forward Deployed Engineer and Solutions Engineer roles: explore AI research, data workflows, and integration delivery.', order: ['ai', 'analytics', 'launch'] },
-  product: { description: 'For Product Manager and Technical Product Manager roles: explore launch ownership, commercial analytics, and AI product thinking.', order: ['launch', 'analytics', 'ai'] },
+  all: { order: ['launch', 'analytics', 'ai'] },
+  engineering: { order: ['ai', 'analytics', 'launch'] },
+  product: { order: ['launch', 'analytics', 'ai'] },
 };
 
 initTheme();
 initCurrentYear();
 initVersionIndicator();
+initI18n('portfolio');
+
 document.getElementById('preview-version').textContent = `Portfolio / ${BUILD_META.version}`;
 const themeButton = document.querySelector('.theme-toggle');
-function syncThemeLabel() {
-  themeButton.setAttribute('aria-label', document.documentElement.classList.contains('dark') ? 'Switch to light theme' : 'Switch to dark theme');
-}
-syncThemeLabel();
+syncLocalizedThemeLabel();
 themeButton.addEventListener('click', () => {
   const dark = document.documentElement.classList.toggle('dark');
   try { localStorage.setItem('klao:test:theme', dark ? 'dark' : 'light'); } catch { /* The visual choice still works without persistent storage. */ }
-  syncThemeLabel();
+  syncLocalizedThemeLabel();
 });
 
 const roleButtons = document.querySelectorAll('[data-role]');
 const caseList = document.querySelector('.case-list');
 const cards = new Map([...caseList.children].map(card => [card.dataset.case, card]));
+let activeRole = 'all';
+
 function applyPerspective(role) {
   const selected = Object.hasOwn(perspectives, role) ? role : 'all';
+  activeRole = selected;
   roleButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.role === selected)));
-  document.getElementById('role-description').textContent = perspectives[selected].description;
+  document.getElementById('role-description').textContent = getPerspectiveDescription(selected);
   perspectives[selected].order.forEach(id => caseList.append(cards.get(id)));
 }
 function readPerspective() { applyPerspective(new URL(location.href).searchParams.get('role')); }
@@ -42,6 +45,9 @@ roleButtons.forEach(button => button.addEventListener('click', () => {
   applyPerspective(button.dataset.role);
 }));
 window.addEventListener('popstate', readPerspective);
+window.addEventListener('klao:langchange', () => {
+  document.getElementById('role-description').textContent = getPerspectiveDescription(activeRole);
+});
 readPerspective();
 
 // A shared project anchor opens its walkthrough, including when reached from another section.

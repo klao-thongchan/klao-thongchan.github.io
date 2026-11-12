@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" width="800" height="460" role="img" aria-labelledby="launch-img-title launch-img-desc">
+  <title id="launch-img-title">แผนผังการเปิดตัวผลิตภัณฑ์, Localization และการเชื่อมต่อระบบ Payment</title>
+  <desc id="launch-img-desc">สถาปัตยกรรมการเปิดตัว Ash Echoes Thailand และแอปพลิเคชัน bondbond ที่เชื่อมโยง Localization, CDN, เว็บไซต์ทางการ, Analytics และ 3P Payment Gateways</desc>
+  <defs>
+    <linearGradient id="launchBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#132623"/>
+      <stop offset="100%" stop-color="#1b3932"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="460" rx="12" fill="url(#launchBg)"/>
+  <rect x="1" y="1" width="798" height="458" rx="11" fill="none" stroke="#36584f" stroke-width="2"/>
+
+  <!-- Top Bar -->
+  <rect x="20" y="18" width="760" height="38" rx="6" fill="#0f1f1c" stroke="#2b4740"/>
+  <text x="36" y="41" fill="#b1c4ba" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" font-weight="600">END-TO-END MARKET LAUNCH &amp; PAYMENT INTEGRATION · TREG · HOTPLAY · GARENA</text>
+  <text x="764" y="41" text-anchor="end" fill="#a5dc9d" font-family="ui-monospace, monospace" font-size="11" font-weight="700">RELEASE GOVERNANCE</text>
+
+  <!-- Left Column: Workstreams -->
+  <rect x="20" y="72" width="240" height="368" rx="8" fill="#152a26" stroke="#2e4c44"/>
+  <text x="36" y="98" fill="#a5dc9d" font-family="Inter, -apple-system, sans-serif" font-size="10" font-weight="700" letter-spacing="0.8">สายงานเตรียมความพร้อมแบบคู่ขนาน</text>
+
+  <rect x="36" y="114" width="208" height="72" rx="6" fill="#19332e" stroke="#3b6358"/>
+  <text x="50" y="136" fill="#eef3e9" font-family="Inter, -apple-system, sans-serif" font-size="12" font-weight="600">1. Multi-Language L10n</text>
+  <text x="50" y="154" fill="#b1c4ba" font-family="Inter, -apple-system, sans-serif" font-size="10">กระบวนการแปล EN / KR / ZH → ไทย</text>
+  <text x="50" y="170" fill="#a5dc9d" font-family="ui-monospace, monospace" font-size="10">memoQ · Trados · AI QA</text>
+
+  <rect x="36" y="198" width="208" height="72" rx="6" fill="#19332e" stroke="#3b6358"/>
+  <text x="50" y="220" fill="#eef3e9" font-family="Inter, -apple-system, sans-serif" font-size="12" font-weight="600">2. Web, MNP &amp; Edge CDN</text>
+  <text x="50" y="238" fill="#b1c4ba" font-family="Inter, -apple-system, sans-serif" font-size="10">เว็บไซต์ทางการ &amp; ระบบอัปเดตแพตช์</text>
+  <text x="50" y="254" fill="#a5dc9d" font-family="ui-monospace, monospace" font-size="10">CDN · GA4 · MNP compliance</text>
+
+  <rect x="36" y="282" width="208" height="72" rx="6" fill="#19332e" stroke="#3b6358"/>
+  <text x="50" y="304" fill="#eef3e9" font-family="Inter, -apple-system, sans-serif" font-size="12" font-weight="600">3. 3P Payment Gateway</text>
+  <text x="50" y="322" fill="#b1c4ba" font-family="Inter, -apple-system, sans-serif" font-size="10">ระบบเติมเงินตรงผ่านหน้าเว็บ</text>
+  <text x="50" y="338" fill="#a5dc9d" font-family="ui-monospace, monospace" font-size="10">ลดการพึ่งพาค่าธรรมเนียมแพลตฟอร์ม</text>
+
+  <rect x="36" y="366" width="208" height="58" rx="6" fill="#0f1f1c" stroke="#29443d"/>
+  <text x="50" y="388" fill="#eef3e9" font-family="Inter, -apple-system, sans-serif" font-size="11" font-weight="600">4. Cross-Team UAT &amp; QA</text>
+  <text x="50" y="406" fill="#8fa89e" font-family="ui-monospace, monospace" font-size="10">ประสานงานทีมผู้เชี่ยวชาญ 15–40 คน</text>
+
+  <!-- Right Main Area: Integration & Milestone Matrix -->
+  <rect x="276" y="72" width="504" height="222" rx="8" fill="#152a26" stroke="#2e4c44"/>
+  <text x="294" y="98" fill="#a5dc9d" font-family="Inter, -apple-system, sans-serif" font-size="10" font-weight="700" letter-spacing="0.8">สถาปัตยกรรมการเชื่อมต่อ PAYMENT &amp; ระบบส่งมอบไอเทม (ENTITLEMENT)</text>
+
+  <!-- Boxes inside payment flow -->
+  <rect x="294" y="118" width="132" height="74" rx="6" fill="#0f1f1c" stroke="#3b6358"/>
+  <text x="360" y="144" text-anchor="middle" fill="#eef3e9" font-family="Inter, -apple-system, sans-serif" font-size="11" font-weight="600">ผู้เล่น / Web Store</text>
+  <text x="360" y="162" text-anchor="middle" fill="#8fa89e" font-family="ui-monospace, monospace" font-size="10">ยืนยันตัวตนด้วย UID</text>
+  <text x="360" y="177" text-anchor="middle" fill="#a5dc9d" font-family="ui-monospace, monospace" font-size="9">ราคาสกุลเงิน THB</text>
+
+  <line x1="426" y1="155" x2="458" y2="155" stroke="#a5dc9d" stroke-width="2"/>
+
+  <rect x="458" y="118" width="140" height="74" rx="6" fill="#1c3832" stroke="#7fd1ae" stroke-width="1.5"/>
+  <text x="528" y="144" text-anchor="middle" fill="#eef3e9" font-family="Inter, -apple-system, sans-serif" font-size="11" font-weight="600">3P Payment API</text>
+  <text x="528" y="162" text-anchor="middle" fill="#b1c4ba" font-family="ui-monospace, monospace" font-size="10">PromptPay / E-Wallet</text>
+  <text x="528" y="177" text-anchor="middle" fill="#a5dc9d" font-family="ui-monospace, monospace" font-size="9">Signed Webhook Callback</text>
+
+  <line x1="598" y1="155" x2="630" y2="155" stroke="#a5dc9d" stroke-width="2"/>
+
+  <rect x="630" y="118" width="132" height="74" rx="6" fill="#0f1f1c" stroke="#3b6358"/>
+  <text x="696" y="144" text-anchor="middle" fill="#eef3e9" font-family="Inter, -apple-system, sans-serif" font-size="11" font-weight="600">Game Entitlement</text>
+  <text x="696" y="162" text-anchor="middle" fill="#8fa89e" font-family="ui-monospace, monospace" font-size="10">Idempotent Ledger</text>
+  <text x="696" y="177" text-anchor="middle" fill="#a5dc9d" font-family="ui-monospace, monospace" font-size="9">บันทึก GA4 Revenue Event</text>
+
+  <!-- Sub-caption inside top right box -->
+  <rect x="294" y="210" width="468" height="66" rx="6" fill="#0f1f1c" stroke="#29443d"/>
+  <text x="310" y="232" fill="#a5dc9d" font-family="ui-monospace, monospace" font-size="10" font-weight="700">การเชื่อมโยงเป้าหมายธุรกิจและระบบเทคนิค</text>
+  <text x="310" y="250" fill="#eef3e9" font-family="Inter, -apple-system, sans-serif" font-size="11">ผสานเงื่อนไขสัญญาจากผู้พัฒนา, ข้อกำหนดทางกฎหมาย, ความพร้อมของระบบ CDN</text>
+  <text x="310" y="266" fill="#eef3e9" font-family="Inter, -apple-system, sans-serif" font-size="11">และช่องทางชำระเงินตรง เพื่อรักษาอัตรากำไรขั้นต้นและกำหนดการเปิดให้บริการ</text>
+
+  <!-- Bottom Right: Delivery Velocity & Readiness Gates -->
+  <rect x="276" y="308" width="504" height="132" rx="8" fill="#152a26" stroke="#2e4c44"/>
+  <text x="294" y="334" fill="#a5dc9d" font-family="Inter, -apple-system, sans-serif" font-size="10" font-weight="700" letter-spacing="0.8">MILESTONES การส่งมอบ &amp; ผลลัพธ์ที่วัดผลได้</text>
+
+  <rect x="294" y="350" width="148" height="72" rx="6" fill="#0f1f1c" stroke="#29443d"/>
+  <text x="308" y="374" fill="#a5dc9d" font-family="Inter, -apple-system, sans-serif" font-size="18" font-weight="700">14 วัน → 5 วัน</text>
+  <text x="308" y="394" fill="#eef3e9" font-family="Inter, -apple-system, sans-serif" font-size="11">ลดรอบเวลาส่งมอบงาน</text>
+  <text x="308" y="410" fill="#8fa89e" font-family="ui-monospace, monospace" font-size="10">Garena publishing ops</text>
+
+  <rect x="454" y="350" width="148" height="72" rx="6" fill="#0f1f1c" stroke="#29443d"/>
+  <text x="468" y="374" fill="#a5dc9d" font-family="Inter, -apple-system, sans-serif" font-size="18" font-weight="700">82% Beta</text>
+  <text x="468" y="394" fill="#eef3e9" font-family="Inter, -apple-system, sans-serif" font-size="11">อัตราการใช้งานระบบรางวัล</text>
+  <text x="468" y="410" fill="#8fa89e" font-family="ui-monospace, monospace" font-size="10">HotPlay · 15 engineers</text>
+
+  <rect x="614" y="350" width="148" height="72" rx="6" fill="#0f1f1c" stroke="#29443d"/>
+  <text x="628" y="374" fill="#a5dc9d" font-family="Inter, -apple-system, sans-serif" font-size="18" font-weight="700">เปิดตัวเต็มรูปแบบ</text>
+  <text x="628" y="394" fill="#eef3e9" font-family="Inter, -apple-system, sans-serif" font-size="11">Ash Echoes Thailand</text>
+  <text x="628" y="410" fill="#8fa89e" font-family="ui-monospace, monospace" font-size="10">TREG · L10n + 3P Pay</text>
+</svg>

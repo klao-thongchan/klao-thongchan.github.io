@@ -34,6 +34,7 @@
     'contact_click',
     'navigation_click',
     'theme_change',
+    'language_change',
     'project_click',
     'section_view',
     'cv_open',
@@ -65,6 +66,7 @@
     'section_id',
     'section_name',
     'selected_theme',
+    'selected_language',
     'cta_label',
     'role',
     'selected_role'
@@ -334,11 +336,16 @@
 
       const params = collectAnalyticsDataAttributes(trackableEl);
 
-      // Special handling for theme_change (wait for class list update)
+      // Special handling for theme_change and language_change (wait for DOM state update)
       if (eventName === 'theme_change') {
         setTimeout(() => {
           const isDark = document.documentElement.classList.contains('dark');
           params.selected_theme = isDark ? 'dark' : 'light';
+          window.trackAnalyticsEvent(eventName, params);
+        }, 0);
+      } else if (eventName === 'language_change') {
+        setTimeout(() => {
+          params.selected_language = document.documentElement.getAttribute('lang') || 'en';
           window.trackAnalyticsEvent(eventName, params);
         }, 0);
       } else {
