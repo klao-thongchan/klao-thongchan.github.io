@@ -3,6 +3,7 @@
  */
 
 import assert from 'node:assert';
+import crypto from 'node:crypto';
 import {
   signToken,
   verifyToken,
@@ -23,14 +24,24 @@ console.log('[Phase 2 Test] Running LTS Service Unit & Security Test Suite...');
   console.log('[OK] Token signing and verification passed.');
 }
 
-// 2. Auth: Reject Forged Token
+// 2. Auth: Reject Forged Token & Unsupported Algorithm
 {
-  const token = signToken({ userId: 'user-123' }, 'secret-test-key-32-chars-minimum');
+  const secret = 'secret-test-key-32-chars-minimum';
+  const token = signToken({ userId: 'user-123' }, secret);
   const forgedToken = token.slice(0, -4) + 'abcd';
-  const result = verifyToken(forgedToken, 'secret-test-key-32-chars-minimum');
+  const result = verifyToken(forgedToken, secret);
   assert.strictEqual(result.valid, false);
   assert.strictEqual(result.error, 'Invalid signature');
-  console.log('[OK] Forged token signature rejection passed.');
+
+  // Even if signed with the secret, alg: "none" must be rejected
+  const noneHeader = Buffer.from(JSON.stringify({ alg: 'none', typ: 'JWT' })).toString('base64url');
+  const payloadPart = token.split('.')[1];
+  const unsignedData = `${noneHeader}.${payloadPart}`;
+  const noneSig = crypto.createHmac('sha256', secret).update(unsignedData).digest('base64url');
+  const algNoneResult = verifyToken(`${unsignedData}.${noneSig}`, secret);
+  assert.strictEqual(algNoneResult.valid, false);
+  assert.strictEqual(algNoneResult.error, 'Unsupported token algorithm');
+  console.log('[OK] Forged token signature & unsupported algorithm rejection passed.');
 }
 
 // 3. Contact: Strict Input Validation & Prototype Pollution Defense

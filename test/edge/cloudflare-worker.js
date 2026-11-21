@@ -3,12 +3,12 @@
  *
  * Inspects incoming requests at the global edge:
  * 1. Blocks PHP2Shell and CGI argument injection attempts (CVE-2024-4577 / CVE-2026-109618).
- * 2. Intercepts and immediately drops automated scans probing for .php, CMS, and admin files.
+ * 2. Intercepts and immediately drops automated scans probing for .php, CMS (incl. Drupal CVE-2026-132165), and admin files.
  * 3. Enforces strict zero-trust security headers on all responses.
  */
 
 const BLOCKED_EXTENSIONS = /\.(php[0-9]?|phtml|phar|cgi|pl|asp|aspx|jsp)$/i;
-const BLOCKED_CMS_PATHS = /^\/(wp-admin|wp-content|wp-includes|xmlrpc\.php|phpmyadmin|pma|adminer|\.env|\.git)/i;
+const BLOCKED_CMS_PATHS = /^\/(wp-admin|wp-content|wp-includes|xmlrpc\.php|core\/install\.php|phpmyadmin|pma|adminer|\.env|\.git)/i;
 const MALICIOUS_QUERY_PATTERNS = /(-d\+allow_url_include|-d\+auto_prepend_file|allow_url_include|auto_prepend_file|php:\/\/input|php:\/\/filter)/i;
 
 const SECURITY_HEADERS = {

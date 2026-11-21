@@ -8,7 +8,8 @@ services:
     environment:
       - PORT=8080
       - NODE_ENV=production
-      - JWT_SECRET=test-local-lts-hmac-secret-at-least-32-chars-long
+      - JWT_SECRET=${JWT_SECRET:-test-local-lts-hmac-secret-at-least-32-chars-long}
+      - AUTH_API_KEY=${AUTH_API_KEY:-test-local-auth-api-key}
     security_opt:
       - no-new-privileges:true
     read_only: true

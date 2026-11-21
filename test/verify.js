@@ -455,8 +455,8 @@ async function auditPhase2CoreServices() {
     if (!dockerContent.includes('USER node:node') && !dockerContent.includes('USER 1000')) {
       console.error('[Phase 2 Error] Dockerfile must drop privileges to non-root user.');
       errors++;
-    } else if (!dockerContent.includes('node:22-alpine')) {
-      console.error('[Phase 2 Error] Dockerfile must target pinned Node.js 22 LTS base image.');
+    } else if (!/FROM\s+node:22\.\d+\.\d+-alpine/.test(dockerContent)) {
+      console.error('[Phase 2 Error] Dockerfile must target a patch-pinned Node.js 22 LTS Alpine base image.');
       errors++;
     } else {
       console.log('[OK] Verified: Dockerfile enforces non-root user and Node.js 22 LTS runtime.');

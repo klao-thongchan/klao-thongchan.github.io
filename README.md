@@ -2,7 +2,7 @@
 
 The professional portfolio and printable CV of **Thongchan Thananate (Klao)**, covering technical product delivery, applied AI, analytics, integrations, and digital product launches.
 
-**Production release: v1.3.1 · 3 November 2026**
+**Production release: v1.3.2 · 21 November 2026**
 
 - [Live portfolio](https://klao-thongchan.github.io/)
 - [Curriculum vitae](https://klao-thongchan.github.io/cv/)
@@ -46,7 +46,7 @@ The pinned dependency is Three.js 0.180.0, built with esbuild 0.25.9: approximat
 | `verify_prod.js`, `test/verify.js` | Asset, reference, and environment checks |
 | `scripts/verify-cursor-field.html` | Browser-based rendering lifecycle checks |
 
-The active portfolio uses static HTML, custom CSS, and native JavaScript modules; no framework or runtime CSS compiler is needed. Existing Tailwind assets, older feature modules, Jekyll layouts, and posts remain in the repository for historical content. The portfolio entrypoint does not load those legacy modules. The CV retains its existing Google Analytics, font, and icon integrations; the portfolio page loads only local resources.
+The active portfolio uses static HTML, custom CSS, and native JavaScript modules; no framework or runtime CSS compiler is needed. Legacy Jekyll layouts, posts (`_posts/`), `Gemfile`, and bundled legacy scripts (including `mermaid.min.js` and `jquery-3.6.0.min.js`) have been removed; only active static assets (`assets/img/favicon/` and `assets/img/404*.jpg`) and archived historical CSS/JS under `test/legacy_archive/` remain. The CV retains its existing Google Analytics, font, and icon integrations; the portfolio page loads only local resources.
 
 ## Local preview and checks
 
@@ -82,9 +82,17 @@ To promote a future test release, copy its portfolio and CV assets to their prod
 
 GitHub Pages currently publishes the repository root from the `main` branch (branch-based Pages deployment). The root `.nojekyll` permits direct static publication. Pushing `main` triggers the configured Pages build; verify its completion and check the live portfolio and CV.
 
-A historical Jekyll Actions workflow remains under `.github/workflows/pages.yml`; it is not the currently configured Pages publishing mode. For branch-based releases, generate and commit version metadata before pushing. The displayed commit identifies the source revision used when generating metadata.
+The `.github/workflows/pages.yml` workflow has been migrated from EOL Ruby 3.0 / Jekyll and deprecated Actions to a static Node.js 22 LTS pipeline (`actions/checkout@v4`, `actions/setup-node@v4`, `actions/configure-pages@v5`, `actions/upload-pages-artifact@v3`, and `actions/deploy-pages@v4`) that generates version metadata and runs both verification suites before artifact upload. For branch-based releases, generate and commit version metadata before pushing. The displayed commit identifies the source revision used when generating metadata.
 
 ## Version History
+
+### v1.3.2 — November 2026 CVE remediation & legacy Jekyll removal
+**Release date:** 21 November 2026
+
+- **Node.js 22 LTS container & service hardening:** Pinned `services/Dockerfile` and `test/services/Dockerfile` (plus `specs/phase2-services-spec.json` and `test/phase2-services-spec.json`) to `node:22.23.5-alpine` to remediate `CVE-2026-111497` (*Node2Shell* Brotli RCE), `CVE-2026-123864` (`llhttp` memory disclosure), `CVE-2026-123865`, `CVE-2026-105482`, `CVE-2026-105483`, and `CVE-2026-106069`. Enforced environment-supplied `JWT_SECRET` and `AUTH_API_KEY` in `services/docker-compose.yml`, required `JWT_SECRET` in production `createServer()`, restricted JWT verification to `alg: "HS256"` / `typ: "JWT"`, and protected `/api/auth/token` with constant-time `x-api-key` validation.
+- **Edge ingress hardening (`edge/`, `test/edge/`):** Documented minimum patched NGINX requirements (`>= 1.30.7` / `>= 1.31.9`) for `CVE-2026-123007` and `CVE-2026-123633` (*nginx2root* HTTP/2 vulnerabilities) with the temporary `http2` disablement workaround, and added explicit `/core/install.php` (Drupal `CVE-2026-132165`) blocking to both NGINX and Cloudflare Worker configs.
+- **Legacy Jekyll & vulnerable frontend asset removal:** Removed unused legacy Jekyll files (`_posts/`, `_includes/`, `_layouts/`, `_pages/`, `_config.yml`, `Gemfile`, `all-posts.json`, `posts-by-tag.json`, `search.json`, `ipfs-404.html`, and unused `assets/` bundles including `mermaid.min.js` v8.13.6 and `jquery-3.6.0.min.js`). Migrated `.github/workflows/pages.yml` off EOL Ruby 3.0 and sunset v1–v3 Actions to a Node.js 22 static Pages workflow.
+- **Verification & version bump:** Updated `test/verify.js` to enforce patch-pinned Node.js 22 LTS Docker base images, added `alg: "none"` rejection tests in `services/server.test.js` and `test/services/server.test.js`, and bumped `version.json` and `test/version.json` to `v1.3.2`.
 
 ### v1.3.1 — Shared AI training preference
 **Release date:** 3 November 2026

@@ -17,6 +17,7 @@ import crypto from 'node:crypto';
 export const CONFIG = {
   port: parseInt(process.env.PORT || '8080', 10),
   jwtSecret: process.env.JWT_SECRET || 'test-lts-hmac-secret-at-least-32-chars-long',
+  apiKey: process.env.AUTH_API_KEY || '',
   tokenTtlSeconds: 3600
 };
 
@@ -66,6 +67,10 @@ export function verifyToken(token, secret = CONFIG.jwtSecret) {
   }
 
   try {
+    const header = JSON.parse(Buffer.from(encodedHeader, 'base64url').toString('utf8'));
+    if (header.alg !== 'HS256' || header.typ !== 'JWT') {
+      return { valid: false, error: 'Unsupported token algorithm' };
+    }
     const payload = JSON.parse(Buffer.from(encodedPayload, 'base64url').toString('utf8'));
     const now = Math.floor(Date.now() / 1000);
     if (payload.exp && payload.exp < now) {
@@ -148,6 +153,9 @@ export function verifyWebhookSignature(rawBody, signatureHeader, webhookSecret) 
  * @returns {http.Server}
  */
 export function createServer() {
+  if (process.env.NODE_ENV === 'production' && (!process.env.JWT_SECRET || process.env.JWT_SECRET.length < 32)) {
+    throw new Error('JWT_SECRET must be set in production (min 32 characters)');
+  }
   return http.createServer(async (req, res) => {
     // Zero-Trust Security Response Headers
     res.setHeader('Content-Type', 'application/json');
@@ -185,14 +193,25 @@ export function createServer() {
 
     // 2. Stateless Auth Token Issuance (Replaces session_start())
     if (req.method === 'POST' && url.pathname === '/api/auth/token') {
+      if (!CONFIG.apiKey) {
+        res.statusCode = 503;
+        return res.end(JSON.stringify({ error: 'Token issuance is disabled: AUTH_API_KEY not configured' }));
+      }
+      const providedKey = typeof req.headers['x-api-key'] === 'string' ? req.headers['x-api-key'] : '';
+      const providedBuf = Buffer.from(providedKey);
+      const expectedBuf = Buffer.from(CONFIG.apiKey);
+      if (providedBuf.length !== expectedBuf.length || !crypto.timingSafeEqual(providedBuf, expectedBuf)) {
+        res.statusCode = 401;
+        return res.end(JSON.stringify({ error: 'Unauthorized' }));
+      }
       try {
         const bodyStr = await readBody();
         const body = JSON.parse(bodyStr || '{}');
-        if (!body.userId) {
+        if (typeof body.userId !== 'string' || body.userId.trim().length === 0) {
           res.statusCode = 400;
           return res.end(JSON.stringify({ error: 'userId required' }));
         }
-        const token = signToken({ sub: body.userId, role: body.role || 'user' });
+        const token = signToken({ sub: body.userId.trim(), role: body.role || 'user' });
         res.statusCode = 200;
         return res.end(JSON.stringify({ token, token_type: 'Bearer', expires_in: CONFIG.tokenTtlSeconds }));
       } catch (err) {

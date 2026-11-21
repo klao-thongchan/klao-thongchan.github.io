@@ -27,7 +27,7 @@
     }
   ],
   "containerization_hardening": {
-    "base_image": "node:22-alpine",
+    "base_image": "node:22.23.5-alpine",
     "user": "node:node (UID 1000)",
     "filesystem": "read_only",
     "privilege_escalation": "no-new-privileges",
